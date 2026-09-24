@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Check Your Own Domain — Free Email Security Lookup</title>
+<meta name="description" content="Free, private check of your domain's email authentication: SPF, DKIM, DMARC, MX and MTA-STS. Runs entirely in your browser — nothing is sent to us.">
+<style>
+  :root{
+    --red:#d4372c; --yellow:#c98a04; --green:#1f9d4d;
+    --ink:#1b1e23; --muted:#5b636e; --bg:#f6f7f9; --card:#ffffff; --line:#e3e6ea;
+    --accent:#0b3d62;
+  }
+  *{box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+       color:var(--ink);background:var(--bg);margin:0;line-height:1.6}
+  .wrap{max-width:760px;margin:0 auto;padding:24px 18px 64px}
+  header{margin:28px 0 18px}
+  header .kicker{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700}
+  h1{font-size:2rem;line-height:1.2;margin:.3em 0 .4em}
+  .lede{font-size:1.08rem;color:var(--ink);max-width:62ch}
+  .lede strong{color:var(--red)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px;margin:20px 0}
+  .privacy{background:#eef6ff;border:1px solid #cfe4fb;border-radius:10px;padding:12px 16px;font-size:.92rem;margin:18px 0}
+  .privacy strong{color:var(--accent)}
+  label{font-weight:600;display:block;margin-bottom:8px}
+  .inputrow{display:flex;gap:10px;flex-wrap:wrap}
+  input[type=text]{flex:1 1 260px;font-size:1.05rem;padding:12px 14px;border:2px solid var(--line);
+                   border-radius:8px;min-width:0}
+  input[type=text]:focus{border-color:var(--accent);outline:none}
+  button{font-size:1.05rem;font-weight:700;color:#fff;background:var(--accent);border:0;border-radius:8px;
+         padding:12px 22px;cursor:pointer}
+  button:hover{background:#082c47}
+  button:disabled{opacity:.55;cursor:wait}
+  .status{font-size:.92rem;color:var(--muted);margin-top:10px;min-height:1.4em}
+  .error{background:#fdeceb;border:1px solid #f5c6c1;color:#7d1f18;border-radius:8px;padding:12px 16px;margin-top:12px;display:none}
+  #verdict{display:none;margin:24px 0}
+  .verdict-badge{display:flex;gap:14px;align-items:center;border-radius:12px;padding:18px 20px;color:#fff}
+  .verdict-badge .dot{width:34px;height:34px;border-radius:50%;background:#fff;flex:none;position:relative}
+  .verdict-badge.red{background:var(--red)} .verdict-badge.yellow{background:#b07a02} .verdict-badge.green{background:var(--green)}
+  .verdict-badge h2{margin:0;font-size:1.35rem}
+  .verdict-badge p{margin:.2em 0 0;font-size:.95rem;opacity:.95}
+  .check{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
+  .check:last-child{border-bottom:0}
+  .dot{width:14px;height:14px;border-radius:50%;flex:none;margin-top:6px}
+  .dot.red{background:var(--red)} .dot.yellow{background:var(--yellow)} .dot.green{background:var(--green)} .dot.gray{background:#b7bdc6}
+  .check h3{margin:0 0 4px;font-size:1.02rem}
+  .check .who{font-size:.85rem;color:var(--muted)}
+  .check p{margin:.3em 0;font-size:.95rem}
+  .record{background:#f1f3f5;border:1px solid var(--line);border-radius:6px;padding:8px 12px;
+           font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.82rem;
+           word-break:break-all;margin-top:8px}
+  .fix{background:#f8faf5;border-left:4px solid var(--green);padding:10px 14px;margin-top:10px;font-size:.92rem;border-radius:0 8px 8px 0}
+  .fix strong{color:var(--green)}
+  .cta{background:var(--accent);color:#fff;border-radius:12px;padding:26px 24px;margin:34px 0}
+  .cta h2{margin:0 0 8px;font-size:1.45rem}
+  .cta p{margin:.4em 0;opacity:.95}
+  .cta .plans{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+  @media(max-width:560px){.cta .plans{grid-template-columns:1fr}}
+  .cta .plan{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.25);border-radius:10px;padding:16px}
+  .cta .plan h3{margin:0 0 6px;font-size:1.05rem}
+  .cta .price{font-size:1.25rem;font-weight:800}
+  .cta a.btn{display:inline-block;margin-top:10px;background:#fff;color:var(--accent);text-decoration:none;
+             font-weight:700;padding:10px 20px;border-radius:8px}
+  .cta a.btn:hover{background:#eaf1f8}
+  .fine{font-size:.85rem;color:var(--muted);margin-top:26px}
+  footer{margin-top:40px;font-size:.82rem;color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
+  details{margin-top:14px}
+  summary{cursor:pointer;font-weight:600;color:var(--accent)}
+  .spin{display:inline-block;width:14px;height:14px;border:2px solid #c9d3dd;border-top-color:var(--accent);
+        border-radius:50%;animation:sp 0.8s linear infinite;vertical-align:-2px;margin-right:6px}
+  @keyframes sp{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="kicker">Free tool · No sign-up · No data leaves your browser</div>
+    <h1>Can attackers send email <em>as you</em>?</h1>
+    <p class="lede">
+      Most small-business domains have one or two DNS settings missing — and each gap is an open door
+      for anyone to spoof your address, phish your customers, and burn the reputation of the domain you
+      paid for. <strong>Find your gaps in under a minute.</strong>
+    </p>
+  </header>
+
+  <div class="privacy">
+    <strong>Private by design.</strong> You type the domain; your browser asks public DNS servers
+    directly. Your domain never touches our servers — we never see it, store it, or scan anything
+    you didn't enter.
+  </div>
+
+  <div class="card">
+    <label for="domain">Enter your domain</label>
+    <div class="inputrow">
+      <input type="text" id="domain" placeholder="yourcompany.com" autocomplete="off" autocapitalize="off" spellcheck="false">
+      <button id="run">Check My Domain</button>
+    </div>
+    <div class="status" id="status"></div>
+    <div class="error" id="error"></div>
+  </div>
+
+  <section id="verdict" aria-live="polite"></section>
+
+  <section id="results"></section>
+
+  <div class="cta">
+    <h2>Want the full fix?</h2>
+    <p>You now know <em>what's</em> exposed. The hard part — writing the exact DNS records, in the right
+    order, without breaking your mail — is what we do for Chicago businesses.</p>
+    <div class="plans">
+      <div class="plan">
+        <h3>Free mini-audit</h3>
+        <div class="price">Free</div>
+        <p>One page: your exact gaps, the exact records to publish, and the order to do it in.</p>
+        <a class="btn" href="mailto:Anthony.e.didion@gmail.com?subject=Free%20mini-audit%20request%20%E2%80%94%20my%20domain&body=Hi%20Anthony%2C%0A%0AI%27d%20like%20a%20free%20one-page%20mini-audit%20of%20my%20domain%27s%20email%20authentication.%0A%0AMy%20domain%3A%20%0A%0AThanks!">Request mine</a>
+      </div>
+      <div class="plan">
+        <h3>Remediation sprint</h3>
+        <div class="price">$750–$1,500</div>
+        <p>We implement and verify your SPF, DKIM, DMARC and MTA-STS for you — done right, tested, confirmed.</p>
+        <a class="btn" href="mailto:Anthony.e.didion@gmail.com?subject=Remediation%20sprint%20inquiry&body=Hi%20Anthony%2C%0A%0AI%27m%20interested%20in%20the%20email%20authentication%20remediation%20sprint%20(%24750%E2%80%93%241%2C500).%0A%0AMy%20domain%3A%20%0AMy%20mail%20provider%20(Google%2FM365%2Fother)%3A%20%0A%0AThanks!">Book a sprint</a>
+      </div>
+    </div>
+    <p>Or do it yourself with the step-by-step playbook:</p>
+    <div class="plan" style="margin-top:10px">
+      <h3>M365 Anti-Phishing Lockdown Kit</h3>
+      <div class="price">$39</div>
+      <p>Everything in one download: record templates, testing checklists, and the p=none → quarantine → reject timeline.</p>
+      <a class="btn" href="https://tonyverse8126.gumroad.com">Get the kit</a>
+    </div>
+  </div>
+
+  <p class="fine">
+    Results reflect your domain's <strong>public DNS records at the moment you run the check</strong>.
+    DNS changes can take minutes to hours to propagate, so if you just fixed something, wait and re-check.
+    This tool only looks up the domain you typed — nothing else.
+  </p>
+
+  <details>
+    <summary>How scoring works</summary>
+    <ul>
+      <li><strong>Red</strong> — your domain is open to spoofing right now: SPF is missing or broken, or DMARC is missing. Attackers can send mail as you with no policy to stop them.</li>
+      <li><strong>Yellow</strong> — partial protection. DMARC exists but only monitors (p=none) or quarantines (p=quarantine); SPF uses softfail (~all) so fakes still slip through; only one DKIM selector is published; or MTA-STS is missing so your mail can travel unencrypted.</li>
+      <li><strong>Green</strong> — hardened: SPF with hardfail (-all) or neutral, DMARC at p=reject, DKIM published, MX present, and MTA-STS present. An overall green means every check passed — one weak link still flags.</li>
+    </ul>
+  </details>
+
+  <footer>
+    Draft preview — 2026 Chicago SMB Email Security Report project. For questions, reply to the report contact on file.
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var DKIM_SELECTORS = ["selector1","selector2","google","k1","k2","default","dkim","mail"];
+
+  var $domain = document.getElementById("domain");
+  var $run = document.getElementById("run");
+  var $status = document.getElementById("status");
+  var $error = document.getElementById("error");
+  var $verdict = document.getElementById("verdict");
+  var $results = document.getElementById("results");
+
+  function cleanDomain(raw){
+    var d = (raw||"").trim().toLowerCase();
+    d = d.replace(/^[a-z][a-z0-9+.-]*:\/\//,""); // strip scheme
+    d = d.replace(/^\/\//,"");
+    d = d.split("/")[0].split("?")[0].split("#")[0];
+    d = d.split(":")[0];                          // strip port
+    d = d.replace(/^\.+|\.+$/g,"");
+    return d;
+  }
+  function validDomain(d){
+    return /^[a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?(\.[a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?)+$/.test(d)
+        && d.length <= 253 && !/^\d+\.\d+\.\d+\.\d+$/.test(d);
+  }
+
+  // --- DNS over HTTPS, Google primary, Cloudflare fallback ---
+  function dohGoogle(name, type){
+    return fetch("https://dns.google/resolve?name="+encodeURIComponent(name)+"&type="+encodeURIComponent(type), {cache:"no-store"})
+      .then(function(r){ if(!r.ok) throw new Error("google-http-"+r.status); return r.json(); });
+  }
+  function dohCloudflare(name, type){
+    return fetch("https://cloudflare-dns.com/dns-query?name="+encodeURIComponent(name)+"&type="+encodeURIComponent(type),
+      {headers:{"Accept":"application/dns-json"}, cache:"no-store"})
+      .then(function(r){ if(!r.ok) throw new Error("cf-http-"+r.status); return r.json(); });
+  }
+  function answers(json){
+    if(!json || json.Status !== 0 || !Array.isArray(json.Answer)) return [];
+    return json.Answer.map(function(a){
+      var d = a.data || "";
+      // Cloudflare wraps TXT strings in quotes; Google does not. Normalize.
+      if(a.type === 16) d = d.replace(/^"|"$/g,"").replace(/" "/g,"").replace(/\\"/g,'"');
+      return d;
+    });
+  }
+  function query(name, type){
+    return dohGoogle(name, type).then(answers).catch(function(){
+      return dohCloudflare(name, type).then(answers).catch(function(){ return []; });
+    });
+  }
+
+  function setStatus(t){ $status.innerHTML = t; }
+  function showError(t){ $error.textContent = t; $error.style.display = "block"; }
+  function hideError(){ $error.style.display = "none"; $error.textContent = ""; }
+
+  function rec(html){ return '<div class="record">'+escapeHtml(html)+"</div>"; }
+  function escapeHtml(s){ return String(s).replace(/[&<>"']/g, function(c){
+    return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
+
+  function parseSpf(txts){
+    var found = txts.filter(function(t){ return /^v=spf1\b/i.test(t); });
+    if(found.length === 0) return {state:"missing"};
+    if(found.length > 1) return {state:"broken", records:found, why:"multiple"};
+    var r = found[0];
+    if(/\s\+all(\s|$)/i.test(r)) return {state:"red", records:found, why:"+all"};
+    if(/\s-all(\s|$)/i.test(r)) return {state:"green", records:found, why:"-all"};
+    if(/\s~all(\s|$)/i.test(r)) return {state:"yellow", records:found, why:"~all"};
+    if(/\s\?all(\s|$)/i.test(r)) return {state:"green", records:found, why:"?all"};
+    if(/redirect\s*=/i.test(r)) return {state:"green", records:found, why:"redirect"};
+    return {state:"yellow", records:found, why:"unknown"};
+  }
+  function parseDmarc(txts){
+    var found = txts.filter(function(t){ return /^v=dmarc1/i.test(t.replace(/"/g,"").trim()); });
+    if(found.length === 0) return {state:"missing"};
+    var r = found[0].replace(/\s/g,"").toLowerCase();
+    var m = r.match(/;p=(none|quarantine|reject)/);
+    var p = m ? m[1] : "none";
+    if(p === "reject") return {state:"green", records:found, policy:"reject"};
+    if(p === "quarantine") return {state:"yellow", records:found, policy:"quarantine"};
+    return {state:"yellow", records:found, policy:"none"};
+  }
+  function parseSts(txts){
+    var found = txts.filter(function(t){ return /^v=sts/i.test(t); });
+    return found.length ? {state:"green", records:found} : {state:"yellow"};
+  }
+
+  function checkRow(color, title, who, bodyHtml){
+    return '<div class="check"><span class="dot '+color+'"></span><div>'+
+           "<h3>"+escapeHtml(title)+'</h3><div class="who">'+escapeHtml(who)+"</div>"+bodyHtml+"</div></div>";
+  }
+
+  function render(domain, c){
+    var rows = [];
+    var worst = "green";
+    function mark(s){ if(s==="red") worst="red"; else if(s==="yellow" && worst!=="red") worst="yellow"; }
+
+    // MX
+    if(c.mx.length){
+      mark("green");
+      rows.push(checkRow("green","Mail servers found (MX)","Receiving mail",
+        "<p>Good — <strong>"+c.mx.length+"</strong> mail server"+(c.mx.length>1?"s are":" is")+
+        " published for "+escapeHtml(domain)+". People can email you.</p>"+c.mx.slice(0,5).map(function(m){return rec(m);}).join("")));
+    } else {
+      mark("red");
+      rows.push(checkRow("red","No mail servers (MX) — <strong>you may not receive email</strong>","Receiving mail",
+        "<p>There is no MX record on <strong>"+escapeHtml(domain)+"</strong>. Inbound mail has nowhere to go — "+
+        "messages to you can bounce. If this domain is supposed to receive mail, your mail provider needs an MX record published.</p>"));
+    }
+
+    // SPF
+    var spf = c.spf;
+    if(spf.state === "missing"){
+      mark("red");
+      rows.push(checkRow("red","No SPF record — <strong>attackers can send mail as you</strong>","Spoofing protection",
+        "<p>Nothing tells receiving servers which mail servers are allowed to send as <strong>@"+escapeHtml(domain)+
+        "</strong>. Anyone, anywhere, can forge your address — invoices, password resets, fake replies to your customers.</p>"+
+        '<div class="fix"><strong>Fix it:</strong> publish a TXT record at your domain root, e.g. '+
+        "<code>v=spf1 include:your-mail-provider -all</code> (your provider's help docs give the exact include).</div>"));
+    } else if(spf.state === "broken" || spf.why === "+all"){
+      mark("red");
+      var whyMsg = spf.state==="broken"
+        ? "multiple SPF records are published. DNS rules say that <strong>breaks SPF entirely</strong> — receivers ignore all of them."
+        : 'your record ends in <strong>+all</strong>, which authorizes <em>every server on the internet</em> to send as you. That is worse than a weak SPF — it is an open pass.';
+      rows.push(checkRow("red","SPF is broken — <strong>it is not protecting you</strong>","Spoofing protection",
+        "<p>Your SPF record exists, but "+whyMsg+"</p>"+spf.records.map(rec).join("")+
+        '<div class="fix"><strong>Fix it:</strong> keep exactly one TXT record starting with <code>v=spf1</code> and end it with <code>-all</code>. Remove the rest.</div>'));
+    } else if(spf.state === "yellow"){
+      mark("yellow");
+      rows.push(checkRow("yellow","SPF uses softfail — <strong>fakes still get through</strong>","Spoofing protection",
+        "<p>Your SPF record ends in <code>~all</code> (softfail). Receivers treat spoofed mail as merely \"suspicious\" and "+
+        "usually deliver it anyway. Your domain is only half-defended.</p>"+spf.records.map(rec).join("")+
+        '<div class="fix"><strong>Fix it:</strong> change <code>~all</code> to <code>-all</code> (hardfail) once you have confirmed your legitimate senders are listed.</div>'));
+    } else {
+      mark("green");
+      rows.push(checkRow("green","SPF is strict","Spoofing protection",
+        "<p>Solid — unauthorized servers fail SPF for <strong>@"+escapeHtml(domain)+"</strong>. Keep this record updated whenever you add a new sending service.</p>"+
+        spf.records.map(rec).join("")));
+    }
+
+    // DMARC
+    var dm = c.dmarc;
+    if(dm.state === "missing"){
+      mark("red");
+      rows.push(checkRow("red","No DMARC record — <strong>no one rejects your fakes</strong>","Spoofing protection",
+        "<p>DMARC is the policy that tells receivers what to do with mail that fails authentication. Without it, "+
+        "even a good SPF can't stop spoofed mail from landing in inboxes <strong>under your name</strong>.</p>"+
+        '<div class="fix"><strong>Fix it:</strong> publish a TXT record at <code>_dmarc.'+escapeHtml(domain)+
+        "</code> starting with <code>v=DMARC1; p=none; rua=mailto:you@"+escapeHtml(domain)+
+        "</code>, watch the reports, then move to <code>p=quarantine</code> and finally <code>p=reject</code>.</div>"));
+    } else if(dm.policy === "reject"){
+      mark("green");
+      rows.push(checkRow("green","DMARC at p=reject — maximum protection","Spoofing protection",
+        "<p>Excellent — receivers are instructed to <strong>reject</strong> mail that fails authentication for your domain. This is the gold standard.</p>"+
+        dm.records.map(rec).join("")));
+    } else {
+      mark("yellow");
+      var pmsg = dm.policy==="quarantine"
+        ? "Your DMARC policy is <code>p=quarantine</code>: fakes go to spam instead of the inbox. Better than nothing — <strong>but not a block</strong>. The final step is <code>p=reject</code>."
+        : "Your DMARC policy is <code>p=none</code>: it only <strong>monitors</strong>. Receivers take no action on fakes — they land in inboxes as if nothing were wrong.";
+      rows.push(checkRow("yellow","DMARC is not enforcing — <strong>spoofed mail still lands in inboxes</strong>","Spoofing protection",
+        "<p>"+pmsg+" You are collecting data but not stopping anything yet.</p>"+dm.records.map(rec).join("")+
+        '<div class="fix"><strong>Fix it:</strong> after your aggregate reports show legitimate mail passing, step up to <code>p=quarantine</code>, then <code>p=reject</code>.</div>'));
+    }
+
+    // DKIM
+    if(c.dkim.length >= 2){
+      mark("green");
+      rows.push(checkRow("green","DKIM signatures published ("+c.dkim.length+" selectors)","Message authenticity",
+        "<p>Your mail can be cryptographically signed, so receivers can verify a message really came from you and wasn't altered in transit.</p>"+
+        c.dkim.map(function(s){ return rec(s.selector+"._domainkey."+domain+" → found"); }).join("")));
+    } else if(c.dkim.length === 1){
+      mark("yellow");
+      rows.push(checkRow("yellow","Only one DKIM selector found — <strong>thin coverage</strong>","Message authenticity",
+        "<p>One signing key is published ("+escapeHtml(c.dkim[0].selector)+"). If you send from more than one service (e.g. your mail host plus a CRM or newsletter tool), the others may be signing nothing — and failing.</p>"+
+        rec(c.dkim[0].selector+"._domainkey."+domain+" → found")+
+        '<div class="fix"><strong>Fix it:</strong> enable DKIM in <em>every</em> service that sends as your domain and publish each selector they give you.</div>'));
+    } else {
+      mark("yellow");
+      rows.push(checkRow("yellow","No DKIM selectors found","Message authenticity",
+        "<p>None of the common DKIM selectors returned a record. Your outgoing mail may be going out <strong>unsigned</strong> — easier to forge, harder for receivers to trust.</p>"+
+        '<div class="fix"><strong>Fix it:</strong> in your mail provider\'s admin console, enable DKIM signing and publish the TXT record it generates (usually at <code>selector._domainkey.'+escapeHtml(domain)+"</code>).</div>"));
+    }
+
+    // MTA-STS
+    if(c.sts.state === "green"){
+      mark("green");
+      rows.push(checkRow("green","MTA-STS present — mail travels encrypted","Transport security",
+        "<p>Your domain advertises an MTA-STS policy, so sending servers are told to require TLS. Harder for attackers to snoop or downgrade your mail in transit.</p>"+
+        c.sts.records.map(rec).join("")));
+    } else {
+      mark("yellow");
+      rows.push(checkRow("yellow","No MTA-STS — <strong>your mail can travel unencrypted</strong>","Transport security",
+        "<p>Without MTA-STS, sending servers may fall back to plain unencrypted delivery — or be tricked into it by an attacker on the network path.</p>"+
+        '<div class="fix"><strong>Fix it:</strong> publish a TXT record at <code>_mta-sts.'+escapeHtml(domain)+
+        "</code> (<code>v=STSv1; id=1</code>) and host the policy file at <code>https://mta-sts."+escapeHtml(domain)+"/.well-known/mta-sts.txt</code>.</div>"));
+    }
+
+    var vTitle = {red:"At risk — fix this now", yellow:"Partially protected — close the gaps", green:"Well protected — keep it that way"}[worst];
+    var vMsg = {
+      red: "Your domain is open to spoofing today. Every hour without SPF and DMARC is an hour attackers can send mail as you — to your customers, your vendors, your bank.",
+      yellow: "You have some defenses, but the gaps above mean spoofed mail still reaches inboxes under your name. The fixes are small; the exposure is not.",
+      green: "Your domain's email authentication is in strong shape. Re-check after any mail-provider change, and keep DMARC reports coming in so you stay ahead of new senders."
+    }[worst];
+    $verdict.innerHTML = '<div class="verdict-badge '+worst+'"><span class="dot"></span><div><h2>'+
+      escapeHtml(vTitle)+'</h2><p>'+escapeHtml(vMsg)+"</p></div></div>";
+    $verdict.style.display = "block";
+
+    $results.innerHTML = '<div class="card" style="padding-top:8px;padding-bottom:8px">'+
+      '<h2 style="font-size:1.2rem;margin:14px 0 4px">Your breakdown — '+escapeHtml(domain)+'</h2>'+
+      rows.join("") + "</div>";
+  }
+
+  function run(){
+    hideError();
+    var domain = cleanDomain($domain.value);
+    if(!validDomain(domain)){ showError("That doesn't look like a valid domain. Try something like yourcompany.com (no http, no slashes)."); return; }
+    $run.disabled = true;
+    setStatus('<span class="spin"></span>Checking public DNS for <strong>'+escapeHtml(domain)+"</strong> …");
+    $verdict.style.display = "none"; $verdict.innerHTML = "";
+    $results.innerHTML = "";
+
+    var queries = [
+      query(domain, "MX").then(function(r){ return {k:"mx", v:r}; }),
+      query(domain, "TXT").then(function(r){ return {k:"txt", v:r}; }),
+      query("_dmarc."+domain, "TXT").then(function(r){ return {k:"dmarc", v:r}; }),
+      query("_mta-sts."+domain, "TXT").then(function(r){ return {k:"sts", v:r}; })
+    ].concat(DKIM_SELECTORS.map(function(s){
+      return query(s+"._domainkey."+domain, "TXT").then(function(r){ return {k:"dkim", s:s, v:r}; });
+    }));
+
+    Promise.all(queries).then(function(parts){
+      var c = {mx:[], spf:{state:"missing"}, dmarc:{state:"missing"}, dkim:[], sts:{state:"yellow"}};
+      parts.forEach(function(p){
+        if(p.k==="mx") c.mx = p.v;
+        else if(p.k==="txt") c.spf = parseSpf(p.v);
+        else if(p.k==="dmarc") c.dmarc = parseDmarc(p.v);
+        else if(p.k==="sts") c.sts = parseSts(p.v);
+        else if(p.k==="dkim"){
+          var hasKey = p.v.some(function(t){ return /p\s*=\s*[A-Za-z0-9+/=]{20,}/.test(t) || /v=DKIM1/i.test(t); });
+          if(p.v.length && hasKey) c.dkim.push({selector:p.s});
+        }
+      });
+      // NXDOMAIN on everything = domain doesn't exist (or DNS entirely failing)
+      var allEmpty = parts.every(function(p){ return p.v.length === 0; });
+      if(allEmpty){
+        showError("No DNS records found for "+domain+". Check the spelling — or the domain may not be registered / may have no DNS yet.");
+        setStatus("");
+        $run.disabled = false;
+        return;
+      }
+      render(domain, c);
+      setStatus("Checked just now — results reflect public DNS at check time. Just made a change? Wait for propagation, then re-check.");
+      $run.disabled = false;
+    }).catch(function(){
+      showError("Couldn't reach the DNS lookup services. Check your connection and try again.");
+      setStatus("");
+      $run.disabled = false;
+    });
+  }
+
+  $run.addEventListener("click", run);
+  $domain.addEventListener("keydown", function(e){ if(e.key === "Enter") run(); });
+})();
+</script>
+</body>
+</html>

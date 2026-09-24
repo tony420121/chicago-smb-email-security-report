@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSuite Threat Briefing — Chicago SMB Email Security Report</title>
+<meta name="description" content="September 23, 2026 add-on: ANY.RUN's CSuite research — attackers deploying legitimate remote tools (ScreenConnect, Atera, Action1, Syncro, PDQ Connect) after Microsoft 365 compromise. 60% of victims in the US.">
+<style>
+  :root{
+    --ink:#14181f; --muted:#5a6472; --paper:#ffffff; --wash:#f4f6f9;
+    --red:#d64545; --yellow:#d9a021; --green:#2e9e5b;
+    --navy:#1b2a4a; --accent:#2f6fed; --accent-dark:#1f4fc4;
+    --line:#e3e8f0; --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;color:var(--ink);line-height:1.6;background:var(--paper)}
+  .wrap{max-width:860px;margin:0 auto;padding:0 24px}
+  .hero{background:linear-gradient(135deg,#101c38 0%,#1b2a4a 55%,#243c6e 100%);color:#fff;padding:56px 0 48px}
+  .hero h1{font-size:2rem;line-height:1.2;margin:0 0 14px;max-width:26ch}
+  .hero .sub{font-size:1.08rem;color:#cfd8ea;max-width:62ch}
+  .eyebrow{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--accent);padding:6px 14px;border-radius:999px;margin-bottom:18px}
+  section{padding:44px 0}
+  h2{font-size:1.5rem;color:var(--navy);margin-bottom:14px}
+  p{margin:0 0 14px}
+  .callout{border-left:5px solid var(--accent);background:var(--wash);border-radius:0 var(--radius) var(--radius) 0;padding:20px 24px;margin:22px 0}
+  .callout.danger{border-color:var(--red);background:#fdf1f1}
+  .callout p:last-child{margin-bottom:0}
+  ol,ul{margin:0 0 14px 22px}
+  li{margin-bottom:8px}
+  .btn{display:inline-block;font-weight:700;text-decoration:none;border-radius:10px;padding:14px 26px;font-size:1.02rem}
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-primary:hover{background:var(--accent-dark)}
+  .btn-ghost{border:2px solid var(--accent);color:var(--accent)}
+  .fine{font-size:.85rem;color:var(--muted)}
+  footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:.9rem}
+  footer a{color:var(--accent)}
+  .back{display:inline-block;margin-bottom:8px;color:var(--accent);text-decoration:none;font-weight:600}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Threat update · September 23, 2026</span>
+    <h1>The news: attackers stopped bringing malware. They bring your IT tools.</h1>
+    <p class="sub">Add-on briefing for the 2026 Chicago SMB Email Security Report, based on ANY.RUN research published September 22, 2026.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <a class="back" href="index.html">← Back to the report</a>
+    <div class="callout danger">
+      <p><strong>CSuite</strong> is a multi-stage operation that works like this: phishing email → Microsoft&nbsp;365 account compromise → device-code authentication abuse → session hijacking → deployment of <strong>legitimate remote-management tools</strong>.</p>
+    </div>
+    <p>Read that last part again. The attackers don't install their own malware. They install <strong>ScreenConnect, Atera, Action1, Syncro, and PDQ&nbsp;Connect</strong> — the same remote tools a real IT department uses. Once they're in, the attack looks like normal IT administration. There is no virus to catch.</p>
+    <p>The lures impersonate Adobe, DocuSign, Zoom, SharePoint, and ordinary Microsoft&nbsp;365 workflows. <strong>60% of the identified victim organizations are in the United States.</strong> This is not a nation-state story. This is shops the size of yours.</p>
+
+    <h2>What this means for your shop</h2>
+    <ol>
+      <li><strong>Your remote tools are the attack surface.</strong> If you run ScreenConnect, Atera, or similar on endpoints, an attacker with a phished M365 session gets the same screen you do. Lock down who can install and run remote-access software — and treat any unexpected remote session as an incident, not a glitch.</li>
+      <li><strong>Device-code phishing beats MFA.</strong> The attack abuses the "sign in on another device" flow your employees use legitimately. Train staff: if anyone — even someone claiming to be IT — asks you to enter a code from an email or screen into a Microsoft login page, stop and verify through a channel you trust.</li>
+      <li><strong>Blocking malware isn't enough anymore.</strong> When the attacker's toolkit is your own software, prevention shifts to identity: phishing-resistant authentication, conditional access, and monitoring for impossible-travel and odd session behavior.</li>
+    </ol>
+
+    <div class="callout">
+      <p>This is exactly the kind of threat the Chicago SMB Email Security Report measures. <a href="checker/">Run your domain through the free checker</a> — it takes thirty seconds.</p>
+    </div>
+    <p>
+      <a class="btn btn-primary" href="checker/">Check my domain free →</a>
+      &nbsp;&nbsp;
+      <a class="btn btn-ghost" href="report.pdf">Download the full report (PDF)</a>
+    </p>
+    <p class="fine">Claims verified against ANY.RUN's CSuite research (published Sept 22, 2026) via Undercode News and independent coverage: multi-stage operation confirmed; ScreenConnect, Action1, Atera, Syncro, PDQ&nbsp;Connect named as delivered tools; 60% US victim share confirmed; device-code phishing technique confirmed via ANY.RUN's March 2026 analysis. Briefing finalized September 23, 2026.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><strong>2026 Chicago SMB Email Security Report</strong> — threat-update briefing. Aggregates only; no businesses named. Prepared by Anthony Didion. Questions: <a href="mailto:Anthony.e.didion@gmail.com">Anthony.e.didion@gmail.com</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

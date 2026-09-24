@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 Chicago SMB Email Security Report — Is Your Domain Locked Down?</title>
+<meta name="description" content="410 Chicago small-business domains scanned 2026-09-16. Barely 1 in 9 have email authentication locked down. Check your own domain free.">
+<style>
+  :root{
+    --ink:#14181f; --muted:#5a6472; --paper:#ffffff; --wash:#f4f6f9;
+    --red:#d64545; --yellow:#d9a021; --green:#2e9e5b;
+    --navy:#1b2a4a; --accent:#2f6fed; --accent-dark:#1f4fc4;
+    --line:#e3e8f0; --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;color:var(--ink);line-height:1.6;background:var(--paper)}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  section{padding:56px 0}
+  h1,h2,h3{line-height:1.2;letter-spacing:-0.01em}
+  h2{font-size:1.9rem;margin-bottom:14px;color:var(--navy)}
+  h3{font-size:1.2rem;margin-bottom:8px}
+  p{margin:0 0 14px}
+  .eyebrow{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--accent);padding:6px 14px;border-radius:999px;margin-bottom:18px}
+
+  /* ---------- Hero ---------- */
+  .hero{background:linear-gradient(135deg,#101c38 0%,#1b2a4a 55%,#243c6e 100%);color:#fff;padding:72px 0 64px}
+  .hero h1{font-size:2.6rem;margin:0 0 18px;max-width:22ch}
+  .hero h1 .hl{color:#ffcf5c}
+  .hero .sub{font-size:1.15rem;color:#cfd8ea;max-width:60ch;margin-bottom:26px}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+  .hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:8px}
+  .stat-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:var(--radius);padding:16px 14px;text-align:center}
+  .stat-card .n{font-size:1.9rem;font-weight:800}
+  .stat-card .l{font-size:.8rem;color:#c4cfe4}
+  .stat-card.red .n{color:#ff8a8a}.stat-card.yellow .n{color:#ffd76a}.stat-card.green .n{color:#7be3a4}
+  .hero-cta{margin-top:28px;display:flex;gap:14px;flex-wrap:wrap}
+  .btn{display:inline-block;font-weight:700;text-decoration:none;border-radius:10px;padding:14px 26px;font-size:1.02rem}
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-primary:hover{background:var(--accent-dark)}
+  .btn-ghost{border:2px solid rgba(255,255,255,.55);color:#fff}
+  .btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+  .scan-date{margin-top:20px;font-size:.82rem;color:#9fb0cf}
+
+  /* donut */
+  .donut-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:26px;text-align:center}
+  .donut-card .legend{display:flex;justify-content:center;gap:18px;margin-top:14px;flex-wrap:wrap;font-size:.9rem;color:#dbe3f3}
+  .legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:baseline}
+
+  /* ---------- Callouts / cards ---------- */
+  .callout{border-left:5px solid var(--accent);background:var(--wash);border-radius:0 var(--radius) var(--radius) 0;padding:20px 24px;margin:22px 0}
+  .callout.danger{border-color:var(--red);background:#fdf1f1}
+  .callout.ok{border-color:var(--green);background:#effaf3}
+  .callout.warn{border-color:var(--yellow);background:#fdf7e7}
+  .callout p:last-child{margin-bottom:0}
+
+  .card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:24px}
+  .card{border:1px solid var(--line);border-radius:var(--radius);padding:24px;background:#fff}
+  .card h3{color:var(--navy)}
+
+  /* ---------- Chart sections ---------- */
+  .charts{background:var(--wash)}
+  .chart-panel{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px;margin-top:18px}
+  .chart-panel h3{color:var(--navy);margin-bottom:16px}
+  .bar-row{display:grid;grid-template-columns:200px 1fr 64px;gap:12px;align-items:center;margin:10px 0;font-size:.95rem}
+  .bar-row .lbl{color:var(--muted)}
+  .bar-row .val{font-weight:800;text-align:right}
+  .bar{height:16px;background:#edf1f6;border-radius:999px;overflow:hidden}
+  .bar>div{height:100%;border-radius:999px}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:760px){.two-col{grid-template-columns:1fr}.hero-grid{grid-template-columns:1fr}.bar-row{grid-template-columns:130px 1fr 56px}.hero h1{font-size:2rem}}
+
+  /* ---------- Score explainer ---------- */
+  .score-row{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:24px}
+  @media(max-width:760px){.score-row{grid-template-columns:1fr}}
+  .score-card{border-radius:var(--radius);padding:26px;color:#fff}
+  .score-card.red{background:linear-gradient(135deg,#a52e2e,#d64545)}
+  .score-card.yellow{background:linear-gradient(135deg,#a5751a,#d9a021)}
+  .score-card.green{background:linear-gradient(135deg,#1f7a44,#2e9e5b)}
+  .score-card .pct{font-size:2.2rem;font-weight:800}
+  .score-card ul{margin:10px 0 0 18px;font-size:.95rem}
+
+  /* ---------- Attack scenarios ---------- */
+  .attack{border:1px solid var(--line);border-left:6px solid var(--red);border-radius:var(--radius);padding:22px 24px;margin:16px 0;background:#fff}
+  .attack h3{color:#a52e2e;margin-bottom:6px}
+
+  /* ---------- CTAs ---------- */
+  .cta{background:linear-gradient(135deg,#101c38,#243c6e);color:#fff}
+  .cta h2{color:#fff}
+  .cta .card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);color:#e8edf7}
+  .cta .card h3{color:#fff}
+  .cta .card p{color:#c4cfe4}
+  .cta .price{font-size:1.5rem;font-weight:800;color:#ffcf5c}
+  .btn-light{background:#fff;color:var(--navy)}
+  .btn-light:hover{background:#e9eefb}
+  .checklist{list-style:none;margin:12px 0}
+  .checklist li{padding:6px 0 6px 30px;position:relative;font-size:.97rem}
+  .checklist li::before{content:"✓";position:absolute;left:4px;color:#7be3a4;font-weight:800}
+
+  /* ---------- Footer / methodology ---------- */
+  .method{background:var(--wash);font-size:.88rem;color:var(--muted)}
+  .method h3{color:var(--navy);margin:18px 0 8px}
+  footer{padding:26px 0;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+  a{color:var(--accent)}
+</style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow">2026 Chicago SMB Email Security Report</span>
+        <h1>Barely <span class="hl">1 in 9</span> Chicago small businesses have their email authentication actually locked down.</h1>
+        <p class="sub">We checked the public email-security records of <strong style="color:#fff">410 Chicago small-business domains</strong> across six industries on <strong style="color:#fff">2026-09-16</strong>. More than half had <em>no DMARC record at all</em> — which means anyone on the internet can send email that looks like it came from them.</p>
+        <div class="hero-stats">
+          <div class="stat-card red"><div class="n">54.6%</div><div class="l">no DMARC record</div></div>
+          <div class="stat-card yellow"><div class="n">81.5%</div><div class="l">no DMARC enforcement</div></div>
+          <div class="stat-card green"><div class="n">11.2%</div><div class="l">fully locked down</div></div>
+        </div>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="checker/">Check your own domain — free</a>
+          <a class="btn btn-ghost" href="#findings">See what the scan found</a>
+          <a class="btn btn-ghost" href="report.pdf">Download the full report (PDF)</a>
+        </div>
+        <p class="scan-date">Scan date: 2026-09-16 · Public DNS records only · Aggregates only — no businesses are named</p>
+      </div>
+      <div class="donut-card">
+        <svg viewBox="0 0 200 200" width="220" role="img" aria-label="Email posture: 54.6% red, 34.1% yellow, 11.2% green">
+          <circle cx="100" cy="100" r="80" fill="none" stroke="#d64545" stroke-width="34"
+                  stroke-dasharray="274.7 502.65" transform="rotate(-90 100 100)"/>
+          <circle cx="100" cy="100" r="80" fill="none" stroke="#d9a021" stroke-width="34"
+                  stroke-dasharray="171.4 502.65" stroke-dashoffset="-274.7" transform="rotate(-90 100 100)"/>
+          <circle cx="100" cy="100" r="80" fill="none" stroke="#2e9e5b" stroke-width="34"
+                  stroke-dasharray="56.3 502.65" stroke-dashoffset="-446.1" transform="rotate(-90 100 100)"/>
+          <text x="100" y="94" text-anchor="middle" fill="#fff" font-size="30" font-weight="800">54.6%</text>
+          <text x="100" y="116" text-anchor="middle" fill="#c4cfe4" font-size="13">no DMARC record</text>
+        </svg>
+        <div class="legend">
+          <span><i style="background:#d64545"></i>Red 54.6% (224)</span>
+          <span><i style="background:#d9a021"></i>Yellow 34.1% (140)</span>
+          <span><i style="background:#2e9e5b"></i>Green 11.2% (46)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= FINDINGS ================= -->
+<section class="charts" id="findings">
+  <div class="wrap">
+    <span class="eyebrow">What the scan found</span>
+    <h2>Most businesses are wide open — and it shows up in four places.</h2>
+    <p>Every number below comes from public DNS records checked on 2026-09-16, for 410 Chicago small-business domains in six verticals. No company names were recorded or published.</p>
+
+    <div class="two-col">
+      <div class="chart-panel">
+        <h3>DMARC policy — the record that actually stops spoofing</h3>
+        <div class="bar-row"><span class="lbl">No DMARC at all</span><div class="bar"><div style="width:54.6%;background:#d64545"></div></div><span class="val">54.6%</span></div>
+        <div class="bar-row"><span class="lbl">p=none (report only)</span><div class="bar"><div style="width:26.8%;background:#d9a021"></div></div><span class="val">26.8%</span></div>
+        <div class="bar-row"><span class="lbl">p=quarantine</span><div class="bar"><div style="width:11.0%;background:#7bc98f"></div></div><span class="val">11.0%</span></div>
+        <div class="bar-row"><span class="lbl">p=reject</span><div class="bar"><div style="width:7.6%;background:#2e9e5b"></div></div><span class="val">7.6%</span></div>
+        <div class="callout danger" style="margin:18px 0 0"><p><strong>The twist:</strong> 26.8% of domains <em>have</em> a DMARC record — but set to <strong>p=none</strong>, which tells receivers to do nothing. Monitoring without enforcement is a dashboard, not a defense. Combined, <strong>81.5%</strong> of domains have no effective DMARC enforcement.</p></div>
+      </div>
+
+      <div class="chart-panel">
+        <h3>SPF — who is allowed to send as you</h3>
+        <div class="bar-row"><span class="lbl">Softfail (~all)</span><div class="bar"><div style="width:40.0%;background:#d9a021"></div></div><span class="val">40.0%</span></div>
+        <div class="bar-row"><span class="lbl">Hardfail (-all)</span><div class="bar"><div style="width:32.4%;background:#2e9e5b"></div></div><span class="val">32.4%</span></div>
+        <div class="bar-row"><span class="lbl">No TXT records</span><div class="bar"><div style="width:17.3%;background:#d64545"></div></div><span class="val">17.3%</span></div>
+        <div class="bar-row"><span class="lbl">SPF missing</span><div class="bar"><div style="width:7.8%;background:#d64545"></div></div><span class="val">7.8%</span></div>
+        <div class="callout warn" style="margin:18px 0 0"><p><strong>But</strong> even a correct SPF record fails silently when mail relays aren't authorized — and softfail (~all) is just a suggestion most receivers ignore. SPF only protects you when paired with enforcement-level DMARC.</p></div>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="chart-panel">
+        <h3>Red rates run highest in the most trust-sensitive trades</h3>
+        <div class="bar-row"><span class="lbl">Dental / medical</span><div class="bar"><div style="width:67%;background:#d64545"></div></div><span class="val">67%</span></div>
+        <div class="bar-row"><span class="lbl">Trades (plumbing, HVAC, remodeling…)</span><div class="bar"><div style="width:66%;background:#d64545"></div></div><span class="val">66%</span></div>
+        <div class="bar-row"><span class="lbl">Restaurants</span><div class="bar"><div style="width:64%;background:#d64545"></div></div><span class="val">64%</span></div>
+        <p style="font-size:.88rem;color:#5a6472;margin-top:14px">Red = no DMARC record. These are the industries where a spoofed email feels most believable — a "dentist's office" confirming an appointment, a "contractor" sending a revised invoice, a "restaurant" emailing gift-card deals.</p>
+      </div>
+      <div class="chart-panel">
+        <h3>Two near-total gaps nobody is talking about</h3>
+        <div class="callout danger"><p style="font-size:2rem;font-weight:800;color:#a52e2e;margin-bottom:4px">99.5%</p><p>of scanned domains have <strong>no MTA-STS policy</strong> — mail in transit can be quietly downgraded and intercepted.</p></div>
+        <div class="callout"><p><strong>Where the mail lives:</strong> Google Workspace 28.8% · Microsoft 365 27.3% · other providers 25.6% · no mail server at all 15.9%. The big platforms give you the tools — but <strong>they don't turn on enforcement for you.</strong> Moving to Google or Microsoft doesn't fix this by itself.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHAT IT MEANS ================= -->
+<section id="meaning">
+  <div class="wrap">
+    <span class="eyebrow">What it means for your business</span>
+    <h2>Unauthenticated email isn't a tech footnote. It's an open door with your name on it.</h2>
+    <p>Attackers don't hack inboxes anymore — they <strong>borrow your identity</strong>. When your domain has no DMARC enforcement, anyone can send email that says it's from <em>you</em>, and most mail servers will deliver it without a second glance. Here's what that looks like in practice:</p>
+
+    <div class="attack">
+      <h3>Invoice fraud aimed at your customers</h3>
+      <p>A spoofed email "from" your business sends a customer a "corrected" invoice with new payment details. They pay the attacker — and blame <strong>you</strong> when the money's gone. For trades and professional services, where five-figure invoices are normal, one hit can end a client relationship permanently.</p>
+    </div>
+    <div class="attack">
+      <h3>Business email compromise (BEC) aimed at your own staff</h3>
+      <p>"Hey, this is urgent — wire the vendor payment today." Sent from your domain, to your bookkeeper, with your signature block copied from your website. BEC costs U.S. businesses billions a year because it exploits trust, not technology — and a missing DMARC record is what makes the forgery deliverable.</p>
+    </div>
+    <div class="attack">
+      <h3>Phishing that burns the reputation you spent years building</h3>
+      <p>Your customers get a "payment declined" or "verify your account" email wearing your logo and your domain. Even the ones who don't click it now associate <em>your name</em> with a scam. Reputation damage doesn't show up on a balance sheet until it does — all at once.</p>
+    </div>
+
+    <div class="callout danger">
+      <p><strong>The uncomfortable math:</strong> with 81.5% of scanned Chicago SMB domains lacking DMARC enforcement, your business probably looks <em>exactly like</em> the easy targets attackers prefer. The good news? Fixing it is a one-time configuration — not a product, not a subscription, and not a project.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SCORE EXPLAINER ================= -->
+<section class="charts" id="scoring">
+  <div class="wrap">
+    <span class="eyebrow">How the score works</span>
+    <h2>Three colors. One honest read of your domain.</h2>
+    <p>The free checker on this site grades your domain on the same rubric used for all 410 scanned domains (scan date 2026-09-16). No sign-up, no scan of anyone else — just your own domain, checked live against public DNS.</p>
+    <div class="score-row">
+      <div class="score-card red">
+        <div class="pct">🔴 Red — 54.6%</div>
+        <p style="margin-top:10px"><strong>No DMARC record at all.</strong></p>
+        <ul>
+          <li>Anyone can forge email as your domain</li>
+          <li>Receivers have no instructions to stop it</li>
+          <li>You get zero visibility into abuse</li>
+        </ul>
+      </div>
+      <div class="score-card yellow">
+        <div class="pct">🟡 Yellow — 34.1%</div>
+        <p style="margin-top:10px"><strong>Partial protection.</strong></p>
+        <ul>
+          <li>DMARC exists but set to p=none (monitoring only), <em>or</em></li>
+          <li>SPF is missing or set to softfail (~all)</li>
+          <li>Spoofed mail still gets delivered</li>
+        </ul>
+      </div>
+      <div class="score-card green">
+        <div class="pct">🟢 Green — 11.2%</div>
+        <p style="margin-top:10px"><strong>Locked down.</strong></p>
+        <ul>
+          <li>DMARC at p=quarantine or p=reject <em>and</em></li>
+          <li>SPF hardfail (-all) in place</li>
+          <li>Forged mail gets blocked or junked</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout" style="margin-top:24px"><p><strong>Therefore:</strong> yellow feels safe but isn't. More than a third of scanned businesses had <em>some</em> records in place and still failed — because p=none and softfail don't stop anything. If you're not green, you're exposed.</p></div>
+  </div>
+</section>
+
+<!-- ================= CTAs ================= -->
+<section class="cta" id="get-started">
+  <div class="wrap">
+    <span class="eyebrow">Your next move</span>
+    <h2>Three ways to stop being part of the 81.5%.</h2>
+    <p>Pick the one that fits where you are right now. Every option starts from the same place: knowing where your own domain stands.</p>
+    <div class="card-grid">
+      <div class="card">
+        <h3>1 · Check your own domain — free</h3>
+        <p>Run the same public-DNS checks the report used, on <strong>your</strong> domain, right now. Instant red/yellow/green result with plain-English next steps. Nothing is scanned without you asking; nothing leaves your browser except a standard DNS lookup.</p>
+        <a class="btn btn-light" href="checker/">Open the free checker →</a>
+      </div>
+      <div class="card">
+        <h3>2 · Free one-page mini-audit</h3>
+        <p>Send your domain and get a plain-English, one-page write-up: what we found in your public DNS, what it means in dollars-and-reputation terms, and the exact three fixes to prioritize. No jargon, no sales call required.</p>
+        <ul class="checklist">
+          <li>Delivered as a PDF you can forward to your IT person</li>
+          <li>Typically turned around within 2 business days</li>
+          <li>Free — no strings, no obligation</li>
+        </ul>
+        <a class="btn btn-light" href="mailto:Anthony.e.didion@gmail.com?subject=Free%20mini-audit%20request%20—%20my%20domain&body=Hi%20Anthony%2C%0A%0AI%27d%20like%20a%20free%20one-page%20mini-audit%20of%20my%20domain%27s%20email%20authentication.%0A%0AMy%20domain%3A%20%0A%0AThanks!">Request my free mini-audit →</a>
+      </div>
+      <div class="card">
+        <h3>3 · Remediation sprint — <span class="price">$750–$1,500</span></h3>
+        <p>Done-for-you fix: SPF, DKIM, and DMARC configured and validated for your domain, plus Microsoft 365 anti-phishing hardening (spoof intelligence, impersonation protection, safe links/attachments review) if you're on M365. About 1–2 hours of hands-on work, verified with before-and-after checks.</p>
+        <ul class="checklist">
+          <li>SPF, DKIM, DMARC set to enforcement (p=quarantine → p=reject)</li>
+          <li>M365 anti-phishing policies tightened</li>
+          <li>Before/after verification report included</li>
+        </ul>
+        <a class="btn btn-primary" href="mailto:Anthony.e.didion@gmail.com?subject=Remediation%20sprint%20inquiry&body=Hi%20Anthony%2C%0A%0AI%27m%20interested%20in%20the%20email%20authentication%20remediation%20sprint%20(%24750%E2%80%93%241%2C500).%0A%0AMy%20domain%3A%20%0AMy%20mail%20provider%20(Google%2FM365%2Fother)%3A%20%0A%0AThanks!">Ask about the sprint →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= METHODOLOGY ================= -->
+<section class="method" id="methodology">
+  <div class="wrap">
+    <span class="eyebrow">Methodology &amp; notes</span>
+    <h2 style="font-size:1.4rem">How this report was built</h2>
+    <h3>The scan</h3>
+    <p>On 2026-09-16, 410 Chicago small-business domains across six verticals (including dental/medical, trades, and restaurants) were checked using <strong>public DNS-over-HTTPS lookups only</strong>: TXT records at the domain apex, DMARC records at <code>_dmarc</code>, a fixed set of common DKIM selectors, MX records, and MTA-STS policy records. No websites were visited, no mail was sent, no inboxes were touched — only the same public DNS data any mail server on earth can already see.</p>
+    <h3>What the numbers mean</h3>
+    <p>Results are reported as <strong>aggregates only</strong>. No business names were recorded in the scan dataset and none are published anywhere in this report. A "red/yellow/green" score reflects the state of public DNS records on the scan date — it does not measure internal security practices, endpoint protection, or employee training.</p>
+    <h3>Opt-out &amp; re-check</h3>
+    <p>Because only aggregates are published, no individual business can be identified from this report. If you believe your domain's posture has changed since 2026-09-16 — for example, you've since moved DMARC to enforcement — run the <a href="checker/">free checker</a> for a current, live read of your own domain. Questions about the methodology: <a href="mailto:Anthony.e.didion@gmail.com?subject=Question%20about%20the%202026%20Chicago%20SMB%20Email%20Security%20Report">email Anthony</a>.</p>
+    <h3>A note on timing</h3>
+    <p>Email authentication is a snapshot discipline: records can change the day after a scan. Treat 2026-09-16 as the "photo date" for every statistic on this page, and treat the free checker — not this page — as the current answer for your domain.</p>
+  </div>
+</section>
+
+<!-- ================= THREAT UPDATE ================= -->
+<section class="method" id="threat-update">
+  <div class="wrap">
+    <span class="eyebrow">Threat update · September 23, 2026</span>
+    <h2 style="font-size:1.4rem">CSuite: attackers stopped bringing malware. They bring your IT tools.</h2>
+    <p>On September 22, 2026, ANY.RUN published research on CSuite — phishing → Microsoft 365 compromise → device-code abuse → deployment of legitimate remote tools (ScreenConnect, Atera, Action1, Syncro, PDQ Connect). 60% of identified victims are in the US. Read the one-page briefing written for shops the size of yours.</p>
+    <p><a class="btn btn-primary" href="csuite.html">Read the CSuite briefing →</a></p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><strong>2026 Chicago SMB Email Security Report</strong> — landing page. All statistics labeled with scan date 2026-09-16. Aggregates only; no businesses named. Prepared by Anthony Didion. Questions: <a href="mailto:Anthony.e.didion@gmail.com">Anthony.e.didion@gmail.com</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

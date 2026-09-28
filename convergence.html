@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>October 13 Convergence — One Tuesday, Two Deadlines · Chicago SMB Email Security Report</title>
-<meta name="description" content="October 13, 2026 is Patch Tuesday AND the day Office 2021, Windows 11 24H2, and Windows 10 LTSB 2016 run out of security updates. Owner-language one-pager with a two-week pre-deadline checklist.">
+<title>October 13 Convergence — One Tuesday, Five Deadlines · Chicago SMB Email Security Report</title>
+<meta name="description" content="October 13, 2026 is Patch Tuesday AND the day Office 2021, Windows 11 24H2, Windows 10 LTSB 2016, and Publisher 365 hit end of the line — while the File History backup fix lands in the same bundle. Owner-language one-pager with a two-week pre-deadline checklist.">
 <style>
   :root{
     --ink:#14181f; --muted:#5a6472; --paper:#ffffff; --wash:#f4f6f9;
@@ -40,6 +40,7 @@
   .dl-card{border:1px solid var(--line);border-radius:var(--radius);padding:18px;background:#fff}
   .dl-card.red{border-left:6px solid var(--red)}
   .dl-card.yellow{border-left:6px solid var(--yellow)}
+  .dl-card.green{border-left:6px solid var(--green)}
   .dl-card h3{margin:0 0 6px}
   .dl-card p{margin:0;font-size:.94rem;color:var(--muted)}
   .dl-card .when{font-weight:800;color:var(--red);font-size:.9rem}
@@ -58,15 +59,15 @@
   <div class="wrap">
     <a class="back" href="index.html">← Back to the report</a>
     <span class="eyebrow">Dated deadline · October 13, 2026</span>
-    <h1>One Tuesday, <span class="hl">two deadlines</span>: October 13 is Patch Tuesday AND the day your software stops getting security updates.</h1>
-    <p class="sub">Your computers stop receiving security updates the same morning the next big patch wave lands. That convergence is worth a one-page plan — so here's the plan.</p>
+    <h1>One Tuesday, <span class="hl">five deadlines</span>: October 13 is Patch Tuesday AND the day your software stops getting security updates.</h1>
+    <p class="sub">Five things happen to your computers on the morning of Tuesday, October 13, 2026 — and the fix for your broken backups lands in the same bundle. That convergence is worth a one-page plan — so here's the plan.</p>
   </div>
 </div>
 
 <section>
   <div class="wrap">
     <h2>What's converging on October 13, 2026</h2>
-    <p>October 13 is <strong>Patch Tuesday</strong> — Microsoft's monthly security-update day, and October's wave is shaping up to be one of the largest of the year. It is also, on the same morning, the <strong>end-of-security-updates date</strong> for three products still common in small shops:</p>
+    <p>October 13 is <strong>Patch Tuesday</strong> — Microsoft's monthly security-update day. It is also, on the same morning, the <strong>end-of-the-line date</strong> for five products still common in small shops:</p>
     <div class="deadline-grid">
       <div class="dl-card red">
         <h3>Office 2021</h3>
@@ -88,6 +89,21 @@
         <p class="when">Patch Tuesday: Oct 13, 2026</p>
         <p>September's patch release was the largest on record — 974 fixes dropped in a single morning (<a href="https://www.infosecurity-magazine.com/news/microsoft-patch-tuesday-record/">Infosecurity Magazine</a>) — so attackers got fresh flaws to exploit while un-updated machines stood still. October's wave lands the same morning your updates stop.</p>
       </div>
+      <div class="dl-card red">
+        <h3>Publisher 365 stops working. Completely.</h3>
+        <p class="when">Stops working: Oct 13, 2026</p>
+        <p>This one is different — not end of support, end of function. Flyers, menus, mailers, and mail-merge .pub files stop opening. Export what matters to PDF <em>now</em>, while it still runs.</p>
+      </div>
+      <div class="dl-card yellow">
+        <h3>Microsoft 365 apps freeze on Windows Server 2022</h3>
+        <p class="when">Feature freeze: Oct 13, 2026</p>
+        <p>Apps stop advancing past Version 2608. Security updates continue to October 2028, so this isn't an emergency — but freezes become emergencies two years later. Note it, plan on your timeline.</p>
+      </div>
+      <div class="dl-card green">
+        <h3>…and the backup fix you've been waiting for</h3>
+        <p class="when">Fix lands: Oct 13, 2026</p>
+        <p>September's Patch Tuesday broke Windows File History backups — and the fix folds into the October 13 bundle. Check whether your backups have been silently failing: <a href="broken-backups.html">the full story →</a></p>
+      </div>
     </div>
     <div class="callout danger"><p><strong>Why this matters to you, in plain English:</strong> a computer that no longer receives security updates is a computer that gets <em>easier to hack every month</em> — and attackers know exactly which products just hit end-of-support. October 13 is the day several of your machines, potentially, step onto that list.</p></div>
   </div>
@@ -99,9 +115,11 @@
     <p>You have roughly <strong>three weeks</strong>. Here's what to do, in order:</p>
     <ol>
       <li><strong>Inventory the fleet.</strong> List every PC and which build it runs (Settings → System → About → Version). Flag anything on Windows 11 24H2, Windows 10 LTSB 2016, or Office 2021. You can't fix what you haven't counted.</li>
+      <li><strong>Find the Publisher files that matter.</strong> If anyone in the shop makes flyers, menus, mailers, or newsletters in Publisher, export them to PDF before October 13 — after that, .pub files stop opening entirely. Pick the replacement (Word templates, Canva, whatever fits) before the deadline.</li>
       <li><strong>Check your update status.</strong> Confirm every machine is current on patches — and that updates are actually <em>installing</em>, not just "checking." A machine that hasn't taken a patch in months is a separate problem.</li>
       <li><strong>Plan the moves.</strong> Windows 11 24H2 machines → update to a serviced version (25H2 or later). Windows 10 LTSB 2016 machines → upgrade to Windows 11 or replace the hardware. Office 2021 → move to Microsoft 365 apps or accept the no-patches reality with extra scrutiny.</li>
       <li><strong>Back up before you touch anything.</strong> A verified backup of each machine's data before any OS or Office migration. Fifteen minutes of backup beats a week of "where did the client files go."</li>
+      <li><strong>Check File History before you trust it.</strong> September's updates silently broke File History backups on some machines — the fix lands October 13, but that leaves weeks of unprotected time. Open Settings → Accounts → Windows backup on each machine and confirm the last successful backup date. <a href="broken-backups.html">How to check, and your options →</a></li>
       <li><strong>Mitigate what you can't migrate.</strong> Any machine that will miss the deadline gets: endpoint protection verified current, local admin rights removed from the daily user account, and its internet exposure reduced (no remote access, no direct email attachments opening). Buy time, don't borrow it.</li>
       <li><strong>Tell your people.</strong> A 30-second note to staff: "We're updating computers over the next two weeks — save your work, expect a restart prompt." Surprise restarts are how updates get blocked.</li>
     </ol>
@@ -122,7 +140,7 @@
 
 <footer>
   <div class="wrap">
-    <p><strong>2026 Chicago SMB Email Security Report</strong> — dated one-pager, published 2026-09-24. Dated information changes; verify current support dates on Microsoft's official lifecycle pages. Prepared by Anthony Didion. Questions: <a href="mailto:Anthony.e.didion@gmail.com">Anthony.e.didion@gmail.com</a></p>
+    <p><strong>2026 Chicago SMB Email Security Report</strong> — dated one-pager, published 2026-09-24, updated 2026-09-28. Dated information changes; verify current support dates on Microsoft's official lifecycle pages. Prepared by Anthony Didion. Questions: <a href="mailto:Anthony.e.didion@gmail.com">Anthony.e.didion@gmail.com</a></p>
   </div>
 </footer>
 

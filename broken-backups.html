@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Patch That Broke Your Backups · Chicago SMB Email Security Report</title>
+<meta name="description" content="September's Patch Tuesday broke Windows File History backups — and the fix lands October 13, 2026. How to check whether your backups silently failed, and your three options.">
+<style>
+  :root{
+    --ink:#14181f; --muted:#5a6472; --paper:#ffffff; --wash:#f4f6f9;
+    --red:#d64545; --yellow:#d9a021; --green:#2e9e5b;
+    --navy:#1b2a4a; --accent:#2f6fed; --accent-dark:#1f4fc4;
+    --line:#e3e8f0; --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;color:var(--ink);line-height:1.6;background:var(--paper)}
+  .wrap{max-width:860px;margin:0 auto;padding:0 24px}
+  .hero{background:linear-gradient(135deg,#101c38 0%,#1b2a4a 55%,#243c6e 100%);color:#fff;padding:56px 0 48px}
+  .hero h1{font-size:2rem;line-height:1.2;margin:0 0 14px;max-width:26ch}
+  .hero h1 .hl{color:#ffcf5c}
+  .hero .sub{font-size:1.08rem;color:#cfd8ea;max-width:62ch}
+  .eyebrow{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--accent);padding:6px 14px;border-radius:999px;margin-bottom:18px}
+  section{padding:44px 0}
+  h2{font-size:1.5rem;color:var(--navy);margin-bottom:14px}
+  h3{font-size:1.15rem;color:var(--navy);margin:18px 0 8px}
+  p{margin:0 0 14px}
+  .callout{border-left:5px solid var(--accent);background:var(--wash);border-radius:0 var(--radius) var(--radius) 0;padding:20px 24px;margin:22px 0}
+  .callout.danger{border-color:var(--red);background:#fdf1f1}
+  .callout.ok{border-color:var(--green);background:#effaf3}
+  .callout p:last-child{margin-bottom:0}
+  ol,ul{margin:0 0 14px 22px}
+  li{margin-bottom:10px}
+  .btn{display:inline-block;font-weight:700;text-decoration:none;border-radius:10px;padding:14px 26px;font-size:1.02rem}
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-primary:hover{background:var(--accent-dark)}
+  .btn-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px}
+  .back{display:inline-block;margin-bottom:8px;color:var(--accent);text-decoration:none;font-weight:600}
+  footer{padding:26px 0;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+  a{color:var(--accent)}
+  .cta-band{background:linear-gradient(135deg,#101c38,#243c6e);color:#fff}
+  .cta-band h2{color:#fff}
+  .cta-band p{color:#c4cfe4}
+  .btn-light{background:#fff;color:var(--navy)}
+  .btn-light:hover{background:#e9eefb}
+  code{background:#eef1f6;padding:2px 6px;border-radius:6px;font-size:.9em}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <a class="back" href="index.html">← Back to the report</a>
+    <span class="eyebrow">Dated deadline · fix lands October 13, 2026</span>
+    <h1>The patch that <span class="hl">broke your backups</span></h1>
+    <p class="sub">September's Patch Tuesday broke Windows File History — the built-in backup that quietly copies your files to an external drive or a network location. Your backups may have been silently failing for a month. Here's how to check, and your three options.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>The honest timeline</h2>
+    <ul>
+      <li><strong>September Patch Tuesday:</strong> File History backups and restores to external drives and network locations break.</li>
+      <li><strong>September 14:</strong> Microsoft ships out-of-band fix <code>KB5129195</code>. It does <em>not</em> fix File History.</li>
+      <li><strong>September 22–23:</strong> the real fix ships — but only in the <em>optional preview</em> updates (<code>KB5124006</code> / <code>KB5124010</code>). Optional means manual: automatic deployment policies skip preview updates entirely, so if your shop's updates run on autopilot, you never got it.</li>
+      <li><strong>October 13:</strong> the fix folds into the regular Patch Tuesday bundle. Everybody gets it then.</li>
+    </ul>
+    <div class="callout danger"><p><strong>One more wrinkle, because there always is one:</strong> the same preview KB that fixes File History (<code>KB5124010</code>) introduces a <em>new</em> bug on machines using Credential Guard — the old "the trust relationship between this workstation and the primary domain failed" error. So the manual early fix carries its own risk. There is no free move here, only trade-offs.</p></div>
+    <div class="callout"><p><strong>Who waits longest:</strong> if your machines run Windows 11 23H2 or any Windows 10 edition, the preview wave gave you nothing — <strong>you wait for October 13 no matter what.</strong> The oldest machines in the building, the ones most likely to need their backups, are the ones waiting longest for the fix. That's not commentary, that's the schedule.</p></div>
+  </div>
+</section>
+
+<section style="background:var(--wash)">
+  <div class="wrap">
+    <h2>Did File History silently fail on your machines? (the 2-minute check)</h2>
+    <p>File History doesn't always announce that it stopped working. Here's how to check:</p>
+    <ol>
+      <li>On each machine that should be backing up: open <strong>Settings → Accounts → Windows backup</strong> (or Control Panel → File History on older builds).</li>
+      <li>Look at the last successful backup date. If it says September — or if it errors when you try to run one now — it broke.</li>
+      <li>Check the drive or network location it points to. If nothing new has landed there since the September updates, that's your answer.</li>
+    </ol>
+    <div class="callout ok"><p><strong>The moral of the story:</strong> if you find a machine that hasn't backed up in weeks, that machine has been running without a net. Fix the backup before you need it.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Your options, honestly</h2>
+    <h3>Option A — install the preview manually (<code>KB5124006</code> / <code>KB5124010</code>)</h3>
+    <p>You get the fix now. The costs: it's hands-on per machine, auto-update policies won't do it for you, and <code>KB5124010</code> can break domain trust on Credential Guard machines. Worth it if a machine's backups are critical and you can babysit the install.</p>
+    <h3>Option B — wait for October 13</h3>
+    <p>The fix arrives in the normal bundle, no heroics required. The cost: up to two more weeks without working File History. If you choose this, at least <em>verify</em> your other backups in the meantime — the external drive rotation, the cloud backup, whatever else you have. Don't assume.</p>
+    <h3>Option C — both</h3>
+    <p>Preview on the machines whose backups matter most, October 13 for everything else. This is what most shops with an IT person will actually do.</p>
+    <p>Whichever you pick, do the 2-minute check first. You can't make the call without knowing which machines are affected.</p>
+    <div class="callout"><p><strong>Why this is on an email-security page:</strong> fair question — this is a backup story, not an email story. Two reasons it's here. First, the October 13 convergence: the backup fix lands the same Tuesday a stack of Microsoft products lose support (<a href="convergence.html">the full rundown →</a>). Second, the pattern: the attacks this report covers — ransomware, business email compromise — end with the same question: <em>can you recover?</em> A backup that silently broke in September is the answer nobody wants in October.</p></div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap">
+    <h2>While you're checking what else is quietly broken</h2>
+    <p>Backups are one half of resilience. The other half is whether attackers can impersonate you in the first place. The report's free checker grades your domain in seconds — and the one-page mini-audit gives you the fix list.</p>
+    <div class="btn-row">
+      <a class="btn btn-light" href="checker/">Check your domain — free</a>
+      <a class="btn btn-primary" href="mailto:Anthony.e.didion@gmail.com?subject=Free%20mini-audit%20request%20—%20my%20domain&body=Hi%20Anthony%2C%0A%0AI%27d%20like%20a%20free%20one-page%20mini-audit%20of%20my%20domain%27s%20email%20authentication.%0A%0AMy%20domain%3A%20%0A%0AThanks!">Request my free mini-audit →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><strong>2026 Chicago SMB Email Security Report</strong> — dated one-pager, published 2026-09-28. Dated information changes; verify current KB status on Microsoft's official pages. Prepared by Anthony Didion. Questions: <a href="mailto:Anthony.e.didion@gmail.com">Anthony.e.didion@gmail.com</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

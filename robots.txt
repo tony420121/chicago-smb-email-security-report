@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://darling-moonbeam-45fdb1.netlify.app/sitemap.xml

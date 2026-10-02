@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Windows 11 26H2 Is Out: The Enablement Package, the Rollout Rings, and the 26H1 Trap</title>
+<meta name="description" content="Windows 11 26H2 reached general availability September 29, 2026 (build 26300). What the enablement package means for your shop, how to roll it out in rings — and the 26H1 trap: those devices can't move to 26H2 at all.">
+<style>
+  :root{
+    --ink:#14181f; --muted:#5a6472; --paper:#ffffff; --wash:#f4f6f9;
+    --red:#d64545; --yellow:#d9a021; --green:#2e9e5b;
+    --navy:#1b2a4a; --accent:#2f6fed; --accent-dark:#1f4fc4;
+    --line:#e3e8f0; --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;color:var(--ink);line-height:1.6;background:var(--paper)}
+  .wrap{max-width:860px;margin:0 auto;padding:0 24px}
+  .hero{background:linear-gradient(135deg,#101c38 0%,#1b2a4a 55%,#243c6e 100%);color:#fff;padding:56px 0 48px}
+  .hero h1{font-size:2rem;line-height:1.2;margin:0 0 14px;max-width:26ch}
+  .hero h1 .hl{color:#ffcf5c}
+  .hero .sub{font-size:1.08rem;color:#cfd8ea;max-width:62ch}
+  .eyebrow{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--accent);padding:6px 14px;border-radius:999px;margin-bottom:18px}
+  .eyebrow.win{background:var(--green)}
+  section{padding:44px 0}
+  h2{font-size:1.5rem;color:var(--navy);margin-bottom:14px}
+  p{margin:0 0 14px}
+  .callout{border-left:5px solid var(--accent);background:var(--wash);border-radius:0 var(--radius) var(--radius) 0;padding:20px 24px;margin:22px 0}
+  .callout.danger{border-color:var(--red);background:#fdf1f1}
+  .callout.ok{border-color:var(--green);background:#effaf3}
+  .callout p:last-child{margin-bottom:0}
+  ol,ul{margin:0 0 14px 22px}
+  li{margin-bottom:10px}
+  .btn{display:inline-block;font-weight:700;text-decoration:none;border-radius:10px;padding:14px 26px;font-size:1.02rem}
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-primary:hover{background:var(--accent-dark)}
+  .btn-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px}
+  .back{display:inline-block;margin-bottom:8px;color:var(--accent);text-decoration:none;font-weight:600}
+  .action{border:1px solid var(--line);border-left:6px solid var(--green);border-radius:var(--radius);padding:22px 24px;margin:16px 0;background:#fff}
+  .action h3{color:#1f7a44;margin-bottom:6px}
+  .big-stat{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}
+  @media(max-width:640px){.big-stat{grid-template-columns:1fr}.hero h1{font-size:1.7rem}}
+  .stat{border:1px solid var(--line);border-radius:var(--radius);padding:18px;text-align:center}
+  .stat .n{font-size:1.8rem;font-weight:800;color:var(--navy)}
+  .stat .l{font-size:.85rem;color:var(--muted)}
+  footer{padding:26px 0;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+  a{color:var(--accent)}
+  .cta-band{background:linear-gradient(135deg,#101c38,#243c6e);color:#fff}
+  .cta-band h2{color:#fff}
+  .cta-band p{color:#c4cfe4}
+  .btn-light{background:#fff;color:var(--navy)}
+  .btn-light:hover{background:#e9eefb}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <a class="back" href="index.html">← Back to the report</a>
+    <span class="eyebrow">Threat update · September 29, 2026</span>
+    <h1>Windows 11 26H2 went GA this week — and there's a <span class="hl">trap</span> for some machines.</h1>
+    <p class="sub">Build 26300 is rolling out gradually. It's an enablement package, not a reimage project — and devices on 26H1 can't move to 26H2 at all. Here's what that means for your shop, and three actions.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>What 26H2 is</h2>
+    <p>Windows 11 26H2 reached <strong>general availability on September 29, 2026 — build 26300</strong> — and Microsoft's release-information page now carries the 26H2 row. The rollout is <strong>gradual</strong>: Microsoft holds back machines with known issues (safeguard holds), so don't promise every device upgrades on day one.</p>
+    <div class="big-stat">
+      <div class="stat"><div class="n">26300</div><div class="l">build — generally available Sept 29, 2026</div></div>
+      <div class="stat"><div class="n">eKB</div><div class="l">enablement package — no reimage project</div></div>
+      <div class="stat"><div class="n">26H1</div><div class="l">devices on 26H1 get NO path to 26H2</div></div>
+    </div>
+    <p>The good news first: 26H2 deploys as an <strong>enablement package</strong>. The bits are mostly already on the machine; the package lights them up. That's a small, fast deployment — not a reimage project. And the three tools you already own — <strong>Windows Autopatch, Intune, and WSUS</strong> — already support exactly this rollout pattern. The job is rollout rings and validation, not tooling.</p>
+  </div>
+</section>
+
+<section style="background:var(--wash)">
+  <div class="wrap">
+    <h2>The 26H1 trap — read this part</h2>
+    <div class="callout danger"><p><strong>A device on Windows 11 26H1 cannot move to 26H2 at all.</strong> 26H1 is a parallel track for new hardware — not a stepping stone. There is no upgrade path from 26H1 to 26H2. If any of your machines are on 26H1, they don't get 26H2. Audit your fleet for 26H1 <em>before</em> you tell anyone what the upgrade plan is, because no plan that ignores this is credible.</p></div>
+    <p>This is the single most consequential fact in this release: an owner who hears "26H2 is out" and promises staff their machines will get it is making a promise some machines can't keep. Inventory first, announcements second.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Why your shop should care — the honest version</h2>
+    <p>Here's the plain part: this is endpoint lifecycle inside an email-security report — a slight lane stretch, and worth saying so. It earns its place because <a href="convergence.html">the October 13 convergence</a> already owns the deadline story: Windows 11 24H2 stops getting updates on October 13. This page is the companion — <strong>the deadline is <em>when</em>, 26H2 is <em>where</em>.</strong> Your 24H2 machines need a landing spot, and 26H2 is it.</p>
+    <div class="callout"><p><strong>GA optimism is not a deployment plan.</strong> Release announcements always sound smooth; the real world has safeguard holds, driver edge cases, and third-party app quirks. Rollout rings and pilot validation aren't caution for its own sake — they're how you avoid turning a smooth enablement package into a Monday-morning helpdesk spike.</p></div>
+  </div>
+</section>
+
+<section style="background:var(--wash)">
+  <div class="wrap">
+    <h2>Three actions — do these this month</h2>
+    <div class="action">
+      <h3>1. Find your 26H1 machines first</h3>
+      <p>Before anything else, inventory your fleet for any device on 26H1 — those don't get a 26H2 path at all. <strong>Check your Intune device inventory (or ask your IT provider) for machines on 26H1.</strong> This step costs nothing and prevents the one promise you can't keep.</p>
+    </div>
+    <div class="action">
+      <h3>2. Ring the rollout</h3>
+      <p>Pilot group first, then expanding waves. Validate real apps — not just the OS version number — in the pilot before widening. Don't fight the safeguard holds; plan the timeline around them, not the GA date.</p>
+    </div>
+    <div class="action">
+      <h3>3. Don't build a reimage project</h3>
+      <p>It's an enablement package. If your plan looks like a full reinstall for every machine, you're over-engineering it — and your staff will feel it. Rings and validation, not weekend rebuilds.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Make your domain the hard target</h2>
+    <p>Session hijacking only turns into business damage when your domain is easy to impersonate. Run the free checker — see your red/yellow/green in seconds — or get the one-page mini-audit with your fix list.</p>
+    <div class="btn-row">
+      <a class="btn btn-light" href="checker/">Check your domain — free</a>
+      <a class="btn btn-primary" href="mailto:Anthony.e.didion@gmail.com?subject=Free%20mini-audit%20request%20—%20my%20domain&body=Hi%20Anthony%2C%0A%0AI%27d%20like%20a%20free%20one-page%20mini-audit%20of%20my%20domain%27s%20email%20authentication.%0A%0AMy%20domain%3A%20%0A%0AThanks!">Request my free mini-audit →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><strong>2026 Chicago SMB Email Security Report</strong> — threat-update briefing, published 2026-10-02. Reporting based on public coverage of the September 29, 2026 release. Prepared by Anthony Didion. Questions: <a href="mailto:Anthony.e.didion@gmail.com">Anthony.e.didion@gmail.com</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

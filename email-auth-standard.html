@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Small-Business Security Standard Now Says DMARC Is Mandatory — Not Optional</title>
+<meta name="description" content="September 2026: SMB1001:2026 now mandates DMARC, SPF, and DKIM — with quarantine or reject — as formal controls. What it means for your shop and the 60-second check.">
+<style>
+  :root{
+    --ink:#14181f; --muted:#5a6472; --paper:#ffffff; --wash:#f4f6f9;
+    --red:#d64545; --yellow:#d9a021; --green:#2e9e5b;
+    --navy:#1b2a4a; --accent:#2f6fed; --accent-dark:#1f4fc4;
+    --line:#e3e8f0; --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;color:var(--ink);line-height:1.6;background:var(--paper)}
+  .wrap{max-width:860px;margin:0 auto;padding:0 24px}
+  .hero{background:linear-gradient(135deg,#101c38 0%,#1b2a4a 55%,#243c6e 100%);color:#fff;padding:56px 0 48px}
+  .hero h1{font-size:2rem;line-height:1.2;margin:0 0 14px;max-width:26ch}
+  .hero h1 .hl{color:#ffcf5c}
+  .hero .sub{font-size:1.08rem;color:#cfd8ea;max-width:62ch}
+  .eyebrow{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--accent);padding:6px 14px;border-radius:999px;margin-bottom:18px}
+  .eyebrow.win{background:var(--green)}
+  section{padding:44px 0}
+  h2{font-size:1.5rem;color:var(--navy);margin-bottom:14px}
+  p{margin:0 0 14px}
+  .callout{border-left:5px solid var(--accent);background:var(--wash);border-radius:0 var(--radius) var(--radius) 0;padding:20px 24px;margin:22px 0}
+  .callout.danger{border-color:var(--red);background:#fdf1f1}
+  .callout.ok{border-color:var(--green);background:#effaf3}
+  .callout p:last-child{margin-bottom:0}
+  ol,ul{margin:0 0 14px 22px}
+  li{margin-bottom:10px}
+  .btn{display:inline-block;font-weight:700;text-decoration:none;border-radius:10px;padding:14px 26px;font-size:1.02rem}
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-primary:hover{background:var(--accent-dark)}
+  .btn-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px}
+  .back{display:inline-block;margin-bottom:8px;color:var(--accent);text-decoration:none;font-weight:600}
+  .action{border:1px solid var(--line);border-left:6px solid var(--green);border-radius:var(--radius);padding:22px 24px;margin:16px 0;background:#fff}
+  .action h3{color:#1f7a44;margin-bottom:6px}
+  .big-stat{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}
+  @media(max-width:640px){.big-stat{grid-template-columns:1fr}.hero h1{font-size:1.7rem}}
+  .stat{border:1px solid var(--line);border-radius:var(--radius);padding:18px;text-align:center}
+  .stat .n{font-size:1.8rem;font-weight:800;color:var(--navy)}
+  .stat .l{font-size:.85rem;color:var(--muted)}
+  footer{padding:26px 0;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+  a{color:var(--accent)}
+  .cta-band{background:linear-gradient(135deg,#101c38,#243c6e);color:#fff}
+  .cta-band h2{color:#fff}
+  .cta-band p{color:#c4cfe4}
+  .btn-light{background:#fff;color:var(--navy)}
+  .btn-light:hover{background:#e9eefb}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <a class="back" href="index.html">← Back to the report</a>
+    <span class="eyebrow">Threat update · September 30, 2026</span>
+    <h1>A small-business security standard now says <span class="hl">DMARC is mandatory</span> — not optional.</h1>
+    <p class="sub">SMB1001:2026 requires email authentication — DMARC, SPF, and DKIM — as formal controls. Honest line up front: it's not U.S. law. But "a published standard now requires it" is the strongest plain-English reason to finally fix your email.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>What the standard actually says</h2>
+    <p>The 2026 edition of SMB1001, the small-business cybersecurity standard from Dynamic Standards International, now mandates email authentication — <strong>DMARC, SPF, and DKIM</strong> — as formal controls against email fraud, phishing, and brand impersonation. DMARC (with SPF and DKIM) is mandatory from the Silver tier up, and the DMARC policy must be set to <strong>quarantine or reject</strong> — not the soft "none" setting that provides no protection. The same update adds Endpoint Detection and Response controls, moves cyber-awareness training into the Bronze entry-level tier, and requires a formal policy for the acceptable and secure use of AI.</p>
+    <div class="big-stat">
+      <div class="stat"><div class="n">3</div><div class="l">controls now mandatory: DMARC, SPF, DKIM</div></div>
+      <div class="stat"><div class="n">quarantine / reject</div><div class="l">required DMARC policy — not "none"</div></div>
+      <div class="stat"><div class="n">Silver+</div><div class="l">tiers where email auth is mandatory</div></div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--wash)">
+  <div class="wrap">
+    <h2>Why a standard bothers mandating this</h2>
+    <p>Because email compromise and identity fraud top the self-reported cybercrime charts for small business — the Australian Cyber Security Centre's 2024–25 reporting put the <strong>average cost at $56,000 AUD per incident</strong> for small businesses. An attacker who can send email <em>as you</em> can send your customers a fake invoice, your staff a fake wire instruction, your vendors a fake change-of-bank-details notice. DMARC with enforcement is the control that makes "as you" stop working.</p>
+    <div class="callout"><p><strong>The unreadiness runs deep.</strong> Per Nationwide's September 23, 2026 survey, only 35% of businesses HAVE an incident-response plan — which means most small shops would be improvising the day something goes wrong. Mandates like SMB1001 exist precisely because "we'll deal with it later" keeps losing.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>What it means for your shop</h2>
+    <p>You don't need to pursue SMB1001 certification to use its logic. The standard is saying, in published form, what the September 2026 scan behind this report already showed in practice: <strong>most small-business domains have no meaningful email authentication</strong>. The question isn't whether your domain <em>can</em> be spoofed — without DMARC enforcement, it can. The question is whether you've closed the door before someone walks through it.</p>
+  </div>
+</section>
+
+<section style="background:var(--wash)">
+  <div class="wrap">
+    <h2>The 60-second check — and the fix list</h2>
+    <p>This is the one page whose call to action is the free tool the funnel already gives away. Run the checker on your own domain — it grades SPF, DKIM, and DMARC in seconds — and the one-page mini-audit gives you the fix list.</p>
+    <div class="action">
+      <h3>1. Run the checker</h3>
+      <p>Run the checker on your domain. Screenshot the result — that's your baseline.</p>
+    </div>
+    <div class="action">
+      <h3>2. Confirm SPF lists every sender</h3>
+      <p>Your SPF record must list every service that sends email for you — your mail host, your CRM, your invoicing tool, your website forms. A missing sender is the #1 cause of legitimate mail failing checks.</p>
+    </div>
+    <div class="action">
+      <h3>3. Confirm DKIM signing everywhere</h3>
+      <p>DKIM signing must be enabled on all outbound email, not just your main mailbox.</p>
+    </div>
+    <div class="action">
+      <h3>4. Publish DMARC — then enforce it</h3>
+      <p>Start at p=none (monitoring, so you can see who's sending as you), then move to p=quarantine or p=reject once legitimate mail passes. The standard requires enforcement, not monitoring.</p>
+    </div>
+    <div class="action">
+      <h3>5. Ask your IT person one question</h3>
+      <p>"Are SPF, DKIM, and DMARC aligned on our domain?" If the answer is a pause, you have your answer.</p>
+    </div>
+    <p>Related: <a href="convergence.html">the October 13 convergence</a> · <a href="intune-suite.html">what you're already paying for in Intune</a> · <a href="eviltokens.html">the MFA attacks going around</a>.</p>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Make your domain the hard target</h2>
+    <p>Session hijacking only turns into business damage when your domain is easy to impersonate. Run the free checker — see your red/yellow/green in seconds — or get the one-page mini-audit with your fix list.</p>
+    <div class="btn-row">
+      <a class="btn btn-light" href="checker/">Check your domain — free</a>
+      <a class="btn btn-primary" href="mailto:Anthony.e.didion@gmail.com?subject=Free%20mini-audit%20request%20—%20my%20domain&body=Hi%20Anthony%2C%0A%0AI%27d%20like%20a%20free%20one-page%20mini-audit%20of%20my%20domain%27s%20email%20authentication.%0A%0AMy%20domain%3A%20%0A%0AThanks!">Request my free mini-audit →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><strong>2026 Chicago SMB Email Security Report</strong> — threat-update briefing, published 2026-10-02. Reporting based on public coverage of the SMB1001:2026 update. Prepared by Anthony Didion. Questions: <a href="mailto:Anthony.e.didion@gmail.com">Anthony.e.didion@gmail.com</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

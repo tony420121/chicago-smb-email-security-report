@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Microsoft's Update Turned Off Your Office This Week</title>
+<meta name="description" content="September 30, 2026: Microsoft paused update KB5002907 after reports it deactivated or removed perpetual Office 2016 and 2019 installs. What happened, the two fixes, and the real October 13 deadline for holdouts.">
+<style>
+  :root{
+    --ink:#14181f; --muted:#5a6472; --paper:#ffffff; --wash:#f4f6f9;
+    --red:#d64545; --yellow:#d9a021; --green:#2e9e5b;
+    --navy:#1b2a4a; --accent:#2f6fed; --accent-dark:#1f4fc4;
+    --line:#e3e8f0; --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;color:var(--ink);line-height:1.6;background:var(--paper)}
+  .wrap{max-width:860px;margin:0 auto;padding:0 24px}
+  .hero{background:linear-gradient(135deg,#101c38 0%,#1b2a4a 55%,#243c6e 100%);color:#fff;padding:56px 0 48px}
+  .hero h1{font-size:2rem;line-height:1.2;margin:0 0 14px;max-width:26ch}
+  .hero h1 .hl{color:#ffcf5c}
+  .hero .sub{font-size:1.08rem;color:#cfd8ea;max-width:62ch}
+  .eyebrow{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--accent);padding:6px 14px;border-radius:999px;margin-bottom:18px}
+  .eyebrow.win{background:var(--green)}
+  section{padding:44px 0}
+  h2{font-size:1.5rem;color:var(--navy);margin-bottom:14px}
+  p{margin:0 0 14px}
+  .callout{border-left:5px solid var(--accent);background:var(--wash);border-radius:0 var(--radius) var(--radius) 0;padding:20px 24px;margin:22px 0}
+  .callout.danger{border-color:var(--red);background:#fdf1f1}
+  .callout.ok{border-color:var(--green);background:#effaf3}
+  .callout p:last-child{margin-bottom:0}
+  ol,ul{margin:0 0 14px 22px}
+  li{margin-bottom:10px}
+  .btn{display:inline-block;font-weight:700;text-decoration:none;border-radius:10px;padding:14px 26px;font-size:1.02rem}
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-primary:hover{background:var(--accent-dark)}
+  .btn-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px}
+  .back{display:inline-block;margin-bottom:8px;color:var(--accent);text-decoration:none;font-weight:600}
+  .action{border:1px solid var(--line);border-left:6px solid var(--green);border-radius:var(--radius);padding:22px 24px;margin:16px 0;background:#fff}
+  .action h3{color:#1f7a44;margin-bottom:6px}
+  .big-stat{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}
+  @media(max-width:640px){.big-stat{grid-template-columns:1fr}.hero h1{font-size:1.7rem}}
+  .stat{border:1px solid var(--line);border-radius:var(--radius);padding:18px;text-align:center}
+  .stat .n{font-size:1.8rem;font-weight:800;color:var(--navy)}
+  .stat .l{font-size:.85rem;color:var(--muted)}
+  footer{padding:26px 0;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+  a{color:var(--accent)}
+  .cta-band{background:linear-gradient(135deg,#101c38,#243c6e);color:#fff}
+  .cta-band h2{color:#fff}
+  .cta-band p{color:#c4cfe4}
+  .btn-light{background:#fff;color:var(--navy)}
+  .btn-light:hover{background:#e9eefb}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <a class="back" href="index.html">← Back to the report</a>
+    <span class="eyebrow">Threat update · September 30, 2026</span>
+    <h1>Microsoft's update <span class="hl">turned off your Office</span> this week.</h1>
+    <p class="sub">On September 28, 2026, Microsoft paused the rollout of update KB5002907 after reports that it deactivated — or in some cases completely removed — perpetual Office 2016 and Office 2019 installations. People opened Word and found an "enter your product key" prompt where a working app used to be. Some found no app at all.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>What the update was supposed to do</h2>
+    <p>KB5002907 — "Optional update for out-of-date Microsoft 365 Apps installations" — was a repair update for Windows PCs running Microsoft 365 Apps that were more than 90 days behind on updates, on Current Channel or Monthly Enterprise Channel. Delivered through Windows Update, and Microsoft says it does not install automatically. (<a href="https://www.bleepingcomputer.com/news/microsoft/microsoft-365-kb5002907-update-paused-after-office-license-deactivations/">BleepingComputer</a>; <a href="https://techstrong.it/featured/microsoft-pauses-update-after-office-2016-and-2019-license-failures/">Techstrong IT</a>)</p>
+    <div class="big-stat">
+      <div class="stat"><div class="n">2016 / 2019</div><div class="l">the Office versions actually hit — the perpetual one-time-purchase releases</div></div>
+      <div class="stat"><div class="n">10</div><div class="l">minutes between calls from five unrelated customers to one Belgian MSP</div></div>
+      <div class="stat"><div class="n">Sept 28</div><div class="l">Microsoft paused the rollout after the reports</div></div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--wash)">
+  <div class="wrap">
+    <h2>Who actually got hit — the honest version</h2>
+    <div class="callout danger"><p><strong>The reports didn't come from Microsoft 365 Apps users.</strong> They came from perpetual-license Office 2016 and Office 2019 — the one-time-purchase versions, not subscriptions. On September 24, a Belgian MSP told BleepingComputer that five unrelated customers called within about ten minutes, dozens of PCs affected: Office suddenly showing "Unlicensed Product," a smaller number with Office gone entirely. Re-entering the original product key restored activation. Be honest about scope: this hit holdout devices that received the repair update — not everyone's Office.</p></div>
+    <div class="callout ok"><p><span class="eyebrow win">Microsoft's word</span><br>A Microsoft spokesperson told The Register: "We are aware of these reports and have paused the update while we investigate." The support bulletin now reads: "As part of the repair action applied by this update, some devices were left without functioning versions of Microsoft 365 Apps or Office." And Microsoft's guidance is explicit: <strong>buying a new subscription is not a required recovery step.</strong> (<a href="https://www.theregister.com/software/2026/09/25/office-2016-and-2019-holdouts-blame-update-for-license-deactivation-bug/5299186">The Register, Sept 28, 2026</a>; <a href="https://aicybr.com/blog/microsoft-kb5002907-office-2016-2019-license-pause">AiCybr</a>)</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Two fixes — do these now</h2>
+    <div class="action">
+      <h3>1. The 10-minute fix</h3>
+      <p>Re-enter the original Office product key, or sign into the Microsoft account tied to the purchase and reselect the license. That restored activation in most reported cases. (<a href="https://www.bleepingcomputer.com/news/microsoft/microsoft-365-kb5002907-update-paused-after-office-license-deactivations/">BleepingComputer</a>)</p>
+    </div>
+    <div class="action">
+      <h3>2. The hour-long fix</h3>
+      <p>If Office is gone, reinstall the purchased Office release from the Microsoft account associated with the purchase — then sign out and back in. (<a href="https://tech-ish.com/2026/09/27/microsoft-pauses-update-after-office-2016-and-2019-lose-activation-or-disappear/">tech-ish, Sept 27, 2026</a>)</p>
+    </div>
+    <div class="action">
+      <h3>3. Inventory the fleet</h3>
+      <p>Which machines run Office 2016/2019, which run Office 2021, which run Microsoft 365 Apps — and check installed updates for KB5002907 so you know whether it landed. You can't plan what you haven't counted.</p>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--wash)">
+  <div class="wrap">
+    <h2>The bigger deadline behind this week's scare</h2>
+    <div class="callout danger"><p>Here's the part that matters more than the pause: support for Office 2016 and 2019 <strong>ended October 14, 2025</strong> — they're running on borrowed time already. And on <strong>October 13, 2026</strong>, Office 2021 loses security updates too — the same Tuesday Windows 11 24H2 and Windows 10 LTSB 2016 stop getting patched. This week's deactivation scare is the preview; October 13 is the real deadline for holdouts. <a href="convergence.html">See the convergence one-pager.</a></p></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Keep reading</h2>
+    <ul>
+      <li>The October 13 convergence one-pager: <a href="convergence.html">convergence.html</a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Make your domain the hard target</h2>
+    <p>Broken updates and unpatched machines both start with "nobody was watching." Run the free checker — see your red/yellow/green in seconds — or get the one-page mini-audit with your fix list.</p>
+    <div class="btn-row">
+      <a class="btn btn-light" href="checker/">Check your domain — free</a>
+      <a class="btn btn-primary" href="mailto:Anthony.e.didion@gmail.com?subject=Free%20mini-audit%20request%20—%20my%20domain&body=Hi%20Anthony%2C%0A%0AI%27d%20like%20a%20free%20one-page%20mini-audit%20of%20my%20domain%27s%20email%20authentication.%0A%0AMy%20domain%3A%20%0A%0AThanks!">Request my free mini-audit →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><strong>2026 Chicago SMB Email Security Report</strong> — threat-update briefing, published 2026-10-02. Reporting based on September 2026 coverage of the KB5002907 rollout pause and Office license deactivations. Prepared by Anthony Didion. Questions: <a href="mailto:Anthony.e.didion@gmail.com">Anthony.e.didion@gmail.com</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TeamFiltration — Attackers Walked In Through Accounts Nobody Owns</title>
+<meta name="description" content="Proofpoint's September 22, 2026 disclosure: attackers probed 5,714 Microsoft 365 accounts across 28 tenants using TeamFiltration. The 7 accounts they broke into were all forgotten service accounts with default passwords and no MFA.">
+<style>
+  :root{
+    --ink:#14181f; --muted:#5a6472; --paper:#ffffff; --wash:#f4f6f9;
+    --red:#d64545; --yellow:#d9a021; --green:#2e9e5b;
+    --navy:#1b2a4a; --accent:#2f6fed; --accent-dark:#1f4fc4;
+    --line:#e3e8f0; --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;color:var(--ink);line-height:1.6;background:var(--paper)}
+  .wrap{max-width:860px;margin:0 auto;padding:0 24px}
+  .hero{background:linear-gradient(135deg,#101c38 0%,#1b2a4a 55%,#243c6e 100%);color:#fff;padding:56px 0 48px}
+  .hero h1{font-size:2rem;line-height:1.2;margin:0 0 14px;max-width:26ch}
+  .hero h1 .hl{color:#ffcf5c}
+  .hero .sub{font-size:1.08rem;color:#cfd8ea;max-width:62ch}
+  .eyebrow{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--accent);padding:6px 14px;border-radius:999px;margin-bottom:18px}
+  .eyebrow.win{background:var(--green)}
+  section{padding:44px 0}
+  h2{font-size:1.5rem;color:var(--navy);margin-bottom:14px}
+  p{margin:0 0 14px}
+  .callout{border-left:5px solid var(--accent);background:var(--wash);border-radius:0 var(--radius) var(--radius) 0;padding:20px 24px;margin:22px 0}
+  .callout.danger{border-color:var(--red);background:#fdf1f1}
+  .callout.ok{border-color:var(--green);background:#effaf3}
+  .callout p:last-child{margin-bottom:0}
+  ol,ul{margin:0 0 14px 22px}
+  li{margin-bottom:10px}
+  .btn{display:inline-block;font-weight:700;text-decoration:none;border-radius:10px;padding:14px 26px;font-size:1.02rem}
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-primary:hover{background:var(--accent-dark)}
+  .btn-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px}
+  .back{display:inline-block;margin-bottom:8px;color:var(--accent);text-decoration:none;font-weight:600}
+  .action{border:1px solid var(--line);border-left:6px solid var(--green);border-radius:var(--radius);padding:22px 24px;margin:16px 0;background:#fff}
+  .action h3{color:#1f7a44;margin-bottom:6px}
+  .big-stat{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}
+  @media(max-width:640px){.big-stat{grid-template-columns:1fr}.hero h1{font-size:1.7rem}}
+  .stat{border:1px solid var(--line);border-radius:var(--radius);padding:18px;text-align:center}
+  .stat .n{font-size:1.8rem;font-weight:800;color:var(--navy)}
+  .stat .l{font-size:.85rem;color:var(--muted)}
+  footer{padding:26px 0;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+  a{color:var(--accent)}
+  .cta-band{background:linear-gradient(135deg,#101c38,#243c6e);color:#fff}
+  .cta-band h2{color:#fff}
+  .cta-band p{color:#c4cfe4}
+  .btn-light{background:#fff;color:var(--navy)}
+  .btn-light:hover{background:#e9eefb}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <a class="back" href="index.html">← Back to the report</a>
+    <span class="eyebrow">Threat update · September 22, 2026</span>
+    <h1>Attackers didn't break in through your people — they walked in through <span class="hl">accounts nobody owns</span>.</h1>
+    <p class="sub">On September 22, 2026, Proofpoint disclosed a campaign that probed 5,714 Microsoft 365 accounts across 28 tenants. The seven accounts they actually broke into had one thing in common: every one was a forgotten service account with a default or never-rotated password and no MFA. Not one belonged to a person. Your tenant has accounts like these. Here's how to find them first.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>What happened</h2>
+    <p>Proofpoint's report, <em>"Spraying in the Andes: TeamFiltration Returns to Exploit Forgotten Service Accounts,"</em> published September 22, 2026 and widely covered on September 24, describes a campaign — tracked as UNK_CondorFiltration — that:</p>
+    <div class="big-stat">
+      <div class="stat"><div class="n">5,714</div><div class="l">unique accounts targeted across 28 Microsoft 365 tenants</div></div>
+      <div class="stat"><div class="n">1,487</div><div class="l">unique AWS EC2 source IP addresses</div></div>
+      <div class="stat"><div class="n">7</div><div class="l">accounts confirmed compromised — all unmanaged service accounts</div></div>
+    </div>
+    <ul>
+      <li>Ran in <strong>three waves from late July through August 2026</strong>, focused on Chilean retail and financial institutions (one Chilean retailer took 78.3% of all observed authentication events)</li>
+      <li>Generated <strong>32,825 authentication events</strong> against those 5,714 accounts</li>
+      <li>Compromised 7 accounts — <strong>all unmanaged functional or service accounts</strong>, not individual employee accounts; every one carried default or unrotated passwords with no multi-factor authentication</li>
+      <li>Broke into <strong>six of the seven within 7 minutes</strong>, suggesting a shared or default password set rather than individual targeting</li>
+      <li>Pivoted fast: within about two minutes of compromise, the operator moved to a German VPN node to probe the corporate VPN, access the Azure Portal, browse SharePoint Online, and request Microsoft Graph API tokens</li>
+    </ul>
+    <div class="callout"><p><strong>Sources:</strong> Proofpoint Threat Insight, Sept 22, 2026 — "Spraying in the Andes: TeamFiltration Returns to Exploit Forgotten Service Accounts" — <a href="https://www.proofpoint.com/us/blog/threat-insight/Spraying-in-the-Andes-TeamFiltration-Returns">proofpoint.com</a> · The Hacker News, Sept 24, 2026 — <a href="http://thehackernews.com/2026/09/teamfiltration-compromises-seven.html">thehackernews.com</a></p></div>
+    <h2>The tool: TeamFiltration</h2>
+    <p>TeamFiltration is a legitimate, cross-platform offensive security framework — built for penetration testers to enumerate Entra ID accounts, spray passwords, exfiltrate data, and plant OneDrive backdoors. Criminals now use the same tool. That's the pattern running through every attack story this year: the attackers stopped bringing malware and started bringing your IT department's toolbox.</p>
+  </div>
+</section>
+
+<section style="background:var(--wash)">
+  <div class="wrap">
+    <h2>How to spot it in your sign-in logs</h2>
+    <p>Proofpoint published indicators of compromise with the report. Two you can check today:</p>
+    <div class="callout danger">
+      <p><strong>1. The hardcoded user agent.</strong> TeamFiltration's default configuration sends this user-agent string: <strong><code>Teams/1.3.00.30866</code></strong> (inside a longer Mozilla/Chrome/Electron string). Proofpoint's words: <strong>"Not seen in legitimate modern Teams clients."</strong> Search your Entra sign-in logs for it — it shouldn't be there.</p>
+    </div>
+    <div class="callout danger">
+      <p><strong>2. The spray infrastructure.</strong> The campaign's source IP ranges: <code>3.101.0.0/16</code>, <code>18.144.76.0/24</code>, <code>13.52.201.0/24</code> — all AWS EC2. A burst of authentication attempts from these ranges is worth a look. (Post-access, the operator used a German VPN node at <code>149.88.104.19</code> to probe VPN, Azure Portal, and SharePoint.)</p>
+    </div>
+    <div class="callout"><p><strong>IOC recap source:</strong> <a href="https://gbhackers.com/microsoft-365-accounts-targeted/">GBHackers IOC recap</a></p></div>
+    <h2>The honest scope note</h2>
+    <p>5,700 is the number of accounts <em>targeted</em>, not breached — seven were confirmed compromised. And Proofpoint stresses that sign-in telemetry alone can't prove data was actually exfiltrated. Don't let anyone sell you the scarier version of this story. The real lesson is smaller and worse: the doors that opened were accounts nobody remembered creating, with passwords nobody ever changed.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>The service-account audit — do this</h2>
+    <div class="action">
+      <h3>1. List every account that isn't a person</h3>
+      <p>In the Microsoft Entra admin center, look at your user list — filter for accounts with no recent sign-in, or ask your IT person to export the list. Service accounts, functional accounts, "scanner@," "backup@," vendor accounts.</p>
+    </div>
+    <div class="action">
+      <h3>2. Give each one an owner — or kill it</h3>
+      <p>Every account gets a named human responsible for it. No owner, no reason to exist: disable it.</p>
+    </div>
+    <div class="action">
+      <h3>3. Rotate every password you find</h3>
+      <p>If the password is the vendor's default or older than your youngest employee's tenure, change it today.</p>
+    </div>
+    <div class="action">
+      <h3>4. Put MFA on all of them</h3>
+      <p>No exceptions — Proofpoint's telemetry showed an MFA-enrollment event <em>after</em> one account was accessed, meaning MFA wasn't configured when the attacker walked in.</p>
+    </div>
+    <div class="action">
+      <h3>5. Check what each account can touch</h3>
+      <p>A service account that only needs one app shouldn't have admin roles. Shrink the permissions to what it actually uses.</p>
+    </div>
+    <div class="action">
+      <h3>6. Search your sign-in logs for the user agent above</h3>
+      <p>If <code>Teams/1.3.00.30866</code> shows up, treat it as an incident, not a curiosity.</p>
+    </div>
+    <div class="callout"><p><em>Dated page — campaign data from Proofpoint's September 22, 2026 disclosure. Campaign figures are Proofpoint's; "targeted" and "compromised" are not the same number.</em></p></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Related from the report</h2>
+    <p>Forgotten accounts are how attackers get <em>in</em>. The same lesson shows up in <a href="governance-survey.html">the governance survey</a> (38% of organizations left former employees or guests with access they should have lost) — and <a href="csuite.html">the CSuite briefing</a> walks through how modern attacks actually unfold, step by step.</p>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Make your domain the hard target</h2>
+    <p>Forgotten accounts are how attackers get in. Email impersonation is how they cash out. Run the free checker — see your red/yellow/green in seconds — or get the one-page mini-audit with your fix list.</p>
+    <div class="btn-row">
+      <a class="btn btn-light" href="checker/">Check your domain — free</a>
+      <a class="btn btn-primary" href="mailto:Anthony.e.didion@gmail.com?subject=Free%20mini-audit%20request%20—%20my%20domain&body=Hi%20Anthony%2C%0A%0AI%27d%20like%20a%20free%20one-page%20mini-audit%20of%20my%20domain%27s%20email%20authentication.%0A%0AMy%20domain%3A%20%0A%0AThanks!">Request my free mini-audit →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><strong>2026 Chicago SMB Email Security Report</strong> — threat-update briefing, published 2026-10-02. Reporting based on Proofpoint's September 22, 2026 TeamFiltration disclosure and public coverage (The Hacker News, GBHackers). Prepared by Anthony Didion. Questions: <a href="mailto:Anthony.e.didion@gmail.com">Anthony.e.didion@gmail.com</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

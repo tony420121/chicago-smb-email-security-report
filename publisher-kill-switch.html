@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Microsoft Turned Off Publisher: The Kill Switch and Where Your .pub Files Go</title>
+<meta name="description" content="October 1, 2026: Microsoft pulled the kill switch on Publisher 365 — it won't open at all. Perpetual Office 2021 Publisher keeps working but goes unsupported October 13. The .pub convert checklist and 3 actions.">
+<style>
+  :root{
+    --ink:#14181f; --muted:#5a6472; --paper:#ffffff; --wash:#f4f6f9;
+    --red:#d64545; --yellow:#d9a021; --green:#2e9e5b;
+    --navy:#1b2a4a; --accent:#2f6fed; --accent-dark:#1f4fc4;
+    --line:#e3e8f0; --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;color:var(--ink);line-height:1.6;background:var(--paper)}
+  .wrap{max-width:860px;margin:0 auto;padding:0 24px}
+  .hero{background:linear-gradient(135deg,#101c38 0%,#1b2a4a 55%,#243c6e 100%);color:#fff;padding:56px 0 48px}
+  .hero h1{font-size:2rem;line-height:1.2;margin:0 0 14px;max-width:26ch}
+  .hero h1 .hl{color:#ffcf5c}
+  .hero .sub{font-size:1.08rem;color:#cfd8ea;max-width:62ch}
+  .eyebrow{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--accent);padding:6px 14px;border-radius:999px;margin-bottom:18px}
+  .eyebrow.win{background:var(--green)}
+  section{padding:44px 0}
+  h2{font-size:1.5rem;color:var(--navy);margin-bottom:14px}
+  p{margin:0 0 14px}
+  .callout{border-left:5px solid var(--accent);background:var(--wash);border-radius:0 var(--radius) var(--radius) 0;padding:20px 24px;margin:22px 0}
+  .callout.danger{border-color:var(--red);background:#fdf1f1}
+  .callout.ok{border-color:var(--green);background:#effaf3}
+  .callout p:last-child{margin-bottom:0}
+  ol,ul{margin:0 0 14px 22px}
+  li{margin-bottom:10px}
+  .btn{display:inline-block;font-weight:700;text-decoration:none;border-radius:10px;padding:14px 26px;font-size:1.02rem}
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-primary:hover{background:var(--accent-dark)}
+  .btn-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px}
+  .back{display:inline-block;margin-bottom:8px;color:var(--accent);text-decoration:none;font-weight:600}
+  .action{border:1px solid var(--line);border-left:6px solid var(--green);border-radius:var(--radius);padding:22px 24px;margin:16px 0;background:#fff}
+  .action h3{color:#1f7a44;margin-bottom:6px}
+  .big-stat{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}
+  @media(max-width:640px){.big-stat{grid-template-columns:1fr}.hero h1{font-size:1.7rem}}
+  .stat{border:1px solid var(--line);border-radius:var(--radius);padding:18px;text-align:center}
+  .stat .n{font-size:1.8rem;font-weight:800;color:var(--navy)}
+  .stat .l{font-size:.85rem;color:var(--muted)}
+  footer{padding:26px 0;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+  a{color:var(--accent)}
+  .cta-band{background:linear-gradient(135deg,#101c38,#243c6e);color:#fff}
+  .cta-band h2{color:#fff}
+  .cta-band p{color:#c4cfe4}
+  .btn-light{background:#fff;color:var(--navy)}
+  .btn-light:hover{background:#e9eefb}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <a class="back" href="index.html">← Back to the report</a>
+    <span class="eyebrow">Threat update · October 1, 2026</span>
+    <h1>Microsoft just <span class="hl">turned off Publisher</span> — the subscription version won't open anymore.</h1>
+    <p class="sub">October 1, 2026: the kill switch fired. Publisher 365 won't launch at all — not end-of-support, just off. Perpetual Office 2021 Publisher still works, but goes unsupported October 13. Here's where your .pub files go.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>What happened</h2>
+    <p>On <strong>October 1, 2026</strong>, Microsoft pulled the kill switch on <strong>Publisher 365</strong>: existing installs <strong>stop opening entirely</strong>, and new installs won't include it. This is a kill switch, not end-of-support — there's no patch to wait for, no grace period to exploit, no workaround where the app "mostly works." (Reported by <strong>Office Watch</strong>, <strong>TheStreet</strong>, and <strong>Computerworld</strong>.)</p>
+    <div class="big-stat">
+      <div class="stat"><div class="n">Oct 1, 2026</div><div class="l">Publisher 365 kill switch fired</div></div>
+      <div class="stat"><div class="n">Oct 13, 2026</div><div class="l">perpetual Publisher 2021 goes unsupported</div></div>
+      <div class="stat"><div class="n">.pub</div><div class="l">files need converting now</div></div>
+    </div>
+    <h2>Which version do you have — the 60-second check</h2>
+    <ul>
+      <li><strong>Publisher 365 (the subscription one):</strong> it stopped opening on October 1, 2026. If Publisher on your machine is the subscription version, it's already dead — the app won't launch.</li>
+      <li><strong>Perpetual Office 2021 / 2019 Publisher:</strong> still opens today, but loses security fixes on <strong>October 13, 2026</strong> — twelve days from the kill.</li>
+      <li>Open any Office app → Account → see whether your subscription includes Microsoft 365 apps or a perpetual Office version. That's the check.</li>
+    </ul>
+    <div class="callout"><p><strong>Your .pub files don't die with the app</strong> — but nothing new will open them properly, so convert them now, while you still have a working app to convert with:</p>
+    <ul style="margin-bottom:0">
+      <li><strong>Save As / Export to Word</strong> — for text-heavy layouts (newsletters, letters). Formatting will shift; budget a cleanup pass.</li>
+      <li><strong>Export to PowerPoint</strong> — for page-layout documents where positioning matters more than text flow.</li>
+      <li><strong>Export / Print to PDF</strong> — for anything you only need to read or archive going forward. PDF freezes the layout as-is.</li>
+    </ul></div>
+  </div>
+</section>
+
+<section style="background:var(--wash)">
+  <div class="wrap">
+    <h2>Why your shop should care — the honest version</h2>
+    <p>Worth saying plainly: coverage of the exact kill date conflicted across outlets, so this date was held back until it was confirmed across Office Watch, TheStreet, and Computerworld — <strong>October 1, 2026 is the verified date.</strong></p>
+    <p>Also the uncomfortable part: Publisher has been a dying product for years, and most shops have been phasing it out informally for a long time. The shock isn't "Publisher is gone" — it's that the subscription version <strong>stopped opening</strong>, which breaks any machine where it was still quietly doing a job nobody tracked. That's the machine that hurts you: the one with the forgotten .pub workflow nobody converted because "it's still working."</p>
+    <div class="callout danger"><p><strong>Sources:</strong> Office Watch — <a href="https://office-watch.com/2026/microsoft-publisher-ending-october-2026/">Microsoft Publisher ending October 2026</a> · Computerworld — <a href="https://www.computerworld.com/article/4224008/microsoft-is-pulling-the-plug-on-publisher-what-now.html">Microsoft is pulling the plug on Publisher: what now</a> · TheStreet.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Three actions — do these this month</h2>
+    <div class="action">
+      <h3>1. Identify every machine with Publisher 365</h3>
+      <p>Those installs are dead as of October 1 — confirm nothing business-critical still needs them. Check for the subscription version on every machine, not just the ones people remember using it.</p>
+    </div>
+    <div class="action">
+      <h3>2. Convert the .pub files — before October 13</h3>
+      <p>Word, PowerPoint, PDF — pick the format per document and do it while you still have a working app to convert with. After October 13 the perpetual version goes unsupported too, and the conversion job gets harder.</p>
+    </div>
+    <div class="action">
+      <h3>3. Know the whole October 13 list</h3>
+      <p>Publisher 2021's support death is one card on a bigger table — Windows 11 24H2 and Office 2021 updates all end the same day. Read <a href="convergence.html">the October 13 convergence</a> for the full picture.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Make your domain the hard target</h2>
+    <p>Session hijacking only turns into business damage when your domain is easy to impersonate. Run the free checker — see your red/yellow/green in seconds — or get the one-page mini-audit with your fix list.</p>
+    <div class="btn-row">
+      <a class="btn btn-light" href="checker/">Check your domain — free</a>
+      <a class="btn btn-primary" href="mailto:Anthony.e.didion@gmail.com?subject=Free%20mini-audit%20request%20—%20my%20domain&body=Hi%20Anthony%2C%0A%0AI%27d%20like%20a%20free%20one-page%20mini-audit%20of%20my%20domain%27s%20email%20authentication.%0A%0AMy%20domain%3A%20%0A%0AThanks!">Request my free mini-audit →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><strong>2026 Chicago SMB Email Security Report</strong> — threat-update briefing, published 2026-10-02. Reporting based on public coverage of the October 1, 2026 kill switch. Prepared by Anthony Didion. Questions: <a href="mailto:Anthony.e.didion@gmail.com">Anthony.e.didion@gmail.com</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

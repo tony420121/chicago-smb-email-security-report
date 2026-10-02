@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Microsoft Started Turning Off EWS Today: What It Means for Your Email Backup</title>
+<meta name="description" content="Starting October 1, 2026, Microsoft is flipping Exchange Online tenants' EwsEnabled $null to $false, tenant by tenant — with a final shutdown April 1, 2027. What it means for your email backups and CRM sync, and 4 actions.">
+<style>
+  :root{
+    --ink:#14181f; --muted:#5a6472; --paper:#ffffff; --wash:#f4f6f9;
+    --red:#d64545; --yellow:#d9a021; --green:#2e9e5b;
+    --navy:#1b2a4a; --accent:#2f6fed; --accent-dark:#1f4fc4;
+    --line:#e3e8f0; --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;color:var(--ink);line-height:1.6;background:var(--paper)}
+  .wrap{max-width:860px;margin:0 auto;padding:0 24px}
+  .hero{background:linear-gradient(135deg,#101c38 0%,#1b2a4a 55%,#243c6e 100%);color:#fff;padding:56px 0 48px}
+  .hero h1{font-size:2rem;line-height:1.2;margin:0 0 14px;max-width:26ch}
+  .hero h1 .hl{color:#ffcf5c}
+  .hero .sub{font-size:1.08rem;color:#cfd8ea;max-width:62ch}
+  .eyebrow{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--accent);padding:6px 14px;border-radius:999px;margin-bottom:18px}
+  .eyebrow.win{background:var(--green)}
+  section{padding:44px 0}
+  h2{font-size:1.5rem;color:var(--navy);margin-bottom:14px}
+  p{margin:0 0 14px}
+  .callout{border-left:5px solid var(--accent);background:var(--wash);border-radius:0 var(--radius) var(--radius) 0;padding:20px 24px;margin:22px 0}
+  .callout.danger{border-color:var(--red);background:#fdf1f1}
+  .callout.ok{border-color:var(--green);background:#effaf3}
+  .callout p:last-child{margin-bottom:0}
+  ol,ul{margin:0 0 14px 22px}
+  li{margin-bottom:10px}
+  .btn{display:inline-block;font-weight:700;text-decoration:none;border-radius:10px;padding:14px 26px;font-size:1.02rem}
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-primary:hover{background:var(--accent-dark)}
+  .btn-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px}
+  .back{display:inline-block;margin-bottom:8px;color:var(--accent);text-decoration:none;font-weight:600}
+  .action{border:1px solid var(--line);border-left:6px solid var(--green);border-radius:var(--radius);padding:22px 24px;margin:16px 0;background:#fff}
+  .action h3{color:#1f7a44;margin-bottom:6px}
+  .big-stat{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}
+  @media(max-width:640px){.big-stat{grid-template-columns:1fr}.hero h1{font-size:1.7rem}}
+  .stat{border:1px solid var(--line);border-radius:var(--radius);padding:18px;text-align:center}
+  .stat .n{font-size:1.8rem;font-weight:800;color:var(--navy)}
+  .stat .l{font-size:.85rem;color:var(--muted)}
+  footer{padding:26px 0;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+  a{color:var(--accent)}
+  .cta-band{background:linear-gradient(135deg,#101c38,#243c6e);color:#fff}
+  .cta-band h2{color:#fff}
+  .cta-band p{color:#c4cfe4}
+  .btn-light{background:#fff;color:var(--navy)}
+  .btn-light:hover{background:#e9eefb}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <a class="back" href="index.html">← Back to the report</a>
+    <span class="eyebrow">Threat update · October 1, 2026</span>
+    <h1>Microsoft started <span class="hl">turning off EWS</span> today — your email backup may be the first to notice.</h1>
+    <p class="sub">Starting today, Microsoft is flipping Exchange Online tenants' EWSEnabled from $null to $false — tenant by tenant, not all at once. The plumbing behind your email backups, CRM Outlook sync, and mailbox migrations. Final shutdown: April 1, 2027.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>What EWS is — and what's changing</h2>
+    <p><strong>Exchange Web Services (EWS)</strong> is the mail-protocol plumbing behind a surprising number of owner-visible things: email backups, CRM Outlook sync, and mailbox migrations. You don't need to understand the protocol. You need to know which of your tools depend on it — because starting <strong>October 1, 2026</strong>, Microsoft is flipping tenants' <strong><code>EwsEnabled</code></strong> setting from <strong><code>$null</code> to <code>$false</code></strong> — <strong>rolling out starting today, tenant by tenant.</strong> Not all at once. The off-switch is moving through the tenant list now.</p>
+    <div class="big-stat">
+      <div class="stat"><div class="n">Oct 1, 2026</div><div class="l">tenant-by-tenant enforcement starts</div></div>
+      <div class="stat"><div class="n">Apr 1, 2027</div><div class="l">final permanent EWS shutdown</div></div>
+      <div class="stat"><div class="n">~1 hour</div><div class="l">recovery by re-enabling EwsEnabled</div></div>
+    </div>
+    <h2>What breaks, in plain English</h2>
+    <ul>
+      <li><strong>Email backups that use EWS</strong> — including Veeam (see Veeam KB4820). When this flips on you, the first symptom is "the backup that was working yesterday isn't today."</li>
+      <li><strong>CRM Outlook sync</strong> — your CRM's connection to Outlook mail.</li>
+      <li><strong>Mailbox-migration tools</strong> — anything moving mailboxes through EWS.</li>
+      <li><strong>Some third-party mail clients</strong> — check which clients your staff actually use.</li>
+    </ul>
+    <p>Two more details that came with the enforcement start: the <strong>AppID allow list (<code>EWSAllowedAppIDs</code>) is now live</strong> — vendors that are ready have a path to keep working — and the <strong>Kiosk/F1/F3 license restriction takes effect</strong>, so the cheapest licenses lose EWS access as part of the same move.</p>
+  </div>
+</section>
+
+<section style="background:var(--wash)">
+  <div class="wrap">
+    <h2>Why your shop should care — the honest version</h2>
+    <p>The load-bearing framing on this page: a tenant-by-tenant rollout starting October 1 is <strong>not</strong> a single-day kill. Your tenant may flip this week or next month — which is exactly why this page leads with what to check rather than when to panic.</p>
+    <div class="callout ok"><p><strong>The recovery path, if you're caught out:</strong> set <code>EwsEnabled</code> back to <code>$true</code> — roughly a one-hour recovery — but <strong>expect a service interruption</strong> while it applies. It's a stopgap, not a plan. Write this down now, while nothing is broken.</p></div>
+    <p>Also worth saying plainly: EWS is admin-territory plumbing. This page leads on owner-visible consequences — backups that stop, CRM sync that breaks — not the protocol. The clock is <strong>April 1, 2027</strong>: every EWS-dependent workflow needs its replacement working before then.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Four actions — do these this month</h2>
+    <div class="action">
+      <h3>1. Ask your backup vendor</h3>
+      <p>If you use Veeam (or any third-party email backup), ask them point-blank: does our backup depend on EWS, and what's your migration path? <strong>Veeam KB4820 is their own write-up — make them walk you through it.</strong></p>
+    </div>
+    <div class="action">
+      <h3>2. List what syncs with Outlook</h3>
+      <p>Your CRM's Outlook sync, any mailbox-migration tool, third-party mail clients — write the list. Every item on it is either migrated by April 2027 or broken after.</p>
+    </div>
+    <div class="action">
+      <h3>3. Know the recovery path</h3>
+      <p>If something breaks before you've migrated: setting EwsEnabled back to <code>$true</code> recovers it in about an hour (expect a service interruption). Write this down now, while nothing is broken.</p>
+    </div>
+    <div class="action">
+      <h3>4. Put April 1, 2027 on a calendar</h3>
+      <p>Permanent shutdown. Whatever depends on EWS needs its replacement working before then. That's six months — which is less time than vendor migrations usually take.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Make your domain the hard target</h2>
+    <p>Session hijacking only turns into business damage when your domain is easy to impersonate. Run the free checker — see your red/yellow/green in seconds — or get the one-page mini-audit with your fix list.</p>
+    <div class="btn-row">
+      <a class="btn btn-light" href="checker/">Check your domain — free</a>
+      <a class="btn btn-primary" href="mailto:Anthony.e.didion@gmail.com?subject=Free%20mini-audit%20request%20—%20my%20domain&body=Hi%20Anthony%2C%0A%0AI%27d%20like%20a%20free%20one-page%20mini-audit%20of%20my%20domain%27s%20email%20authentication.%0A%0AMy%20domain%3A%20%0A%0AThanks!">Request my free mini-audit →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><strong>2026 Chicago SMB Email Security Report</strong> — threat-update briefing, published 2026-10-02. Reporting based on public coverage of the October 1, 2026 enforcement start. Prepared by Anthony Didion. Questions: <a href="mailto:Anthony.e.didion@gmail.com">Anthony.e.didion@gmail.com</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>September 2026 Attacks Recap — Five Operations That Trusted Your Tools</title>
+<meta name="description" content="September 2026: five named attack operations — CSuite, N0va, IronToll, Wazza, TerminalFix — ran through victims' own trusted tools. The Cybersecurity Awareness Month kickoff briefing for Chicago SMB owners.">
+<style>
+  :root{
+    --ink:#14181f; --muted:#5a6472; --paper:#ffffff; --wash:#f4f6f9;
+    --red:#d64545; --yellow:#d9a021; --green:#2e9e5b;
+    --navy:#1b2a4a; --accent:#2f6fed; --accent-dark:#1f4fc4;
+    --line:#e3e8f0; --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;color:var(--ink);line-height:1.6;background:var(--paper)}
+  .wrap{max-width:860px;margin:0 auto;padding:0 24px}
+  .hero{background:linear-gradient(135deg,#101c38 0%,#1b2a4a 55%,#243c6e 100%);color:#fff;padding:56px 0 48px}
+  .hero h1{font-size:2rem;line-height:1.2;margin:0 0 14px;max-width:26ch}
+  .hero h1 .hl{color:#ffcf5c}
+  .hero .sub{font-size:1.08rem;color:#cfd8ea;max-width:62ch}
+  .eyebrow{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--accent);padding:6px 14px;border-radius:999px;margin-bottom:18px}
+  .eyebrow.win{background:var(--green)}
+  section{padding:44px 0}
+  h2{font-size:1.5rem;color:var(--navy);margin-bottom:14px}
+  h3{font-size:1.15rem;color:var(--navy);margin:20px 0 8px}
+  p{margin:0 0 14px}
+  .callout{border-left:5px solid var(--accent);background:var(--wash);border-radius:0 var(--radius) var(--radius) 0;padding:20px 24px;margin:22px 0}
+  .callout.danger{border-color:var(--red);background:#fdf1f1}
+  .callout.ok{border-color:var(--green);background:#effaf3}
+  .callout p:last-child{margin-bottom:0}
+  ol,ul{margin:0 0 14px 22px}
+  li{margin-bottom:10px}
+  .btn{display:inline-block;font-weight:700;text-decoration:none;border-radius:10px;padding:14px 26px;font-size:1.02rem}
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-primary:hover{background:var(--accent-dark)}
+  .btn-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px}
+  .back{display:inline-block;margin-bottom:8px;color:var(--accent);text-decoration:none;font-weight:600}
+  .action{border:1px solid var(--line);border-left:6px solid var(--green);border-radius:var(--radius);padding:22px 24px;margin:16px 0;background:#fff}
+  .action h3{color:#1f7a44;margin-bottom:6px}
+  .big-stat{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}
+  @media(max-width:640px){.big-stat{grid-template-columns:1fr}.hero h1{font-size:1.7rem}}
+  .stat{border:1px solid var(--line);border-radius:var(--radius);padding:18px;text-align:center}
+  .stat .n{font-size:1.8rem;font-weight:800;color:var(--navy)}
+  .stat .l{font-size:.85rem;color:var(--muted)}
+  footer{padding:26px 0;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+  a{color:var(--accent)}
+  .cta-band{background:linear-gradient(135deg,#101c38,#243c6e);color:#fff}
+  .cta-band h2{color:#fff}
+  .cta-band p{color:#c4cfe4}
+  .btn-light{background:#fff;color:var(--navy)}
+  .btn-light:hover{background:#e9eefb}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <a class="back" href="index.html">← Back to the report</a>
+    <span class="eyebrow">Threat update · September 30, 2026</span>
+    <h1>September was the month <span class="hl">attacks stopped looking like attacks.</span></h1>
+    <p class="sub">Five named attack operations ran through the victims' own trusted tools — Microsoft's sign-in flows, legitimate remote-management software, signed Microsoft binaries, Cloudflare Workers. No viruses, no fake login pages. Just your own infrastructure, doing what the attacker says. This is the September kickoff for Cybersecurity Awareness Month.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>The pattern, in plain English</h2>
+    <p>The old model: attacker writes malware, tricks you into running it, your antivirus catches it or doesn't. The September 2026 model: <strong>the attacker skips the malware entirely and rents your trust.</strong> They phish a Microsoft 365 session, then use your own admin tools. They run device-code phishing through Microsoft's real sign-in pages — the domain in the address bar is correct. They deploy ScreenConnect and Atera, the same tools your IT department uses, so the intrusion looks like routine administration.</p>
+    <p>The delivery vehicle is trust. That's what makes this month different, and it's the lesson Cybersecurity Awareness Month opens with.</p>
+    <div class="big-stat">
+      <div class="stat"><div class="n">5</div><div class="l">named operations in September's tally</div></div>
+      <div class="stat"><div class="n">60%</div><div class="l">of CSuite's identified victims were in the US</div></div>
+      <div class="stat"><div class="n">12,000</div><div class="l">inboxes EvilTokens hijacked before the takedown</div></div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--wash)">
+  <div class="wrap">
+    <h2>The five operations (September 2026)</h2>
+    <h3>1. CSuite — your IT tools, weaponized</h3>
+    <p>Phishing email → Microsoft 365 compromise → device-code abuse → session hijacking → deployment of legitimate remote-management tools (ScreenConnect, Atera, Action1, Syncro, PDQ Connect). Lures impersonated Adobe, DocuSign, Zoom, SharePoint, and ordinary M365 workflows. 60% of identified victim organizations were in the United States — shops the size of yours, not nation-state targets. (<a href="csuite.html">Read the full CSuite briefing</a>, based on ANY.RUN research published September 22, 2026.)</p>
+    <h3>2. N0va — the device-code phishing kit</h3>
+    <p>Targeted M365 users across North America and Europe with lures impersonating Microsoft Security, Teams, SharePoint, OneDrive, DocuSign, Google Drive, Dropbox, Zoom, and Adobe Sign. It obtained access and refresh tokens through legitimate Microsoft authentication flows — no password theft needed — plus token exchange and device registration for broader SSO access. Infrastructure ran on compromised websites, Cloudflare Workers, and Linode Object Storage. (<a href="nova-phishing-kit.html">Read the N0va briefing</a>, based on <a href="https://malware.news/t/major-cyber-attacks-in-september-2026-us-organizations-face-session-theft-remote-access-and-payment-fraud/125969">malware.news</a> and <a href="https://www.esecurityplanet.com/threats/news-n0va-device-code-phishing-emea/">eSecurity Planet</a> coverage.)</p>
+    <h3>3. IronToll — the impostor brands</h3>
+    <p>As reported in September recap coverage, IronToll impersonated government, postal, banking, and transport services to steal card data and one-time passwords in real time, operating across 12+ countries. (<a href="https://www.hendryadrian.com/major-cyber-attacks-in-september-2026-us-and-eu-face-session-theft-remote-access-and-payment-fraud/">September 2026 attack recap — hendryadrian.com</a>)</p>
+    <h3>4. Wazza — the hidden page</h3>
+    <p>As reported in September recap coverage, Wazza used routing tricks, anti-bot checks, and staged redirects to conceal its final phishing page from automated detection. (<a href="https://www.hendryadrian.com/major-cyber-attacks-in-september-2026-us-and-eu-face-session-theft-remote-access-and-payment-fraud/">September 2026 attack recap — hendryadrian.com</a>)</p>
+    <h3>5. TerminalFix — the signed payloads</h3>
+    <p>As reported in September recap coverage, TerminalFix abused compromised WordPress sites, signed binaries, and other trusted components to deliver malicious payloads and reach command-and-control infrastructure. (<a href="https://www.hendryadrian.com/major-cyber-attacks-in-september-2026-us-and-eu-face-session-theft-remote-access-and-payment-fraud/">September 2026 attack recap — hendryadrian.com</a>)</p>
+    <div class="callout"><p><strong>Honest attribution:</strong> the IronToll, Wazza, and TerminalFix entries above rest on September recap aggregators — we don't have primary vendor writeups for those three yet, and we'd rather say so than pretend otherwise. CSuite and N0va have primary-source backing and their own full briefings.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>The win buried in the month — the honest version</h2>
+    <p>September wasn't all losses. On <strong>September 22, 2026</strong>, Microsoft killed EvilTokens — an AI-powered phishing service that had hijacked 12,000 inboxes — with a federal court order, working with OpenAI, Cloudflare, and the security community. The good guys showed up in force, and the operation died. (<a href="eviltokens.html">Read the EvilTokens takedown briefing</a>.)</p>
+    <div class="callout ok"><p><span class="eyebrow win">The win</span><br><strong>A court order actually killed a criminal service.</strong> Microsoft, the AI lab whose models were being abused, the infrastructure companies, and the security community moved together and tore down one operation. When defenders coordinate like this, the attackers lose. EvilTokens is gone; that's the story.</p></div>
+    <p>But N0va was already shipping. The court order didn't end device-code phishing — it made room for the next kit. That's the real lesson of September: <strong>the pattern outlives the takedowns.</strong> You don't defend against five operation names. You defend against the pattern — trusted-tool abuse — because the names change monthly and the pattern doesn't.</p>
+    <div class="callout danger"><p><strong>Don't memorize operation names. Fix the pattern.</strong> IronToll, Wazza, TerminalFix, N0va, CSuite — every one of them won by borrowing your trust. Block the flows and lock the doors below, and the next name on the list doesn't matter.</p></div>
+  </div>
+</section>
+
+<section style="background:var(--wash)">
+  <div class="wrap">
+    <h2>October's five — do these this month</h2>
+    <div class="action">
+      <h3>1. Block or restrict the device-code flow</h3>
+      <p>In Microsoft Entra (your Microsoft 365 admin center), disable or restrict device-code sign-in for users. Your staff's laptops are not smart TVs — they don't need the "sign in on another device" flow. Five minutes in admin for most shops.</p>
+    </div>
+    <div class="action">
+      <h3>2. Move to phishing-resistant MFA</h3>
+      <p>SMS codes and push approvals can be intercepted or fatigued. Passkeys, FIDO2 security keys, or number-matching authenticator approval — methods where the attacker can't forward a code and win. Start with email and finance users. (Related: the funnel's MFA briefings, linked below.)</p>
+    </div>
+    <div class="action">
+      <h3>3. Revoke sessions, not just passwords</h3>
+      <p>Session tokens survive password resets. After any suspected compromise, revoke the user's active sessions in Entra/365 admin, then reset the password — in that order. Write it down as your incident step zero.</p>
+    </div>
+    <div class="action">
+      <h3>4. Lock down who can install remote-access software</h3>
+      <p>If ScreenConnect or Atera appears on a machine and nobody installed it, that's an incident, not a glitch. Application allow-listing beats hoping.</p>
+    </div>
+    <div class="action">
+      <h3>5. Check your domain's email authentication</h3>
+      <p>Session hijacking turns into business damage when your domain is easy to impersonate — the report's scan found 81.5% of Chicago SMB domains lack DMARC enforcement. Attackers get in through identity; they cash out through your letterhead.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>The October frame</h2>
+    <p>Cybersecurity Awareness Month 2026 runs <strong>October 1–31, 2026</strong> (CISA's theme: "Securing the Next 250"; the National Cybersecurity Alliance's: "Don't Make It Easy for Them"). (<a href="https://www.CISA.gov/resources-tools/resources/cybersecurity-awareness-month-toolkit">CISA Awareness Month toolkit</a> · <a href="https://coingate.com/gift-cards/articles/article/cybersecurity-awareness-month-dates-themes-and-tips">2026 dates and themes</a>)</p>
+    <p>CISA's four core steps for individuals: avoid and report phishing, use strong passwords, use MFA and a password manager, update software. For organizations: back up data, prepare for disruptions, keep an incident response plan. September showed why: the attacks now arrive through the tools and habits the checklist protects.</p>
+  </div>
+</section>
+
+<section style="background:var(--wash)">
+  <div class="wrap">
+    <h2>Keep reading — the September briefings</h2>
+    <ul>
+      <li><a href="eviltokens.html">EvilTokens takedown</a> — Microsoft killed the AI-powered phishing service behind 12,000 hacked inboxes.</li>
+      <li><a href="csuite.html">CSuite</a> — your IT tools, weaponized: the M365-to-remote-access pipeline.</li>
+      <li><a href="nova-phishing-kit.html">N0va</a> — the device-code phishing kit that picked up where EvilTokens left off.</li>
+      <li><a href="ransomware-playbook.html">Ransomware playbook</a></li>
+      <li><a href="dual-rmm-backdoor.html">Dual-RMM backdoor</a></li>
+      <li><a href="mfa-not-enough.html">MFA is not enough</a></li>
+      <li><a href="mfa-screen-steals-password.html">MFA screen steals password</a></li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Sources</h2>
+    <ul>
+      <li><a href="https://www.hendryadrian.com/major-cyber-attacks-in-september-2026-us-and-eu-face-session-theft-remote-access-and-payment-fraud/">September 2026 attack recap — hendryadrian.com</a></li>
+      <li><a href="https://malware.news/t/major-cyber-attacks-in-september-2026-us-organizations-face-session-theft-remote-access-and-payment-fraud/125969">malware.news — September 2026 recap</a></li>
+      <li><a href="https://www.esecurityplanet.com/threats/news-n0va-device-code-phishing-emea/">eSecurity Planet — N0va device-code phishing</a></li>
+      <li><a href="https://www.CISA.gov/resources-tools/resources/cybersecurity-awareness-month-toolkit">CISA — Cybersecurity Awareness Month toolkit</a></li>
+      <li><a href="https://coingate.com/gift-cards/articles/article/cybersecurity-awareness-month-dates-themes-and-tips">2026 Cybersecurity Awareness Month dates and themes</a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Make your domain the hard target</h2>
+    <p>Session hijacking only turns into business damage when your domain is easy to impersonate. Run the free checker — see your red/yellow/green in seconds — or get the one-page mini-audit with your fix list.</p>
+    <div class="btn-row">
+      <a class="btn btn-light" href="checker/">Check your domain — free</a>
+      <a class="btn btn-primary" href="mailto:Anthony.e.didion@gmail.com?subject=Free%20mini-audit%20request%20—%20my%20domain&body=Hi%20Anthony%2C%0A%0AI%27d%20like%20a%20free%20one-page%20mini-audit%20of%20my%20domain%27s%20email%20authentication.%0A%0AMy%20domain%3A%20%0A%0AThanks!">Request my free mini-audit →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><strong>2026 Chicago SMB Email Security Report</strong> — threat-update briefing, published 2026-10-02. Reporting based on September 2026 attack-recap coverage and the funnel's CSuite, EvilTokens, and N0va briefings. Prepared by Anthony Didion. Questions: <a href="mailto:Anthony.e.didion@gmail.com">Anthony.e.didion@gmail.com</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

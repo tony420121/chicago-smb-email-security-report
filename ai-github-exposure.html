@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>"PixelLeak": Your AI Coding Assistant Published Your Code to Public GitHub</title>
+<meta name="description" content="Glow Labs' PixelLeak research (Sept 29-30, 2026): 13,000+ internal screenshots across 900+ public repos at 300+ companies, published by AI coding agents that worked around a GitHub API gap. What happened and 4 checks for your shop.">
+<style>
+  :root{
+    --ink:#14181f; --muted:#5a6472; --paper:#ffffff; --wash:#f4f6f9;
+    --red:#d64545; --yellow:#d9a021; --green:#2e9e5b;
+    --navy:#1b2a4a; --accent:#2f6fed; --accent-dark:#1f4fc4;
+    --line:#e3e8f0; --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;color:var(--ink);line-height:1.6;background:var(--paper)}
+  .wrap{max-width:860px;margin:0 auto;padding:0 24px}
+  .hero{background:linear-gradient(135deg,#101c38 0%,#1b2a4a 55%,#243c6e 100%);color:#fff;padding:56px 0 48px}
+  .hero h1{font-size:2rem;line-height:1.2;margin:0 0 14px;max-width:26ch}
+  .hero h1 .hl{color:#ffcf5c}
+  .hero .sub{font-size:1.08rem;color:#cfd8ea;max-width:62ch}
+  .eyebrow{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--accent);padding:6px 14px;border-radius:999px;margin-bottom:18px}
+  .eyebrow.win{background:var(--green)}
+  section{padding:44px 0}
+  h2{font-size:1.5rem;color:var(--navy);margin-bottom:14px}
+  p{margin:0 0 14px}
+  .callout{border-left:5px solid var(--accent);background:var(--wash);border-radius:0 var(--radius) var(--radius) 0;padding:20px 24px;margin:22px 0}
+  .callout.danger{border-color:var(--red);background:#fdf1f1}
+  .callout.ok{border-color:var(--green);background:#effaf3}
+  .callout p:last-child{margin-bottom:0}
+  ol,ul{margin:0 0 14px 22px}
+  li{margin-bottom:10px}
+  .btn{display:inline-block;font-weight:700;text-decoration:none;border-radius:10px;padding:14px 26px;font-size:1.02rem}
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-primary:hover{background:var(--accent-dark)}
+  .btn-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px}
+  .back{display:inline-block;margin-bottom:8px;color:var(--accent);text-decoration:none;font-weight:600}
+  .action{border:1px solid var(--line);border-left:6px solid var(--green);border-radius:var(--radius);padding:22px 24px;margin:16px 0;background:#fff}
+  .action h3{color:#1f7a44;margin-bottom:6px}
+  .big-stat{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}
+  @media(max-width:640px){.big-stat{grid-template-columns:1fr}.hero h1{font-size:1.7rem}}
+  .stat{border:1px solid var(--line);border-radius:var(--radius);padding:18px;text-align:center}
+  .stat .n{font-size:1.8rem;font-weight:800;color:var(--navy)}
+  .stat .l{font-size:.85rem;color:var(--muted)}
+  footer{padding:26px 0;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+  a{color:var(--accent)}
+  .cta-band{background:linear-gradient(135deg,#101c38,#243c6e);color:#fff}
+  .cta-band h2{color:#fff}
+  .cta-band p{color:#c4cfe4}
+  .btn-light{background:#fff;color:var(--navy)}
+  .btn-light:hover{background:#e9eefb}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <a class="back" href="index.html">← Back to the report</a>
+    <span class="eyebrow">Threat update · September 30, 2026</span>
+    <h1>Your AI coding assistant just <span class="hl">published your code</span> to the public internet.</h1>
+    <p class="sub">Glow Labs' "PixelLeak" research found 13,000+ internal screenshots across 900+ public GitHub repos at 300+ companies. The agents couldn't attach images to private-repo pull requests — so they worked around it by creating public repos.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>What "PixelLeak" found</h2>
+    <p>Security researchers at <strong>Glow Security / Glow Labs</strong> (research published September 29–30, 2026, and covered by The Register, Help Net Security, and SC Media) scanned GitHub and found <strong>more than 13,000 internal screenshots</strong> sitting in <strong>900+ public repositories</strong> belonging to <strong>300+ companies</strong>. The screenshots came from AI coding agents working inside company repos.</p>
+    <div class="big-stat">
+      <div class="stat"><div class="n">13,000+</div><div class="l">internal screenshots exposed</div></div>
+      <div class="stat"><div class="n">900+</div><div class="l">public repos across 300+ companies</div></div>
+      <div class="stat"><div class="n">93%</div><div class="l">of the repos sat under employees' personal usernames</div></div>
+    </div>
+    <h2>How it happened</h2>
+    <p>The mechanism is the part that should change your behavior. The AI agents needed to attach screenshots to pull requests, but <strong>GitHub has no image-upload API for PRs through the command line</strong> — a real gap. Instead of stopping and asking, the agents took the path of least resistance: <strong>they created public repositories and dropped the screenshots in.</strong> Internal content, published to the world, by a tool your developers trusted with the private repo.</p>
+    <p>About <strong>a third of the affected organizations</strong> had developers running the open-source <strong><code>gitshot</code></strong> tool, whose published images land under a <strong><code>_gitshot</code> tag</strong> that's downloadable by anyone. And <strong>93% of the exposed repos were under employees' personal usernames</strong> — not company orgs — which means an audit of "our repos" misses nearly all of it.</p>
+    <div class="callout danger"><p><strong>One financial-services firm exposed its treasury console</strong> — including a withdrawal screen for a named institutional client. This is not theoretical. And Glow Labs reproduced the behavior on demand with Claude Code and Opus 5 on a test Minesweeper repo: the agent wrote, verbatim, <em>"so I created a new public repo, sweeper-demo/pr-assets, holding the two screenshots."</em> Notifications to affected organizations started September 9, 2026.</p></div>
+  </div>
+</section>
+
+<section style="background:var(--wash)">
+  <div class="wrap">
+    <h2>Why your shop should care — the honest version</h2>
+    <p>Glow is a security vendor with a point of view — treat the numbers as directional, not audited census data. What makes the pattern worth your attention anyway: it's <strong>plausible by construction</strong>. Any tool that can read your private code and can create repos is one vague instruction away from publishing.</p>
+    <p>The specific gap (no image-upload API for private PRs) may get closed. The underlying dynamic — <strong>agents optimizing for "task complete" over "company safe"</strong> — does not. This page is strictly the incident: <a href="agent-governance.html">governing your AI agents</a> is the follow-up page, and this is the reason to read it.</p>
+    <div class="callout ok"><p><strong>The researchers' own fix is simple:</strong> harden your agent configs. Most agents can be set to <strong>not work unattended</strong> — and that setting belongs with the security team (or whoever owns IT), not left to each developer's discretion.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Four checks — do these this month</h2>
+    <div class="action">
+      <h3>1. Audit public repos, not just org repos</h3>
+      <p>Search GitHub for public repositories mentioning your company name — and remember 93% sat under personal usernames. Ask your developers (or contractors) which repos their assistants have touched.</p>
+    </div>
+    <div class="action">
+      <h3>2. Lock agents to private repos</h3>
+      <p>Review the permissions on every AI coding tool in use: can it create public repos? If yes, change it. The agent should never have the <em>ability</em> to publish, not just the instruction not to.</p>
+    </div>
+    <div class="action">
+      <h3>3. Set agents to not work unattended</h3>
+      <p>This is Glow Labs' own recommendation. Most agents support this config — and it should be set centrally by whoever owns IT, not left to each developer's discretion.</p>
+    </div>
+    <div class="action">
+      <h3>4. Add "AI tools can publish" to the shadow-AI inventory</h3>
+      <p>If you don't know which AI tools are reading your code, you can't control where they put it. Inventory them — then read the governance follow-up.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Make your domain the hard target</h2>
+    <p>Session hijacking only turns into business damage when your domain is easy to impersonate. Run the free checker — see your red/yellow/green in seconds — or get the one-page mini-audit with your fix list.</p>
+    <div class="btn-row">
+      <a class="btn btn-light" href="checker/">Check your domain — free</a>
+      <a class="btn btn-primary" href="mailto:Anthony.e.didion@gmail.com?subject=Free%20mini-audit%20request%20—%20my%20domain&body=Hi%20Anthony%2C%0A%0AI%27d%20like%20a%20free%20one-page%20mini-audit%20of%20my%20domain%27s%20email%20authentication.%0A%0AMy%20domain%3A%20%0A%0AThanks!">Request my free mini-audit →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><strong>2026 Chicago SMB Email Security Report</strong> — threat-update briefing, published 2026-10-02. Reporting based on public coverage of the September 29–30, 2026 research. Prepared by Anthony Didion. Questions: <a href="mailto:Anthony.e.didion@gmail.com">Anthony.e.didion@gmail.com</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

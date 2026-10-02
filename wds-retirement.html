@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Microsoft Just Started the Clock on Your Imaging Server</title>
+<meta name="description" content="September 30, 2026: Microsoft's KB5129631 (Sept 21, 2026) begins the deprecation of Windows Deployment Services. What deprecated means, who this hits, and the migration homework for shops that PXE-boot.">
+<style>
+  :root{
+    --ink:#14181f; --muted:#5a6472; --paper:#ffffff; --wash:#f4f6f9;
+    --red:#d64545; --yellow:#d9a021; --green:#2e9e5b;
+    --navy:#1b2a4a; --accent:#2f6fed; --accent-dark:#1f4fc4;
+    --line:#e3e8f0; --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;color:var(--ink);line-height:1.6;background:var(--paper)}
+  .wrap{max-width:860px;margin:0 auto;padding:0 24px}
+  .hero{background:linear-gradient(135deg,#101c38 0%,#1b2a4a 55%,#243c6e 100%);color:#fff;padding:56px 0 48px}
+  .hero h1{font-size:2rem;line-height:1.2;margin:0 0 14px;max-width:26ch}
+  .hero h1 .hl{color:#ffcf5c}
+  .hero .sub{font-size:1.08rem;color:#cfd8ea;max-width:62ch}
+  .eyebrow{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--accent);padding:6px 14px;border-radius:999px;margin-bottom:18px}
+  .eyebrow.win{background:var(--green)}
+  section{padding:44px 0}
+  h2{font-size:1.5rem;color:var(--navy);margin-bottom:14px}
+  p{margin:0 0 14px}
+  .callout{border-left:5px solid var(--accent);background:var(--wash);border-radius:0 var(--radius) var(--radius) 0;padding:20px 24px;margin:22px 0}
+  .callout.danger{border-color:var(--red);background:#fdf1f1}
+  .callout.ok{border-color:var(--green);background:#effaf3}
+  .callout p:last-child{margin-bottom:0}
+  ol,ul{margin:0 0 14px 22px}
+  li{margin-bottom:10px}
+  .btn{display:inline-block;font-weight:700;text-decoration:none;border-radius:10px;padding:14px 26px;font-size:1.02rem}
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-primary:hover{background:var(--accent-dark)}
+  .btn-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px}
+  .back{display:inline-block;margin-bottom:8px;color:var(--accent);text-decoration:none;font-weight:600}
+  .action{border:1px solid var(--line);border-left:6px solid var(--green);border-radius:var(--radius);padding:22px 24px;margin:16px 0;background:#fff}
+  .action h3{color:#1f7a44;margin-bottom:6px}
+  .big-stat{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}
+  @media(max-width:640px){.big-stat{grid-template-columns:1fr}.hero h1{font-size:1.7rem}}
+  .stat{border:1px solid var(--line);border-radius:var(--radius);padding:18px;text-align:center}
+  .stat .n{font-size:1.8rem;font-weight:800;color:var(--navy)}
+  .stat .l{font-size:.85rem;color:var(--muted)}
+  footer{padding:26px 0;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+  a{color:var(--accent)}
+  .cta-band{background:linear-gradient(135deg,#101c38,#243c6e);color:#fff}
+  .cta-band h2{color:#fff}
+  .cta-band p{color:#c4cfe4}
+  .btn-light{background:#fff;color:var(--navy)}
+  .btn-light:hover{background:#e9eefb}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <a class="back" href="index.html">← Back to the report</a>
+    <span class="eyebrow">Threat update · September 30, 2026</span>
+    <h1>Microsoft just <span class="hl">started the clock</span> on your imaging server.</h1>
+    <p class="sub">On September 21, 2026, Microsoft published support article KB5129631: <strong>Windows Deployment Services (WDS) will be deprecated starting with the next release of Windows Server.</strong> If your shop still PXE-boots machines to image them, this is the beginning of the end of that workflow — and the migration planning starts now.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>What's actually being deprecated</h2>
+    <p>The notice is broad. Beginning with the next Windows Server release, Microsoft plans to deprecate: the inbox WDS server role (Deployment Server and Transport Server role services); WDS-provided PXE boot and network bootstrap functionality; WDS management tools, command-line interfaces, and APIs (including WDSUTIL); WDS multicast transport and the multicast deployment workflows that depend on it; and WinPE components built specifically for WDS clients, including WinPE-WDS-Tools. (<a href="https://www.neowin.net/news/microsoft-deprecating-major-wds-features-in-next-windows-server-release/">Neowin</a>)</p>
+    <div class="big-stat">
+      <div class="stat"><div class="n">3</div><div class="l">cuts to WDS over the years — this is the final one</div></div>
+      <div class="stat"><div class="n">0</div><div class="l">named Windows Server version or removal date given</div></div>
+      <div class="stat"><div class="n">1</div><div class="l">question to answer: does anything in your shop PXE-boot?</div></div>
+    </div>
+    <p>Microsoft did not name the next Windows Server version or give a removal date. (<a href="https://windowsforum.com/news/kb5129631-wds-and-pxe-deprecation-planned-for-next-windows-server.445886/">windowsforum.com summary of KB5129631</a>)</p>
+  </div>
+</section>
+
+<section style="background:var(--wash)">
+  <div class="wrap">
+    <h2>What "deprecated" means (and doesn't) — the honest version</h2>
+    <div class="callout ok"><p><span class="eyebrow win">No panic needed</span><br><strong>Deprecated is not removed.</strong> Nothing breaks today: WDS keeps working on currently supported releases — Windows Server 2025 and earlier — for as long as each release remains in support. What deprecation means is: no more active development, and removal can follow in a later OS release. Microsoft framed it as early notice so shops can find their dependencies before the components are gone. (<a href="https://www.bleepingcomputer.com/news/microsoft/microsoft-to-deprecate-windows-deployment-services-after-windows-server-2025/">BleepingComputer</a>)</p></div>
+    <p>This has been coming for years. In 2021, Microsoft deprecated Windows Setup workflows that use boot.wim from installation media in WDS mode for Windows 11 and later. Then hands-free WDS deployment scenarios were disabled by default and became unsupported for systems running Windows updates released on or after April 14, 2026. The September 2026 notice finishes the job: the whole role. (<a href="https://www.neowin.net/news/microsoft-deprecating-major-wds-features-in-next-windows-server-release/">Neowin</a>; <a href="https://betanews.com/article/windows-deployment-services-deprecate/">BetaNews</a>)</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Who this hits, honestly</h2>
+    <div class="callout danger"><p><strong>Most small shops don't run Server-based imaging — if you don't PXE-boot machines, this page isn't about you.</strong> But if you do: multicast imaging jobs are the most exposed. Shops using Configuration Manager are being asked to move to the ConfigMgr PXE responder <em>without</em> WDS — and that responder supports unicast only, so WDS-dependent multicast workflows need a new plan. Independent PXE implementations and non-Microsoft deployment products that don't depend on WDS are not affected. (<a href="https://www.neowin.net/news/microsoft-deprecating-major-wds-features-in-next-windows-server-release/">Neowin</a>; <a href="https://www.bleepingcomputer.com/news/microsoft/microsoft-to-deprecate-windows-deployment-services-after-windows-server-2025/">BleepingComputer</a>)</p></div>
+  </div>
+</section>
+
+<section style="background:var(--wash)">
+  <div class="wrap">
+    <h2>Your migration homework — four items</h2>
+    <div class="action">
+      <h3>1. Inventory your imaging</h3>
+      <p>List every place you PXE-boot: WDS server roles, MDT/WDS task sequences, multicast jobs. You can't migrate what you haven't mapped.</p>
+    </div>
+    <div class="action">
+      <h3>2. Learn the modern path</h3>
+      <p>The replacement story is modern provisioning (Autopilot/Intune) — rather than another on-prem imaging server. That's the direction Microsoft is moving endpoint setup, and the one to evaluate against your fleet.</p>
+    </div>
+    <div class="action">
+      <h3>3. Don't rebuild on WDS</h3>
+      <p>Any imaging project you start today should assume WDS has an expiration date.</p>
+    </div>
+    <div class="action">
+      <h3>4. Mind the other retirements</h3>
+      <p>October's theme is retirement: Office 2021 and Windows 11 24H2 lose security updates October 13, 2026 — <a href="convergence.html">the convergence one-pager</a> covers that deadline. And check what your Microsoft 365 / Intune license already includes for provisioning — <a href="intune-suite.html">the Intune Suite checklist</a> is the "what are you already paying for" version.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Keep reading</h2>
+    <ul>
+      <li>The October 13 convergence one-pager: <a href="convergence.html">convergence.html</a></li>
+      <li>What your license already includes but you never turned on: <a href="intune-suite.html">intune-suite.html</a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Make your domain the hard target</h2>
+    <p>Retirements are how shops get caught flat-footed — check the one thing you can check today. Run the free checker — see your red/yellow/green in seconds — or get the one-page mini-audit with your fix list.</p>
+    <div class="btn-row">
+      <a class="btn btn-light" href="checker/">Check your domain — free</a>
+      <a class="btn btn-primary" href="mailto:Anthony.e.didion@gmail.com?subject=Free%20mini-audit%20request%20—%20my%20domain&body=Hi%20Anthony%2C%0A%0AI%27d%20like%20a%20free%20one-page%20mini-audit%20of%20my%20domain%27s%20email%20authentication.%0A%0AMy%20domain%3A%20%0A%0AThanks!">Request my free mini-audit →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><strong>2026 Chicago SMB Email Security Report</strong> — threat-update briefing, published 2026-10-02. Reporting based on Microsoft's KB5129631 deprecation notice (Sept 21, 2026) and September 2026 coverage. Prepared by Anthony Didion. Questions: <a href="mailto:Anthony.e.didion@gmail.com">Anthony.e.didion@gmail.com</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

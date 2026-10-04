@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>October 13 Flips the Memory Integrity Switch: The 30-Minute Check Before Patch Tuesday</title>
+<meta name="description" content="Starting with the October 13, 2026 Patch Tuesday update, Windows auto-enables Memory Integrity (HVCI) on eligible Windows 11 devices. What it means for your fleet, and the 30-minute check before the 13th.">
+<style>
+  :root{
+    --ink:#14181f; --muted:#5a6472; --paper:#ffffff; --wash:#f4f6f9;
+    --red:#d64545; --yellow:#d9a021; --green:#2e9e5b;
+    --navy:#1b2a4a; --accent:#2f6fed; --accent-dark:#1f4fc4;
+    --line:#e3e8f0; --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;color:var(--ink);line-height:1.6;background:var(--paper)}
+  .wrap{max-width:860px;margin:0 auto;padding:0 24px}
+  .hero{background:linear-gradient(135deg,#101c38 0%,#1b2a4a 55%,#243c6e 100%);color:#fff;padding:56px 0 48px}
+  .hero h1{font-size:2rem;line-height:1.2;margin:0 0 14px;max-width:26ch}
+  .hero h1 .hl{color:#ffcf5c}
+  .hero .sub{font-size:1.08rem;color:#cfd8ea;max-width:62ch}
+  .eyebrow{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--accent);padding:6px 14px;border-radius:999px;margin-bottom:18px}
+  .eyebrow.win{background:var(--green)}
+  section{padding:44px 0}
+  h2{font-size:1.5rem;color:var(--navy);margin-bottom:14px}
+  p{margin:0 0 14px}
+  .callout{border-left:5px solid var(--accent);background:var(--wash);border-radius:0 var(--radius) var(--radius) 0;padding:20px 24px;margin:22px 0}
+  .callout.danger{border-color:var(--red);background:#fdf1f1}
+  .callout.ok{border-color:var(--green);background:#effaf3}
+  .callout p:last-child{margin-bottom:0}
+  ol,ul{margin:0 0 14px 22px}
+  li{margin-bottom:10px}
+  .btn{display:inline-block;font-weight:700;text-decoration:none;border-radius:10px;padding:14px 26px;font-size:1.02rem}
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-primary:hover{background:var(--accent-dark)}
+  .btn-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px}
+  .back{display:inline-block;margin-bottom:8px;color:var(--accent);text-decoration:none;font-weight:600}
+  .action{border:1px solid var(--line);border-left:6px solid var(--green);border-radius:var(--radius);padding:22px 24px;margin:16px 0;background:#fff}
+  .action h3{color:#1f7a44;margin-bottom:6px}
+  .big-stat{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}
+  @media(max-width:640px){.big-stat{grid-template-columns:1fr}.hero h1{font-size:1.7rem}}
+  .stat{border:1px solid var(--line);border-radius:var(--radius);padding:18px;text-align:center}
+  .stat .n{font-size:1.8rem;font-weight:800;color:var(--navy)}
+  .stat .l{font-size:.85rem;color:var(--muted)}
+  footer{padding:26px 0;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+  a{color:var(--accent)}
+  .cta-band{background:linear-gradient(135deg,#101c38,#243c6e);color:#fff}
+  .cta-band h2{color:#fff}
+  .cta-band p{color:#c4cfe4}
+  .btn-light{background:#fff;color:var(--navy)}
+  .btn-light:hover{background:#e9eefb}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <a class="back" href="index.html">← Back to the report</a>
+    <span class="eyebrow">Threat update · October 13, 2026</span>
+    <h1>October 13 flips the <span class="hl">Memory Integrity switch</span> — here is the 30-minute check.</h1>
+    <p class="sub">Starting with the October 13 Patch Tuesday quality update, Windows begins auto-enabling Memory Integrity (HVCI) on eligible Windows 11 devices — as announced September 1. The kernel feature that can refuse incompatible drivers. Set the policy yourself, or Windows Update decides for you.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>What is changing — and who is affected</h2>
+    <p><strong>Memory Integrity</strong> (also called HVCI, Hypervisor-protected Code Integrity) uses hardware virtualization to wall off kernel-mode code. Drivers that poke at memory in ways it does not allow get blocked from loading. Microsoft announced on <strong>September 1, 2026</strong> that October quality updates begin turning it on automatically — targeting the machines that need it most: devices <strong>upgraded from Windows 10</strong> and anything <strong>shipped with the feature off</strong>.</p>
+    <div class="big-stat">
+      <div class="stat"><div class="n">Oct 13, 2026</div><div class="l">Patch Tuesday rollout begins</div></div>
+      <div class="stat"><div class="n">Sept 1, 2026</div><div class="l">Microsoft announced the change</div></div>
+      <div class="stat"><div class="n">1 policy</div><div class="l">the explicit setting that decides for you</div></div>
+    </div>
+    <h2>The driver risk, in plain English</h2>
+    <ul>
+      <li><strong>Incompatible drivers get blocked.</strong> A driver written years ago that conflicts with Memory Integrity will fail to load — and in bad cases that has meant boot problems on older hardware.</li>
+      <li><strong>Windows checks readiness first.</strong> Before flipping the switch it verifies the hardware floor (8th-gen Intel / Zen 2 or newer), virtualization enabled in firmware, and driver compatibility. Where Memory Integrity turns on, it brings Virtualization-Based Security (VBS) with it.</li>
+      <li><strong>Manually-disabled stays off.</strong> If you deliberately turned it off through policy, Windows Update respects that and leaves it alone. But "never touched it" is not the same as "deliberately off."</li>
+      <li><strong>Your early-warning log:</strong> Event Viewer → Applications and Services Logs → Microsoft → Windows → CodeIntegrity → Operational, <strong>Event ID 3087</strong> — that is Windows flagging a driver Memory Integrity would block.</li>
+    </ul>
+    <div class="callout ok"><p><strong>The honest best move:</strong> set the explicit Intune or Group Policy setting yourself — on or off, your call. Then the rollout enforces <strong>your</strong> decision, not Windows Update's.</p></div>
+    <p>Related: your fleet already changes on the 13th for another reason — <a href="convergence.html">October 13: everything changes at once</a>. This is the switch you decide before it decides for you.</p>
+  </div>
+</section>
+
+<section style="background:var(--wash)">
+  <div class="wrap">
+    <h2>Why your shop should care — the honest version</h2>
+    <p>Two things keep this page honest. First: Microsoft announced this September 1, and rollout dates slip — the 26H2 watch proved that — so this page frames it as "as announced, verify your fleet's actual state," not a doomsday countdown.</p>
+    <p>Second: the affected population is specific. Secured-core fleets and clean installs already have Memory Integrity on; this page is for the upgraded-from-Windows-10 middle of the fleet, and it says so. The 30-minute check before the 13th is a device inventory plus a driver-compat pass — and then one explicit policy, set either way, so the record shows you decided.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Four actions — the 30-minute check before the 13th</h2>
+    <div class="action">
+      <h3>1. Inventory the fleet</h3>
+      <p>Which machines were upgraded from Windows 10 or shipped with Memory Integrity off? Clean installs and Secured-core are already covered — this check is for the rest.</p>
+    </div>
+    <div class="action">
+      <h3>2. Check driver compatibility</h3>
+      <p>Open the CodeIntegrity Operational log and look for Event ID 3087 — Windows flagging a driver Memory Integrity would block. One bad driver found now beats one dead machine on the 14th.</p>
+    </div>
+    <div class="action">
+      <h3>3. Set the explicit policy</h3>
+      <p>Intune or Group Policy: decide on or off and set it. An explicit setting is an auditable decision; “never touched it” is how Windows Update decides for you.</p>
+    </div>
+    <div class="action">
+      <h3>4. If you deliberately disabled it, confirm the policy is set</h3>
+      <p>“Off because we chose off” survives the rollout. “Off because nobody ever looked” does not.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Make your domain the hard target</h2>
+    <p>Session hijacking only turns into business damage when your domain is easy to impersonate. Run the free checker — see your red/yellow/green in seconds — or get the one-page mini-audit with your fix list.</p>
+    <div class="btn-row">
+      <a class="btn btn-light" href="checker/">Check your domain — free</a>
+      <a class="btn btn-primary" href="mailto:Anthony.e.didion@gmail.com?subject=Free%20mini-audit%20request%20—%20my%20domain&body=Hi%20Anthony%2C%0A%0AI%27d%20like%20a%20free%20one-page%20mini-audit%20of%20my%20domain%27s%20email%20authentication.%0A%0AMy%20domain%3A%20%0A%0AThanks!">Request my free mini-audit →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><strong>2026 Chicago SMB Email Security Report</strong> — threat-update briefing, published 2026-10-04. Reporting based on Microsoft's Sept 1, 2026 Windows IT Pro Blog announcement and Oct 2026 Patch Tuesday rollout reporting (BetaNews, Neowin, Windows Central, WindowsReport, Tom's Hardware, Help Net Security, gHacks). Prepared by Anthony Didion. Questions: <a href="mailto:Anthony.e.didion@gmail.com">Anthony.e.didion@gmail.com</a></p>
+  </div>
+</footer>
+
+<!-- privacy-first pageview tracker: first-party, cookieless, no PII, respects Do Not Track -->
+<form name="pageview" netlify netlify-honeypot="bot-field" hidden>
+  <input type="text" name="bot-field" tabindex="-1" autocomplete="off">
+  <input type="hidden" name="page">
+  <input type="hidden" name="referrer">
+</form>
+<script>
+(function(){try{
+  if(navigator.doNotTrack==="1"||window.doNotTrack==="1")return;
+  var d=new URLSearchParams();
+  d.append("form-name","pageview");
+  d.append("page",location.pathname);
+  d.append("referrer",document.referrer||"direct");
+  fetch(location.pathname,{method:"POST",
+    headers:{"Content-Type":"application/x-www-form-urlencoded"},
+    body:d.toString(),keepalive:true}).catch(function(){});
+}catch(e){}})();
+</script>
+
+</body>
+</html>

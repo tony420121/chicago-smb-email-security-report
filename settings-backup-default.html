@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>26H2 Turns On Settings Backup Whether You Asked or Not</title>
+<meta name="description" content="Windows 11 26H2 flipped Settings Backup to default-on for eligible commercial devices — 'Not Configured' no longer means off. The one policy to check before it contradicts your data rules.">
+<style>
+  :root{
+    --ink:#14181f; --muted:#5a6472; --paper:#ffffff; --wash:#f4f6f9;
+    --red:#d64545; --yellow:#d9a021; --green:#2e9e5b;
+    --navy:#1b2a4a; --accent:#2f6fed; --accent-dark:#1f4fc4;
+    --line:#e3e8f0; --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;color:var(--ink);line-height:1.6;background:var(--paper)}
+  .wrap{max-width:860px;margin:0 auto;padding:0 24px}
+  .hero{background:linear-gradient(135deg,#101c38 0%,#1b2a4a 55%,#243c6e 100%);color:#fff;padding:56px 0 48px}
+  .hero h1{font-size:2rem;line-height:1.2;margin:0 0 14px;max-width:26ch}
+  .hero h1 .hl{color:#ffcf5c}
+  .hero .sub{font-size:1.08rem;color:#cfd8ea;max-width:62ch}
+  .eyebrow{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--accent);padding:6px 14px;border-radius:999px;margin-bottom:18px}
+  .eyebrow.win{background:var(--green)}
+  section{padding:44px 0}
+  h2{font-size:1.5rem;color:var(--navy);margin-bottom:14px}
+  p{margin:0 0 14px}
+  .callout{border-left:5px solid var(--accent);background:var(--wash);border-radius:0 var(--radius) var(--radius) 0;padding:20px 24px;margin:22px 0}
+  .callout.danger{border-color:var(--red);background:#fdf1f1}
+  .callout.ok{border-color:var(--green);background:#effaf3}
+  .callout p:last-child{margin-bottom:0}
+  ol,ul{margin:0 0 14px 22px}
+  li{margin-bottom:10px}
+  .btn{display:inline-block;font-weight:700;text-decoration:none;border-radius:10px;padding:14px 26px;font-size:1.02rem}
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-primary:hover{background:var(--accent-dark)}
+  .btn-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px}
+  .back{display:inline-block;margin-bottom:8px;color:var(--accent);text-decoration:none;font-weight:600}
+  .action{border:1px solid var(--line);border-left:6px solid var(--green);border-radius:var(--radius);padding:22px 24px;margin:16px 0;background:#fff}
+  .action h3{color:#1f7a44;margin-bottom:6px}
+  .big-stat{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}
+  @media(max-width:640px){.big-stat{grid-template-columns:1fr}.hero h1{font-size:1.7rem}}
+  .stat{border:1px solid var(--line);border-radius:var(--radius);padding:18px;text-align:center}
+  .stat .n{font-size:1.8rem;font-weight:800;color:var(--navy)}
+  .stat .l{font-size:.85rem;color:var(--muted)}
+  footer{padding:26px 0;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+  a{color:var(--accent)}
+  .cta-band{background:linear-gradient(135deg,#101c38,#243c6e);color:#fff}
+  .cta-band h2{color:#fff}
+  .cta-band p{color:#c4cfe4}
+  .btn-light{background:#fff;color:var(--navy)}
+  .btn-light:hover{background:#e9eefb}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <a class="back" href="index.html">← Back to the report</a>
+    <span class="eyebrow">Threat update · October 2, 2026</span>
+    <h1>26H2 turned on Settings Backup <span class="hl">whether you asked or not.</span></h1>
+    <p class="sub">Windows 11 26H2 flipped Settings Backup to default-on for eligible commercial devices. “Not Configured” no longer means off — user settings and Store-app lists now upload to the cloud about every 8 days. Here is the one policy to check before it contradicts your data rules.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>The default changed under you</h2>
+    <p>A policy you never set now behaves as if you turned it on. That's the whole story — and the whole problem. If your data rules say certain user data stays local, the update may already be contradicting them.</p>
+    <div class="big-stat">
+      <div class="stat"><div class="n">~8 days</div><div class="l">upload cadence: settings + Store-app lists</div></div>
+      <div class="stat"><div class="n">1 policy</div><div class="l">the explicit setting to check</div></div>
+      <div class="stat"><div class="n">Off by default</div><div class="l">restore — still needs a separate decision</div></div>
+    </div>
+    <h2>Who is in scope — exactly</h2>
+    <p>The eligibility scope is load-bearing, so here it is straight: devices that are <strong>Entra joined or hybrid-joined</strong>, running <strong>26H2 or later</strong> — and <strong>not</strong> in EU-DMA regions or sovereign clouds. If your fleet isn't Entra-joined, this page isn't about you.</p>
+    <ul>
+      <li><strong>What uploads:</strong> user settings and Microsoft Store app lists, about every 8 days.</li>
+      <li><strong>What doesn't:</strong> restore is still <strong>off by default</strong> — an admin has to enable that separately. Don't conflate the two.</li>
+      <li><strong>The one policy:</strong> the Settings Backup / "Enable Windows Backup" policy — via Intune (Settings Catalog → Administrative Templates → Windows Components → Sync your settings), Group Policy (same path), or CSP.</li>
+    </ul>
+    <div class="callout ok"><p><strong>The compliance play:</strong> set it explicitly — on or off, your call. <strong>An auditable record of a decision beats a changed default</strong> every time an auditor asks.</p></div>
+    <p>Related: <a href="windows-11-26h2.html">Windows 11 26H2: what changed</a> — the version rollout this default rode in on. Next: run the Intune checklist for what else changed without asking.</p>
+  </div>
+</section>
+
+<section style="background:var(--wash)">
+  <div class="wrap">
+    <h2>Why your shop should care — the honest version</h2>
+    <p>This page walks a deliberate line: it is not "Microsoft is stealing your data." It's "a default changed, and your data rules may now say something your fleet doesn't do." The eligibility scope is stated exactly because oversimplifying it would embarrass the funnel — the EU-DMA exclusions, the restore-off-by-default boundary, and the Entra-joined requirement are all load-bearing.</p>
+    <p>And it's frank about the economics: admin-hygiene beats are the weakest-converting beats on the list, but the Oct-13 patch wave is this page's natural ship buddy — your fleet already changes on the 13th — and "the default changed under you" is a concrete, checkable claim.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Four actions — the one-policy check</h2>
+    <div class="action">
+      <h3>1. Check whether your devices are in scope</h3>
+      <p>Entra joined or hybrid-joined, 26H2 or later? If yes, keep reading. If no, you're done.</p>
+    </div>
+    <div class="action">
+      <h3>2. Set the policy explicitly — on or off, your call</h3>
+      <p>Intune, Group Policy, or CSP: “Enable Windows Backup.” Decide what your data rules require and set it.</p>
+    </div>
+    <div class="action">
+      <h3>3. Remember restore is separate</h3>
+      <p>Backup uploading does not mean restores are enabled. If you want restores, that's a second, explicit decision.</p>
+    </div>
+    <div class="action">
+      <h3>4. Write the decision down</h3>
+      <p>Date, setting, who decided. An auditable record beats a changed default — that's the whole compliance play.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Make your domain the hard target</h2>
+    <p>Session hijacking only turns into business damage when your domain is easy to impersonate. Run the free checker — see your red/yellow/green in seconds — or get the one-page mini-audit with your fix list.</p>
+    <div class="btn-row">
+      <a class="btn btn-light" href="checker/">Check your domain — free</a>
+      <a class="btn btn-primary" href="mailto:Anthony.e.didion@gmail.com?subject=Free%20mini-audit%20request%20—%20my%20domain&body=Hi%20Anthony%2C%0A%0AI%27d%20like%20a%20free%20one-page%20mini-audit%20of%20my%20domain%27s%20email%20authentication.%0A%0AMy%20domain%3A%20%0A%0AThanks!">Request my free mini-audit →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><strong>2026 Chicago SMB Email Security Report</strong> — threat-update briefing, published 2026-10-04. Reporting based on Microsoft's Message Center update and Intune documentation (Oct 1–2, 2026 coverage). Prepared by Anthony Didion. Questions: <a href="mailto:Anthony.e.didion@gmail.com">Anthony.e.didion@gmail.com</a></p>
+  </div>
+</footer>
+
+<!-- privacy-first pageview tracker: first-party, cookieless, no PII, respects Do Not Track -->
+<form name="pageview" netlify netlify-honeypot="bot-field" hidden>
+  <input type="text" name="bot-field" tabindex="-1" autocomplete="off">
+  <input type="hidden" name="page">
+  <input type="hidden" name="referrer">
+</form>
+<script>
+(function(){try{
+  if(navigator.doNotTrack==="1"||window.doNotTrack==="1")return;
+  var d=new URLSearchParams();
+  d.append("form-name","pageview");
+  d.append("page",location.pathname);
+  d.append("referrer",document.referrer||"direct");
+  fetch(location.pathname,{method:"POST",
+    headers:{"Content-Type":"application/x-www-form-urlencoded"},
+    body:d.toString(),keepalive:true}).catch(function(){});
+}catch(e){}})();
+</script>
+
+</body>
+</html>

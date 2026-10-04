@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>They Buy Your Passwords Before They Encrypt You — Chicago SMB Email Security Report</title>
+<meta name="description" content="Ransomware crews don't hack in — they buy infostealer logs with your employees' passwords already inside, then walk through the front door. What an infostealer is, in plain English, and three checks that close the window.">
+<style>
+  :root{
+    --ink:#14181f; --muted:#5a6472; --paper:#ffffff; --wash:#f4f6f9;
+    --red:#d64545; --yellow:#d9a021; --green:#2e9e5b;
+    --navy:#1b2a4a; --accent:#2f6fed; --accent-dark:#1f4fc4;
+    --line:#e3e8f0; --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;color:var(--ink);line-height:1.6;background:var(--paper)}
+  .wrap{max-width:860px;margin:0 auto;padding:0 24px}
+  .hero{background:linear-gradient(135deg,#101c38 0%,#1b2a4a 55%,#243c6e 100%);color:#fff;padding:56px 0 48px}
+  .hero h1{font-size:2rem;line-height:1.2;margin:0 0 14px;max-width:26ch}
+  .hero h1 .hl{color:#ffcf5c}
+  .hero .sub{font-size:1.08rem;color:#cfd8ea;max-width:62ch}
+  .eyebrow{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--accent);padding:6px 14px;border-radius:999px;margin-bottom:18px}
+  .eyebrow.win{background:var(--green)}
+  section{padding:44px 0}
+  h2{font-size:1.5rem;color:var(--navy);margin-bottom:14px}
+  p{margin:0 0 14px}
+  .callout{border-left:5px solid var(--accent);background:var(--wash);border-radius:0 var(--radius) var(--radius) 0;padding:20px 24px;margin:22px 0}
+  .callout.danger{border-color:var(--red);background:#fdf1f1}
+  .callout.ok{border-color:var(--green);background:#effaf3}
+  .callout p:last-child{margin-bottom:0}
+  ol,ul{margin:0 0 14px 22px}
+  li{margin-bottom:10px}
+  .btn{display:inline-block;font-weight:700;text-decoration:none;border-radius:10px;padding:14px 26px;font-size:1.02rem}
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-primary:hover{background:var(--accent-dark)}
+  .btn-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px}
+  .back{display:inline-block;margin-bottom:8px;color:var(--accent);text-decoration:none;font-weight:600}
+  .action{border:1px solid var(--line);border-left:6px solid var(--green);border-radius:var(--radius);padding:22px 24px;margin:16px 0;background:#fff}
+  .action h3{color:#1f7a44;margin-bottom:6px}
+  .big-stat{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}
+  @media(max-width:640px){.big-stat{grid-template-columns:1fr}.hero h1{font-size:1.7rem}}
+  .stat{border:1px solid var(--line);border-radius:var(--radius);padding:18px;text-align:center}
+  .stat .n{font-size:1.8rem;font-weight:800;color:var(--navy)}
+  .stat .l{font-size:.85rem;color:var(--muted)}
+  footer{padding:26px 0;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+  a{color:var(--accent)}
+  .cta-band{background:linear-gradient(135deg,#101c38,#243c6e);color:#fff}
+  .cta-band h2{color:#fff}
+  .cta-band p{color:#c4cfe4}
+  .btn-light{background:#fff;color:var(--navy)}
+  .btn-light:hover{background:#e9eefb}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <a class="back" href="index.html">← Back to the report</a>
+    <span class="eyebrow">Threat update · October 2, 2026</span>
+    <h1>They <span class="hl">buy your passwords</span> before they encrypt you.</h1>
+    <p class="sub">Threat advisories keep saying it outright: ransomware crews don't hack in anymore. They buy infostealer logs — bundles of stolen passwords harvested from ordinary PCs — and log in as your employees. Here's what an infostealer is, in plain English, and the three checks that close the window.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>What an infostealer is — in plain English</h2>
+    <p>An infostealer is <strong>the malware that steals the password before the ransomware arrives.</strong> It runs quietly on one infected PC — often an employee's laptop — and harvests what's stored there: saved browser passwords, login cookies, session tokens, autofill data. Then it bundles everything into a "log" and uploads it.</p>
+    <p>Those logs get traded and sold in bulk. A ransomware crew doesn't need to break into your network. They buy the log, open your employee's password file, and <strong>walk through the front door</strong> — with the real username and the real password.</p>
+    <div class="big-stat">
+      <div class="stat"><div class="n">Step 1: Steal</div><div class="l">infostealer harvests passwords from one infected PC</div></div>
+      <div class="stat"><div class="n">Step 2: Sell</div><div class="l">stolen credential logs traded in bulk</div></div>
+      <div class="stat"><div class="n">Step 3: Encrypt</div><div class="l">the crew logs in as your employee — then deploys ransomware</div></div>
+    </div>
+    <h2>Why your saved passwords are the inventory</h2>
+    <p>Every password your browser remembers "for convenience" is inventory for this market. The employee doesn't have to visit a shady site — one bad download, one malicious attachment, and everything saved in that browser is for sale by morning. This is the on-ramp: <strong>how they got the password in the first place.</strong> What they do with it afterward — session theft, MFA bypass — is a separate problem; our <a href="mfa-not-enough.html">MFA-isn't-enough</a> and <a href="mfa-screen-steals-password.html">fake-MFA-screen</a> pages cover that lane.</p>
+    <div class="callout danger"><p><strong>The uncomfortable part:</strong> this works without any vulnerability in your systems. No firewall failed. No software was unpatched. A valid login from a valid password looks exactly like your employee starting work.</p></div>
+  </div>
+</section>
+
+<section style="background:var(--wash)">
+  <div class="wrap">
+    <h2>The honest version</h2>
+    <p>This page is not another "use MFA" lecture — though MFA belongs in the checklist below. It's the on-ramp story: <strong>password-only logins are the open window.</strong> And one hard truth for the checklist: infostealers don't just steal passwords anymore — they steal <strong>session cookies</strong> too, which can let an attacker ride an already-logged-in session straight past MFA. That's why step three below says rotate <em>and</em> revoke, not just reset the password.</p>
+    <div class="callout ok"><p><strong>What this page won't do:</strong> name stealer families or quote infection counts. The names change monthly; the mechanism doesn't. If someone tries to sell you protection against a specific named stealer, they're selling you last month's war.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Three checks — close the window</h2>
+    <div class="action">
+      <h3>1. Check whether your shop's email is already in a credential dump</h3>
+      <p>If your address has appeared in a known breach, assume the password paired with it is for sale. Run the free domain check below, and have every employee check their work address against a breach-lookup service. Anything that hits gets a new, unique password — today.</p>
+    </div>
+    <div class="action">
+      <h3>2. MFA on everything — including vendor and third-party accounts</h3>
+      <p>The October 2 threat advisory put it bluntly: audit third-party access and require MFA on every corporate <em>and</em> third-party login. Attackers buy whatever credentials are cheapest — often a contractor's or a vendor's. If it touches your systems and doesn't have MFA, it's the window. Our <a href="fido2-downgrade.html">FIDO2-downgrade</a> page covers what "strong" MFA actually means.</p>
+    </div>
+    <div class="action">
+      <h3>3. After any infostealer hit: rotate credentials AND revoke sessions</h3>
+      <p>If one PC was infected, assume every password saved on it is burned — email, VPN, banking, the lot. Resetting the password isn't enough: kill the active sessions too, or the attacker's stolen cookie keeps working. Reset credentials, then revoke sessions, then remove anything the attacker added — in that order.</p>
+    </div>
+  </div>
+</section>
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Make your domain the hard target</h2>
+    <p>Session hijacking only turns into business damage when your domain is easy to impersonate. Run the free checker — see your red/yellow/green in seconds — or get the one-page mini-audit with your fix list.</p>
+    <div class="btn-row">
+      <a class="btn btn-light" href="checker/">Check your domain — free</a>
+      <a class="btn btn-primary" href="mailto:Anthony.e.didion@gmail.com?subject=Free%20mini-audit%20request%20—%20my%20domain&body=Hi%20Anthony%2C%0A%0AI%27d%20like%20a%20free%20one-page%20mini-audit%20of%20my%20domain%27s%20email%20authentication.%0A%0AMy%20domain%3A%20%0A%0AThanks!">Request my free mini-audit →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><strong>2026 Chicago SMB Email Security Report</strong> — threat-update briefing, published 2026-10-04. Reporting based on public coverage of the October 1, 2026 enforcement start and the October 3, 2026 Message Center update (MC1485116). Prepared by Anthony Didion. Questions: <a href="mailto:Anthony.e.didion@gmail.com">Anthony.e.didion@gmail.com</a></p>
+  </div>
+</footer>
+
+
+<!-- privacy-first pageview tracker: first-party, cookieless, no PII, respects Do Not Track -->
+<form name="pageview" netlify netlify-honeypot="bot-field" hidden>
+  <input type="text" name="bot-field" tabindex="-1" autocomplete="off">
+  <input type="hidden" name="page">
+  <input type="hidden" name="referrer">
+</form>
+<script>
+(function(){try{
+  if(navigator.doNotTrack==="1"||window.doNotTrack==="1")return;
+  var d=new URLSearchParams();
+  d.append("form-name","pageview");
+  d.append("page",location.pathname);
+  d.append("referrer",document.referrer||"direct");
+  fetch(location.pathname,{method:"POST",
+    headers:{"Content-Type":"application/x-www-form-urlencoded"},
+    body:d.toString(),keepalive:true}).catch(function(){});
+}catch(e){}})();
+</script>
+
+</body>
+</html>

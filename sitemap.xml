@@ -10,7 +10,6 @@
   <url><loc>https://darling-moonbeam-45fdb1.netlify.app/dual-rmm-backdoor.html</loc><lastmod>2026-10-02</lastmod><priority>0.8</priority></url>
   <url><loc>https://darling-moonbeam-45fdb1.netlify.app/email-auth-standard.html</loc><lastmod>2026-10-02</lastmod><priority>0.8</priority></url>
   <url><loc>https://darling-moonbeam-45fdb1.netlify.app/eviltokens.html</loc><lastmod>2026-10-02</lastmod><priority>0.8</priority></url>
-  <url><loc>https://darling-moonbeam-45fdb1.netlify.app/ews-shutdown.html</loc><lastmod>2026-10-02</lastmod><priority>0.8</priority></url>
   <url><loc>https://darling-moonbeam-45fdb1.netlify.app/fido2-downgrade.html</loc><lastmod>2026-10-02</lastmod><priority>0.8</priority></url>
   <url><loc>https://darling-moonbeam-45fdb1.netlify.app/governance-survey.html</loc><lastmod>2026-10-02</lastmod><priority>0.8</priority></url>
   <url><loc>https://darling-moonbeam-45fdb1.netlify.app/</loc><lastmod>2026-10-02</lastmod><priority>1.0</priority></url>
@@ -29,4 +28,20 @@
   <url><loc>https://darling-moonbeam-45fdb1.netlify.app/windows-11-26h2.html</loc><lastmod>2026-10-02</lastmod><priority>0.8</priority></url>
   <url><loc>https://darling-moonbeam-45fdb1.netlify.app/wsl-containers-intune.html</loc><lastmod>2026-10-02</lastmod><priority>0.8</priority></url>
   <url><loc>https://darling-moonbeam-45fdb1.netlify.app/checker/</loc><lastmod>2026-10-02</lastmod><priority>0.8</priority></url>
+  <url><loc>https://darling-moonbeam-45fdb1.netlify.app/clickfix-browser-cache.html</loc><lastmod>2026-10-04</lastmod><priority>0.8</priority></url>
+  <url><loc>https://darling-moonbeam-45fdb1.netlify.app/entra-csp-signin.html</loc><lastmod>2026-10-04</lastmod><priority>0.8</priority></url>
+  <url><loc>https://darling-moonbeam-45fdb1.netlify.app/ex-employee-keys.html</loc><lastmod>2026-10-04</lastmod><priority>0.8</priority></url>
+  <url><loc>https://darling-moonbeam-45fdb1.netlify.app/ews-allow-list.html</loc><lastmod>2026-10-04</lastmod><priority>0.8</priority></url>
+  <url><loc>https://darling-moonbeam-45fdb1.netlify.app/ews-shutdown.html</loc><lastmod>2026-10-04</lastmod><priority>0.8</priority></url>
+  <url><loc>https://darling-moonbeam-45fdb1.netlify.app/infostealer-onramp.html</loc><lastmod>2026-10-04</lastmod><priority>0.8</priority></url>
+  <url><loc>https://darling-moonbeam-45fdb1.netlify.app/killsec-takedown.html</loc><lastmod>2026-10-04</lastmod><priority>0.8</priority></url>
+  <url><loc>https://darling-moonbeam-45fdb1.netlify.app/mac-mail-ews.html</loc><lastmod>2026-10-04</lastmod><priority>0.8</priority></url>
+  <url><loc>https://darling-moonbeam-45fdb1.netlify.app/memory-integrity-switch.html</loc><lastmod>2026-10-04</lastmod><priority>0.8</priority></url>
+  <url><loc>https://darling-moonbeam-45fdb1.netlify.app/microsoft-x-hijack.html</loc><lastmod>2026-10-04</lastmod><priority>0.8</priority></url>
+  <url><loc>https://darling-moonbeam-45fdb1.netlify.app/payroll-pirates.html</loc><lastmod>2026-10-04</lastmod><priority>0.8</priority></url>
+  <url><loc>https://darling-moonbeam-45fdb1.netlify.app/phishing-tripled-ddr.html</loc><lastmod>2026-10-04</lastmod><priority>0.8</priority></url>
+  <url><loc>https://darling-moonbeam-45fdb1.netlify.app/ransomware-real-estate.html</loc><lastmod>2026-10-04</lastmod><priority>0.8</priority></url>
+  <url><loc>https://darling-moonbeam-45fdb1.netlify.app/settings-backup-default.html</loc><lastmod>2026-10-04</lastmod><priority>0.8</priority></url>
+  <url><loc>https://darling-moonbeam-45fdb1.netlify.app/spoofed-newsroom-emails.html</loc><lastmod>2026-10-04</lastmod><priority>0.8</priority></url>
+  <url><loc>https://darling-moonbeam-45fdb1.netlify.app/windows-update-check.html</loc><lastmod>2026-10-04</lastmod><priority>0.8</priority></url>
 </urlset>

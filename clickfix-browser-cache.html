@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Fake CAPTCHA Hiding in Your Browser's Own Cache — Chicago SMB Email Security Report</title>
+<meta name="description" content="Microsoft warns ClickFix attacks evolved: the payload downloads as cab.dat, hides in your browser cache, and loads .NET code straight into memory to steal credentials. The one rule: any prompt telling you to paste a command is an attack.">
+<style>
+  :root{
+    --ink:#14181f; --muted:#5a6472; --paper:#ffffff; --wash:#f4f6f9;
+    --red:#d64545; --yellow:#d9a021; --green:#2e9e5b;
+    --navy:#1b2a4a; --accent:#2f6fed; --accent-dark:#1f4fc4;
+    --line:#e3e8f0; --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;color:var(--ink);line-height:1.6;background:var(--paper)}
+  .wrap{max-width:860px;margin:0 auto;padding:0 24px}
+  .hero{background:linear-gradient(135deg,#101c38 0%,#1b2a4a 55%,#243c6e 100%);color:#fff;padding:56px 0 48px}
+  .hero h1{font-size:2rem;line-height:1.2;margin:0 0 14px;max-width:26ch}
+  .hero h1 .hl{color:#ffcf5c}
+  .hero .sub{font-size:1.08rem;color:#cfd8ea;max-width:62ch}
+  .eyebrow{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--accent);padding:6px 14px;border-radius:999px;margin-bottom:18px}
+  .eyebrow.win{background:var(--green)}
+  section{padding:44px 0}
+  h2{font-size:1.5rem;color:var(--navy);margin-bottom:14px}
+  p{margin:0 0 14px}
+  .callout{border-left:5px solid var(--accent);background:var(--wash);border-radius:0 var(--radius) var(--radius) 0;padding:20px 24px;margin:22px 0}
+  .callout.danger{border-color:var(--red);background:#fdf1f1}
+  .callout.ok{border-color:var(--green);background:#effaf3}
+  .callout p:last-child{margin-bottom:0}
+  ol,ul{margin:0 0 14px 22px}
+  li{margin-bottom:10px}
+  .btn{display:inline-block;font-weight:700;text-decoration:none;border-radius:10px;padding:14px 26px;font-size:1.02rem}
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-primary:hover{background:var(--accent-dark)}
+  .btn-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px}
+  .back{display:inline-block;margin-bottom:8px;color:var(--accent);text-decoration:none;font-weight:600}
+  .action{border:1px solid var(--line);border-left:6px solid var(--green);border-radius:var(--radius);padding:22px 24px;margin:16px 0;background:#fff}
+  .action h3{color:#1f7a44;margin-bottom:6px}
+  .big-stat{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}
+  @media(max-width:640px){.big-stat{grid-template-columns:1fr}.hero h1{font-size:1.7rem}}
+  .stat{border:1px solid var(--line);border-radius:var(--radius);padding:18px;text-align:center}
+  .stat .n{font-size:1.8rem;font-weight:800;color:var(--navy)}
+  .stat .l{font-size:.85rem;color:var(--muted)}
+  footer{padding:26px 0;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+  a{color:var(--accent)}
+  .cta-band{background:linear-gradient(135deg,#101c38,#243c6e);color:#fff}
+  .cta-band h2{color:#fff}
+  .cta-band p{color:#c4cfe4}
+  .btn-light{background:#fff;color:var(--navy)}
+  .btn-light:hover{background:#e9eefb}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <a class="back" href="index.html">← Back to the report</a>
+    <span class="eyebrow">Threat update · October 3, 2026</span>
+    <h1>The <span class="hl">"verify you're human"</span> button now tells your browser to hide the attack.</h1>
+    <p class="sub">Microsoft is warning about an evolved ClickFix campaign: the lure is the same fake CAPTCHA shops have seen for a year — but the payload now downloads as <code>cab.dat</code>, hides in your browser's own cache, and loads attack code directly into memory to steal browser-stored and device credentials.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>How the evolved attack works</h2>
+    <ul>
+      <li><strong>The lure:</strong> a fake CAPTCHA or verification prompt telling you to paste a command into Run, Terminal, or PowerShell. Same social trick as always — "prove you're human."</li>
+      <li><strong>The download:</strong> the payload arrives as <code>cab.dat</code> and stashes itself in the browser cache — the last place most people (and some scanners) look.</li>
+      <li><strong>The execution:</strong> it runs in a hidden window. .NET assemblies load <strong>directly into memory</strong> — via <code>csc.exe</code>/<code>cvtres.exe</code> injection into <code>timeout.exe</code> — so there's no malicious file sitting on disk to find.</li>
+      <li><strong>The target:</strong> credentials stored in the browser and on the device.</li>
+      <li><strong>The staging:</strong> independent analysis traced the full chain — a command shell searching browser profile folders, a script staged in the temp folder and launched through the Windows script host, and a PowerShell staging step.</li>
+    </ul>
+    <p>Attribution, stated plainly: this is Microsoft's warning as carried by cyberpress.org (October 2–3, 2026), <strong>independently corroborated by gbhackers with matching technical detail</strong>, plus the Threadlinqs TL-2026-2699 detection corpus. Two independent outlets saying the same thing is why this page exists.</p>
+    <div class="callout danger"><p><strong>The one rule that stops all of it:</strong> <strong>any prompt telling you to paste a command anywhere is an attack.</strong> No legitimate website, CAPTCHA, or support page will ever ask you to paste commands into Run or PowerShell. Teach every employee that one sentence.</p></div>
+  </div>
+</section>
+
+<section style="background:var(--wash)">
+  <div class="wrap">
+    <h2>The honest version</h2>
+    <p>This is the browser-cache <em>evolution</em> of a ClickFix trick that's been around for a year — new hiding spot, same con. We're not claiming this is everywhere; we're saying Microsoft flagged it and a second outlet confirmed the mechanics, which clears our bar for telling you about it. If you're running Microsoft's stack, you're partially covered already — see the checks below.</p>
+    <div class="callout ok"><p><strong>What "covered" actually means here:</strong> Microsoft says Defender SmartScreen, Defender for Office 365, and Defender for Endpoint provide layered coverage, with "Possible ClickFix activity" alerts and detection as <code>Trojan:Win32/ClickFix</code>. Coverage is not immunity — the lure still needs a human to paste the command.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Two admin checks — turn these on</h2>
+    <div class="action">
+      <h3>1. Turn on PowerShell script-block logging</h3>
+      <p>This attack lives in PowerShell and script hosts. Script-block logging records what actually ran — without it, you're investigating blind after the fact. It's a Group Policy / Intune setting; turn it on fleet-wide.</p>
+    </div>
+    <div class="action">
+      <h3>2. Make sure cloud-delivered protection is on</h3>
+      <p>Microsoft's layered coverage for this campaign depends on cloud-delivered protection being enabled in Defender. Check it — it's the difference between "Possible ClickFix activity" alerting you and silence.</p>
+    </div>
+    <p>And the human check, which matters more than both: if anyone on your staff has pasted a command from a website in the last month, treat that machine as compromised until proven otherwise.</p>
+  </div>
+</section>
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Make your domain the hard target</h2>
+    <p>Session hijacking only turns into business damage when your domain is easy to impersonate. Run the free checker — see your red/yellow/green in seconds — or get the one-page mini-audit with your fix list.</p>
+    <div class="btn-row">
+      <a class="btn btn-light" href="checker/">Check your domain — free</a>
+      <a class="btn btn-primary" href="mailto:Anthony.e.didion@gmail.com?subject=Free%20mini-audit%20request%20—%20my%20domain&body=Hi%20Anthony%2C%0A%0AI%27d%20like%20a%20free%20one-page%20mini-audit%20of%20my%20domain%27s%20email%20authentication.%0A%0AMy%20domain%3A%20%0A%0AThanks!">Request my free mini-audit →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><strong>2026 Chicago SMB Email Security Report</strong> — threat-update briefing, published 2026-10-04. Reporting based on public coverage of the October 1, 2026 enforcement start and the October 3, 2026 Message Center update (MC1485116). Prepared by Anthony Didion. Questions: <a href="mailto:Anthony.e.didion@gmail.com">Anthony.e.didion@gmail.com</a></p>
+  </div>
+</footer>
+
+
+<!-- privacy-first pageview tracker: first-party, cookieless, no PII, respects Do Not Track -->
+<form name="pageview" netlify netlify-honeypot="bot-field" hidden>
+  <input type="text" name="bot-field" tabindex="-1" autocomplete="off">
+  <input type="hidden" name="page">
+  <input type="hidden" name="referrer">
+</form>
+<script>
+(function(){try{
+  if(navigator.doNotTrack==="1"||window.doNotTrack==="1")return;
+  var d=new URLSearchParams();
+  d.append("form-name","pageview");
+  d.append("page",location.pathname);
+  d.append("referrer",document.referrer||"direct");
+  fetch(location.pathname,{method:"POST",
+    headers:{"Content-Type":"application/x-www-form-urlencoded"},
+    body:d.toString(),keepalive:true}).catch(function(){});
+}catch(e){}})();
+</script>
+
+</body>
+</html>

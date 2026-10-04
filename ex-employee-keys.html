@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Ex-Employees Still Have the Keys — The 10-Minute Access Sweep</title>
+<meta name="description" content="38% of organizations left former employees or guests with access they should have lost. Seven checks, ten minutes, one admin login — the free access sweep for Microsoft 365.">
+<style>
+  :root{
+    --ink:#14181f; --muted:#5a6472; --paper:#ffffff; --wash:#f4f6f9;
+    --red:#d64545; --yellow:#d9a021; --green:#2e9e5b;
+    --navy:#1b2a4a; --accent:#2f6fed; --accent-dark:#1f4fc4;
+    --line:#e3e8f0; --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;color:var(--ink);line-height:1.6;background:var(--paper)}
+  .wrap{max-width:860px;margin:0 auto;padding:0 24px}
+  .hero{background:linear-gradient(135deg,#101c38 0%,#1b2a4a 55%,#243c6e 100%);color:#fff;padding:56px 0 48px}
+  .hero h1{font-size:2rem;line-height:1.2;margin:0 0 14px;max-width:26ch}
+  .hero h1 .hl{color:#ffcf5c}
+  .hero .sub{font-size:1.08rem;color:#cfd8ea;max-width:62ch}
+  .eyebrow{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--accent);padding:6px 14px;border-radius:999px;margin-bottom:18px}
+  .eyebrow.win{background:var(--green)}
+  section{padding:44px 0}
+  h2{font-size:1.5rem;color:var(--navy);margin-bottom:14px}
+  p{margin:0 0 14px}
+  .callout{border-left:5px solid var(--accent);background:var(--wash);border-radius:0 var(--radius) var(--radius) 0;padding:20px 24px;margin:22px 0}
+  .callout.danger{border-color:var(--red);background:#fdf1f1}
+  .callout.ok{border-color:var(--green);background:#effaf3}
+  .callout p:last-child{margin-bottom:0}
+  ol,ul{margin:0 0 14px 22px}
+  li{margin-bottom:10px}
+  .btn{display:inline-block;font-weight:700;text-decoration:none;border-radius:10px;padding:14px 26px;font-size:1.02rem}
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-primary:hover{background:var(--accent-dark)}
+  .btn-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px}
+  .back{display:inline-block;margin-bottom:8px;color:var(--accent);text-decoration:none;font-weight:600}
+  .action{border:1px solid var(--line);border-left:6px solid var(--green);border-radius:var(--radius);padding:22px 24px;margin:16px 0;background:#fff}
+  .action h3{color:#1f7a44;margin-bottom:6px}
+  .big-stat{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}
+  @media(max-width:640px){.big-stat{grid-template-columns:1fr}.hero h1{font-size:1.7rem}}
+  .stat{border:1px solid var(--line);border-radius:var(--radius);padding:18px;text-align:center}
+  .stat .n{font-size:1.8rem;font-weight:800;color:var(--navy)}
+  .stat .l{font-size:.85rem;color:var(--muted)}
+  footer{padding:26px 0;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+  a{color:var(--accent)}
+  .cta-band{background:linear-gradient(135deg,#101c38,#243c6e);color:#fff}
+  .cta-band h2{color:#fff}
+  .cta-band p{color:#c4cfe4}
+  .btn-light{background:#fff;color:var(--navy)}
+  .btn-light:hover{background:#e9eefb}
+  code{background:#eef1f6;padding:2px 6px;border-radius:6px;font-size:.92em}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <a class="back" href="index.html">← Back to the report</a>
+    <span class="eyebrow win">Free checklist</span>
+    <h1>Your <span class="hl">ex-employees still have the keys</span> — the 10-minute access sweep.</h1>
+    <p class="sub">38% of organizations left former employees or guests with access they should have lost in the past year. Ten minutes, one admin login, seven checks. If you find something, that's the point — finding it is the win.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>The sweep — do these in order</h2>
+    <div class="big-stat">
+      <div class="stat"><div class="n">7</div><div class="l">checks</div></div>
+      <div class="stat"><div class="n">10 min</div><div class="l">one admin login</div></div>
+      <div class="stat"><div class="n">38%</div><div class="l">of orgs left stale access in place (ShareGate, Sep 2026)</div></div>
+    </div>
+    <div class="action">
+      <h3>Check 1 — Stale user accounts (3 min)</h3>
+      <p>In the Microsoft Entra admin center: Identity → Users. Sort by last sign-in date. Anyone who hasn't signed in for 90+ days is a question mark. Former employees whose accounts are still <em>enabled</em> are the headline risk. Disable them now — deletion can wait (deleted accounts sit recoverable for 30 days, so disabling first is the safe move).</p>
+    </div>
+    <div class="action">
+      <h3>Check 2 — Lingering guest accounts (2 min)</h3>
+      <p>Same place, filter for Guest user type. Guests were invited for one project, one vendor, one meeting — and never removed. If the project ended, remove the guest.</p>
+    </div>
+    <div class="action">
+      <h3>Check 3 — Active sharing links (2 min)</h3>
+      <p>In the SharePoint admin center, review sharing links across your sites. Kill every "anyone with the link" link you can't explain. Those links bypass your user list entirely.</p>
+    </div>
+    <div class="action">
+      <h3>Check 4 — Mailbox forwarding rules (2 min)</h3>
+      <p>In the Exchange admin center: check mail flow rules and individual mailbox forwarding. Look for auto-forwarding to external addresses — a classic exfiltration setup, and also a classic "former employee still getting the invoices" setup. Remove anything you didn't authorize.</p>
+    </div>
+    <div class="action">
+      <h3>Check 5 — Who has admin roles (1 min)</h3>
+      <p>In the Microsoft Entra admin center: Identity → Roles and administrators. Count your Global Administrators. If the number is bigger than two or three — or if it includes anyone who left — fix it today. Admin roles are the keys to the whole building.</p>
+    </div>
+    <div class="action">
+      <h3>Check 6 — Forgotten service accounts (2 min)</h3>
+      <p>Accounts that aren't people: scanner@, backup@, vendor integration accounts, the account someone made for a one-time migration in 2022. Each one needs a named owner, a rotated password, and MFA — or it needs to be disabled. Attackers probed 5,700+ Microsoft 365 accounts in September 2026 and broke into exactly the forgotten-service-account kind.</p>
+    </div>
+    <div class="action">
+      <h3>Check 7 — Blocked sign-in for the departed (1 min)</h3>
+      <p>For every former employee: confirm sign-in is blocked, licenses are reclaimed, and their mailbox is either converted to shared or deleted per your retention policy. A disabled account with an active mailbox and an old phone still receiving MFA prompts is a half-closed door.</p>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--wash)">
+  <div class="wrap">
+    <h2>Found ghosts? Good — that's the sweep working</h2>
+    <p>Now fix it properly, so this sweep never surprises you again:</p>
+    <div class="callout ok"><p><strong>The complete fix:</strong> the employee onboarding/offboarding IT checklist — every account, license, device, and access point to touch when someone joins or leaves — in the <a href="https://www.etsy.com/shop/TechOpsPlaybooks">TechOpsPlaybooks Etsy shop</a>.</p></div>
+    <p><strong>Free:</strong> run the domain checker below — access hygiene is the inside half; email impersonation is the outside half.</p>
+    <p>Related reading: the <a href="csuite.html">C-suite briefing</a>, <a href="governance-survey.html">Three in Four Had a Governance Incident</a>, and <a href="teamfiltration.html">the TeamFiltration service-account story</a>.</p>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Make your domain the hard target</h2>
+    <p>Session hijacking only turns into business damage when your domain is easy to impersonate. Run the free checker — see your red/yellow/green in seconds — or get the one-page mini-audit with your fix list.</p>
+    <div class="btn-row">
+      <a class="btn btn-light" href="checker/">Check your domain — free</a>
+      <a class="btn btn-primary" href="mailto:Anthony.e.didion@gmail.com?subject=Free%20mini-audit%20request%20—%20my%20domain&body=Hi%20Anthony%2C%0A%0AI%27d%20like%20a%20free%20one-page%20mini-audit%20of%20my%20domain%27s%20email%20authentication.%0A%0AMy%20domain%3A%20%0A%0AThanks!">Request my free mini-audit →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><strong>2026 Chicago SMB Email Security Report</strong> — free checklist, published 2026-10-04. Built on ShareGate's September 2026 survey data; admin paths reference the standard Microsoft 365 / Entra admin centers. Prepared by Anthony Didion. Questions: <a href="mailto:Anthony.e.didion@gmail.com">Anthony.e.didion@gmail.com</a></p>
+  </div>
+</footer>
+
+
+<!-- privacy-first pageview tracker: first-party, cookieless, no PII, respects Do Not Track -->
+<form name="pageview" netlify netlify-honeypot="bot-field" hidden>
+  <input type="text" name="bot-field" tabindex="-1" autocomplete="off">
+  <input type="hidden" name="page">
+  <input type="hidden" name="referrer">
+</form>
+<script>
+(function(){try{
+  if(navigator.doNotTrack==="1"||window.doNotTrack==="1")return;
+  var d=new URLSearchParams();
+  d.append("form-name","pageview");
+  d.append("page",location.pathname);
+  d.append("referrer",document.referrer||"direct");
+  fetch(location.pathname,{method:"POST",
+    headers:{"Content-Type":"application/x-www-form-urlencoded"},
+    body:d.toString(),keepalive:true}).catch(function(){}})();
+}catch(e){}})();
+</script>
+
+</body>
+</html>

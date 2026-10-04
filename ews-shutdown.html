@@ -79,6 +79,9 @@
       <li><strong>Some third-party mail clients</strong> — check which clients your staff actually use.</li>
     </ul>
     <p>Two more details that came with the enforcement start: the <strong>AppID allow list (<code>EWSAllowedAppIDs</code>) is now live</strong> — vendors that are ready have a path to keep working — and the <strong>Kiosk/F1/F3 license restriction takes effect</strong>, so the cheapest licenses lose EWS access as part of the same move.</p>
+    <h2 style="margin-top:30px">Second act, dated October 3: the allow list gets teeth on October 10</h2>
+    <div class="callout danger"><p><strong>Starting October 10, 2026, <code>EwsEnabled=$true</code> alone no longer grants an app access.</strong> Every application needs its AppID on the <code>EWSAllowedAppIDs</code> list — unlisted apps face silent connection failures. This lands on Worldwide tenants first (GCC / GCC High / DoD continue into July 2027).</p></div>
+    <p>On <strong>October 8–9</strong>, Microsoft pre-fills the list from 60 days of observed EWS activity for qualifying tenants — but infrequently used apps get left off. The admin action before Friday: <strong>review the list and add infrequent apps manually</strong>. Your backup jobs, CRM sync, and migration tools from the checklist below are exactly the quiet-but-critical apps that get missed. Full write-up: <a href="ews-allow-list.html">Oct 10: Your Email Apps Need to Be on the List</a>.</p>
   </div>
 </section>
 
@@ -126,7 +129,7 @@
 
 <footer>
   <div class="wrap">
-    <p><strong>2026 Chicago SMB Email Security Report</strong> — threat-update briefing, published 2026-10-02. Reporting based on public coverage of the October 1, 2026 enforcement start. Prepared by Anthony Didion. Questions: <a href="mailto:Anthony.e.didion@gmail.com">Anthony.e.didion@gmail.com</a></p>
+    <p><strong>2026 Chicago SMB Email Security Report</strong> — threat-update briefing, published 2026-10-02. Reporting based on public coverage of the October 1, 2026 enforcement start and the October 3, 2026 Message Center update (MC1485116). Prepared by Anthony Didion. Questions: <a href="mailto:Anthony.e.didion@gmail.com">Anthony.e.didion@gmail.com</a></p>
   </div>
 </footer>
 

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>110 Terabytes of Stolen Data, Now in Police Hands: What the KillSec Takedown Means</title>
+<meta name="description" content="Operation KillSwitch seized KillSec's ransomware business — 110 TB of stolen data, 5 servers, 5 domains, three arrests. What the takedown means if you got a ransom note, and why paying never works.">
+<style>
+  :root{
+    --ink:#14181f; --muted:#5a6472; --paper:#ffffff; --wash:#f4f6f9;
+    --red:#d64545; --yellow:#d9a021; --green:#2e9e5b;
+    --navy:#1b2a4a; --accent:#2f6fed; --accent-dark:#1f4fc4;
+    --line:#e3e8f0; --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;color:var(--ink);line-height:1.6;background:var(--paper)}
+  .wrap{max-width:860px;margin:0 auto;padding:0 24px}
+  .hero{background:linear-gradient(135deg,#101c38 0%,#1b2a4a 55%,#243c6e 100%);color:#fff;padding:56px 0 48px}
+  .hero h1{font-size:2rem;line-height:1.2;margin:0 0 14px;max-width:26ch}
+  .hero h1 .hl{color:#ffcf5c}
+  .hero .sub{font-size:1.08rem;color:#cfd8ea;max-width:62ch}
+  .eyebrow{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--accent);padding:6px 14px;border-radius:999px;margin-bottom:18px}
+  .eyebrow.win{background:var(--green)}
+  section{padding:44px 0}
+  h2{font-size:1.5rem;color:var(--navy);margin-bottom:14px}
+  p{margin:0 0 14px}
+  .callout{border-left:5px solid var(--accent);background:var(--wash);border-radius:0 var(--radius) var(--radius) 0;padding:20px 24px;margin:22px 0}
+  .callout.danger{border-color:var(--red);background:#fdf1f1}
+  .callout.ok{border-color:var(--green);background:#effaf3}
+  .callout p:last-child{margin-bottom:0}
+  ol,ul{margin:0 0 14px 22px}
+  li{margin-bottom:10px}
+  .btn{display:inline-block;font-weight:700;text-decoration:none;border-radius:10px;padding:14px 26px;font-size:1.02rem}
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-primary:hover{background:var(--accent-dark)}
+  .btn-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px}
+  .back{display:inline-block;margin-bottom:8px;color:var(--accent);text-decoration:none;font-weight:600}
+  .action{border:1px solid var(--line);border-left:6px solid var(--green);border-radius:var(--radius);padding:22px 24px;margin:16px 0;background:#fff}
+  .action h3{color:#1f7a44;margin-bottom:6px}
+  .big-stat{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}
+  @media(max-width:640px){.big-stat{grid-template-columns:1fr}.hero h1{font-size:1.7rem}}
+  .stat{border:1px solid var(--line);border-radius:var(--radius);padding:18px;text-align:center}
+  .stat .n{font-size:1.8rem;font-weight:800;color:var(--navy)}
+  .stat .l{font-size:.85rem;color:var(--muted)}
+  footer{padding:26px 0;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+  a{color:var(--accent)}
+  .cta-band{background:linear-gradient(135deg,#101c38,#243c6e);color:#fff}
+  .cta-band h2{color:#fff}
+  .cta-band p{color:#c4cfe4}
+  .btn-light{background:#fff;color:var(--navy)}
+  .btn-light:hover{background:#e9eefb}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <a class="back" href="index.html">← Back to the report</a>
+    <span class="eyebrow">Threat update · October 2, 2026</span>
+    <h1>110 terabytes of stolen data, <span class="hl">now in police hands.</span></h1>
+    <p class="sub">Operation KillSwitch — a German-led, Europol/Eurojust-coordinated takedown — just seized the KillSec ransomware group's entire leak-site business. The gang that would have published your data no longer exists.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>What happened</h2>
+    <p>Operation KillSwitch seized KillSec's whole operation: <strong>110 terabytes of stolen data</strong>, 5 servers, 5 domains, three arrests. That collapses the group's <strong>double-extortion leverage</strong> — the entire ransomware business model for crews like this is "pay us or we publish your data." When the police hold the data, the servers, and the domains, there is nothing left to pay for.</p>
+    <div class="big-stat">
+      <div class="stat"><div class="n">110 TB</div><div class="l">stolen data seized</div></div>
+      <div class="stat"><div class="n">5 + 5</div><div class="l">servers and domains seized</div></div>
+      <div class="stat"><div class="n">3</div><div class="l">arrests</div></div>
+    </div>
+    <p>The scale, as the outlets report it: Eurojust and The Hacker News cite roughly <strong>1,000 suspected attacks</strong> worldwide; CyberScoop puts <strong>confirmed successful compromises at about 500</strong> since 2024. Those are two different outlets' figures and they have not been reconciled publicly — evidence the crew was busy, not a precise census.</p>
+    <div class="callout danger"><p><strong>The scary second beat:</strong> the alleged boss is <strong>16 years old</strong>, and the crew used <strong>AI to build its ransomware infrastructure and pick its targets</strong>. Ransomware is no longer a criminal syndicate in a faraway office. It's a teenager with a chatbot — and that is exactly why shops your size are in the blast radius. The entry bar didn't just lower. It collapsed.</p></div>
+    <h2>Why paying never works — now with proof</h2>
+    <p>Every takedown like this one is the don't-pay doctrine made visible: the money doesn't buy your data back, it funds the next crew. This time the crew got raided instead. If you got a ransom note from KillSec: their publish leverage is gone — but confirm with your IT/security contact before you exhale, and keep the note and any correspondence.</p>
+  </div>
+</section>
+
+<section style="background:var(--wash)">
+  <div class="wrap">
+    <h2>Why your shop should care — the honest version</h2>
+    <p>This is a good-news story, and good-news stories are dangerous for a security page — the "we're safe now" reading undercuts everything. So this page doesn't do the victory lap. It sells the entry-bar-collapsed lesson: the defenses that stop a 16-year-old with AI stop everyone else too.</p>
+    <p>KillSec is gone; the next crew is already recruiting. The takedown is proof that the model is fragile — and proof that your shop was never too small to be on somebody's target list.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Three checks</h2>
+    <div class="action">
+      <h3>1. If you got a KillSec ransom note, understand what the seizure means</h3>
+      <p>Their publish leverage is gone — but confirm with your IT/security contact before you exhale, and keep the note and any correspondence.</p>
+    </div>
+    <div class="action">
+      <h3>2. Don't pay. Ever.</h3>
+      <p>This takedown is the doctrine with receipts: payment doesn't buy data back, it funds the next crew — and crews get raided.</p>
+    </div>
+    <div class="action">
+      <h3>3. Act like the entry bar is zero — because it is</h3>
+      <p>MFA on everything, systems patched, backups offline and tested. The defenses that stop a teenager with a chatbot stop the syndicates too. That's the whole lesson.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Make your domain the hard target</h2>
+    <p>Session hijacking only turns into business damage when your domain is easy to impersonate. Run the free checker — see your red/yellow/green in seconds — or get the one-page mini-audit with your fix list.</p>
+    <div class="btn-row">
+      <a class="btn btn-light" href="checker/">Check your domain — free</a>
+      <a class="btn btn-primary" href="mailto:Anthony.e.didion@gmail.com?subject=Free%20mini-audit%20request%20—%20my%20domain&body=Hi%20Anthony%2C%0A%0AI%27d%20like%20a%20free%20one-page%20mini-audit%20of%20my%20domain%27s%20email%20authentication.%0A%0AMy%20domain%3A%20%0A%0AThanks!">Request my free mini-audit →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><strong>2026 Chicago SMB Email Security Report</strong> — threat-update briefing, published 2026-10-04. Reporting based on public reporting of Operation KillSwitch (Sept 30–Oct 2, 2026) — Eurojust, The Hacker News, and CyberScoop coverage. Prepared by Anthony Didion. Questions: <a href="mailto:Anthony.e.didion@gmail.com">Anthony.e.didion@gmail.com</a></p>
+  </div>
+</footer>
+
+<!-- privacy-first pageview tracker: first-party, cookieless, no PII, respects Do Not Track -->
+<form name="pageview" netlify netlify-honeypot="bot-field" hidden>
+  <input type="text" name="bot-field" tabindex="-1" autocomplete="off">
+  <input type="hidden" name="page">
+  <input type="hidden" name="referrer">
+</form>
+<script>
+(function(){try{
+  if(navigator.doNotTrack==="1"||window.doNotTrack==="1")return;
+  var d=new URLSearchParams();
+  d.append("form-name","pageview");
+  d.append("page",location.pathname);
+  d.append("referrer",document.referrer||"direct");
+  fetch(location.pathname,{method:"POST",
+    headers:{"Content-Type":"application/x-www-form-urlencoded"},
+    body:d.toString(),keepalive:true}).catch(function(){});
+}catch(e){}})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>They're Not After Your Password — They're After Your Payroll</title>
+<meta name="description" content="Microsoft tracks Payroll Pirates (Storm-2755): a live AiTM campaign stealing Microsoft 365 sessions and aiming at payroll and finance mailboxes. The banking-change scam, three checks, and the real fix.">
+<style>
+  :root{
+    --ink:#14181f; --muted:#5a6472; --paper:#ffffff; --wash:#f4f6f9;
+    --red:#d64545; --yellow:#d9a021; --green:#2e9e5b;
+    --navy:#1b2a4a; --accent:#2f6fed; --accent-dark:#1f4fc4;
+    --line:#e3e8f0; --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;color:var(--ink);line-height:1.6;background:var(--paper)}
+  .wrap{max-width:860px;margin:0 auto;padding:0 24px}
+  .hero{background:linear-gradient(135deg,#101c38 0%,#1b2a4a 55%,#243c6e 100%);color:#fff;padding:56px 0 48px}
+  .hero h1{font-size:2rem;line-height:1.2;margin:0 0 14px;max-width:26ch}
+  .hero h1 .hl{color:#ffcf5c}
+  .hero .sub{font-size:1.08rem;color:#cfd8ea;max-width:62ch}
+  .eyebrow{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--accent);padding:6px 14px;border-radius:999px;margin-bottom:18px}
+  .eyebrow.win{background:var(--green)}
+  section{padding:44px 0}
+  h2{font-size:1.5rem;color:var(--navy);margin-bottom:14px}
+  p{margin:0 0 14px}
+  .callout{border-left:5px solid var(--accent);background:var(--wash);border-radius:0 var(--radius) var(--radius) 0;padding:20px 24px;margin:22px 0}
+  .callout.danger{border-color:var(--red);background:#fdf1f1}
+  .callout.ok{border-color:var(--green);background:#effaf3}
+  .callout p:last-child{margin-bottom:0}
+  ol,ul{margin:0 0 14px 22px}
+  li{margin-bottom:10px}
+  .btn{display:inline-block;font-weight:700;text-decoration:none;border-radius:10px;padding:14px 26px;font-size:1.02rem}
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-primary:hover{background:var(--accent-dark)}
+  .btn-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px}
+  .back{display:inline-block;margin-bottom:8px;color:var(--accent);text-decoration:none;font-weight:600}
+  .action{border:1px solid var(--line);border-left:6px solid var(--green);border-radius:var(--radius);padding:22px 24px;margin:16px 0;background:#fff}
+  .action h3{color:#1f7a44;margin-bottom:6px}
+  .big-stat{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}
+  @media(max-width:640px){.big-stat{grid-template-columns:1fr}.hero h1{font-size:1.7rem}}
+  .stat{border:1px solid var(--line);border-radius:var(--radius);padding:18px;text-align:center}
+  .stat .n{font-size:1.8rem;font-weight:800;color:var(--navy)}
+  .stat .l{font-size:.85rem;color:var(--muted)}
+  footer{padding:26px 0;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+  a{color:var(--accent)}
+  .cta-band{background:linear-gradient(135deg,#101c38,#243c6e);color:#fff}
+  .cta-band h2{color:#fff}
+  .cta-band p{color:#c4cfe4}
+  .btn-light{background:#fff;color:var(--navy)}
+  .btn-light:hover{background:#e9eefb}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <a class="back" href="index.html">← Back to the report</a>
+    <span class="eyebrow">Threat update · October 2, 2026</span>
+    <h1>They're not after your password — <span class="hl">they're after your payroll.</span></h1>
+    <p class="sub">Microsoft tracks an active campaign it calls Payroll Pirates (Storm-2755): stealing Microsoft 365 authenticated sessions and aiming them at payroll and finance mailboxes. Live right now. The payoff isn't your data — it's a wire transfer.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>The banking-change scam</h2>
+    <p>Picture it: a "vendor" emails your bookkeeper new wire instructions — <strong>from your owner's own compromised mailbox</strong>. Nothing looks phished, because nothing was phished. The attacker is sitting inside the session, watching the money move, waiting for the right invoice. Microsoft tracks this as <strong>Payroll Pirates (Storm-2755)</strong>: an adversary-in-the-middle operation stealing Microsoft 365 <strong>authenticated sessions</strong> — not passwords, sessions — aimed at payroll and finance mailboxes: payment workflows, approvals, banking-change traffic. Across the US, Canada, and Europe.</p>
+    <div class="big-stat">
+      <div class="stat"><div class="n">Storm-2755</div><div class="l">Microsoft-tracked campaign name</div></div>
+      <div class="stat"><div class="n">Payroll + finance</div><div class="l">the targeted mailboxes</div></div>
+      <div class="stat"><div class="n">Passkey</div><div class="l">the fix texts and taps can't provide</div></div>
+    </div>
+    <div class="callout danger"><p><strong>Why your MFA didn't stop it:</strong> adversary-in-the-middle steals the authenticated session <em>after</em> the login succeeds — the text code, the tap, the push approval all happened legitimately. <strong>Texts and taps don't stop session theft.</strong></p></div>
+    <h2>Three checks that catch it</h2>
+    <ul>
+      <li><strong>Mailbox forwarding and delegate rules</strong> on every finance and payroll mailbox — the classic quiet persistence. The rule that silently copies everything to an outside address is the oldest trick in this campaign's book.</li>
+      <li><strong>The "Original transfer method" field</strong> in sign-in logs — it shows how the session really authenticated. Look for anything that doesn't match how your people actually sign in.</li>
+      <li><strong>Unexpected device-code authentication prompts.</strong> If nobody started a device-code flow, someone else did — treat it as an incident.</li>
+    </ul>
+    <p>This page is the companion to the credential-theft lane — <a href="mfa-not-enough.html">MFA Is Not Enough</a>, <a href="mfa-screen-steals-password.html">The MFA Screen That Steals Your Password</a>, <a href="fido2-downgrade.html">The FIDO2 Downgrade</a> cover <em>how</em> they steal the session. This page is <em>what they do with it</em>: reroute your wires.</p>
+  </div>
+</section>
+
+<section style="background:var(--wash)">
+  <div class="wrap">
+    <h2>Why your shop should care — the honest version</h2>
+    <p>This page has to earn its place next to the MFA/token-theft lane without repeating it — so it draws the line hard: those pages are about how they steal the session; this page is about what they do with it. The payoff here is money movement, which makes it the owner's nightmare scenario and the most news-urgent finance beat this month.</p>
+    <p>It's also honest about the competition: free MSP advisories cover phishing generically, so this page sells one specific thing — the banking-change angle — not awareness in general.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Four actions — the payroll four</h2>
+    <div class="action">
+      <h3>1. Check forwarding and delegate rules</h3>
+      <p>On every payroll and finance mailbox. Today. The quiet rule forwarding copies of everything to an outside address is the oldest trick in this campaign's book.</p>
+    </div>
+    <div class="action">
+      <h3>2. Check the “Original transfer method” field</h3>
+      <p>In your sign-in logs for those mailboxes. It tells you how the session actually authenticated — look for anything that doesn't match how your people really sign in.</p>
+    </div>
+    <div class="action">
+      <h3>3. Treat unexpected device-code prompts as an incident</h3>
+      <p>If nobody started a device-code flow, someone else did.</p>
+    </div>
+    <div class="action">
+      <h3>4. Move finance staff to device-bound passkeys or security keys</h3>
+      <p>Texts and taps don't stop session theft. This is the fix; the checks above are the detection.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Make your domain the hard target</h2>
+    <p>Session hijacking only turns into business damage when your domain is easy to impersonate. Run the free checker — see your red/yellow/green in seconds — or get the one-page mini-audit with your fix list.</p>
+    <div class="btn-row">
+      <a class="btn btn-light" href="checker/">Check your domain — free</a>
+      <a class="btn btn-primary" href="mailto:Anthony.e.didion@gmail.com?subject=Free%20mini-audit%20request%20—%20my%20domain&body=Hi%20Anthony%2C%0A%0AI%27d%20like%20a%20free%20one-page%20mini-audit%20of%20my%20domain%27s%20email%20authentication.%0A%0AMy%20domain%3A%20%0A%0AThanks!">Request my free mini-audit →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><strong>2026 Chicago SMB Email Security Report</strong> — threat-update briefing, published 2026-10-04. Reporting based on Microsoft's tracking of Storm-2755 (netcrook, Oct 2, 2026) and nexustek's Oct 2026 plain-language fix list. Prepared by Anthony Didion. Questions: <a href="mailto:Anthony.e.didion@gmail.com">Anthony.e.didion@gmail.com</a></p>
+  </div>
+</footer>
+
+<!-- privacy-first pageview tracker: first-party, cookieless, no PII, respects Do Not Track -->
+<form name="pageview" netlify netlify-honeypot="bot-field" hidden>
+  <input type="text" name="bot-field" tabindex="-1" autocomplete="off">
+  <input type="hidden" name="page">
+  <input type="hidden" name="referrer">
+</form>
+<script>
+(function(){try{
+  if(navigator.doNotTrack==="1"||window.doNotTrack==="1")return;
+  var d=new URLSearchParams();
+  d.append("form-name","pageview");
+  d.append("page",location.pathname);
+  d.append("referrer",document.referrer||"direct");
+  fetch(location.pathname,{method:"POST",
+    headers:{"Content-Type":"application/x-www-form-urlencoded"},
+    body:d.toString(),keepalive:true}).catch(function(){});
+}catch(e){}})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Mac's Mail Just Stopped Syncing: 3 Ways to Get It Back</title>
+<meta name="description" content="Microsoft started disabling EWS by default October 1, 2026 — and Apple Mail/Calendar on Mac still syncs Microsoft 365 through EWS. Three ways to get your work email back.">
+<style>
+  :root{
+    --ink:#14181f; --muted:#5a6472; --paper:#ffffff; --wash:#f4f6f9;
+    --red:#d64545; --yellow:#d9a021; --green:#2e9e5b;
+    --navy:#1b2a4a; --accent:#2f6fed; --accent-dark:#1f4fc4;
+    --line:#e3e8f0; --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;color:var(--ink);line-height:1.6;background:var(--paper)}
+  .wrap{max-width:860px;margin:0 auto;padding:0 24px}
+  .hero{background:linear-gradient(135deg,#101c38 0%,#1b2a4a 55%,#243c6e 100%);color:#fff;padding:56px 0 48px}
+  .hero h1{font-size:2rem;line-height:1.2;margin:0 0 14px;max-width:26ch}
+  .hero h1 .hl{color:#ffcf5c}
+  .hero .sub{font-size:1.08rem;color:#cfd8ea;max-width:62ch}
+  .eyebrow{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--accent);padding:6px 14px;border-radius:999px;margin-bottom:18px}
+  .eyebrow.win{background:var(--green)}
+  section{padding:44px 0}
+  h2{font-size:1.5rem;color:var(--navy);margin-bottom:14px}
+  p{margin:0 0 14px}
+  .callout{border-left:5px solid var(--accent);background:var(--wash);border-radius:0 var(--radius) var(--radius) 0;padding:20px 24px;margin:22px 0}
+  .callout.danger{border-color:var(--red);background:#fdf1f1}
+  .callout.ok{border-color:var(--green);background:#effaf3}
+  .callout p:last-child{margin-bottom:0}
+  ol,ul{margin:0 0 14px 22px}
+  li{margin-bottom:10px}
+  .btn{display:inline-block;font-weight:700;text-decoration:none;border-radius:10px;padding:14px 26px;font-size:1.02rem}
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-primary:hover{background:var(--accent-dark)}
+  .btn-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px}
+  .back{display:inline-block;margin-bottom:8px;color:var(--accent);text-decoration:none;font-weight:600}
+  .action{border:1px solid var(--line);border-left:6px solid var(--green);border-radius:var(--radius);padding:22px 24px;margin:16px 0;background:#fff}
+  .action h3{color:#1f7a44;margin-bottom:6px}
+  .big-stat{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}
+  @media(max-width:640px){.big-stat{grid-template-columns:1fr}.hero h1{font-size:1.7rem}}
+  .stat{border:1px solid var(--line);border-radius:var(--radius);padding:18px;text-align:center}
+  .stat .n{font-size:1.8rem;font-weight:800;color:var(--navy)}
+  .stat .l{font-size:.85rem;color:var(--muted)}
+  footer{padding:26px 0;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+  a{color:var(--accent)}
+  .cta-band{background:linear-gradient(135deg,#101c38,#243c6e);color:#fff}
+  .cta-band h2{color:#fff}
+  .cta-band p{color:#c4cfe4}
+  .btn-light{background:#fff;color:var(--navy)}
+  .btn-light:hover{background:#e9eefb}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <a class="back" href="index.html">← Back to the report</a>
+    <span class="eyebrow">Threat update · October 2, 2026</span>
+    <h1>Your Mac’s Mail <span class="hl">just stopped syncing</span> — 3 ways to get it back.</h1>
+    <p class="sub">On October 1, Microsoft started turning off Exchange Web Services by default — and Apple Mail and Calendar on Mac still sync your work email through EWS. Apple's Graph fix hasn't shipped. Your iPhone and iPad are unaffected.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>Why your Mac broke</h2>
+    <p>On <strong>October 1, 2026</strong>, Microsoft began disabling <strong>Exchange Web Services (EWS)</strong> by default in Exchange Online — tenant by tenant, not all at once. Here is the part that hits your desk: <strong>Apple Mail and Calendar on Mac still sync Microsoft 365 work accounts through EWS.</strong> Apple says it is "actively working with Microsoft" to move Mail, Calendar, Contacts, Notes, and Reminders to the Graph API in a future macOS 27 update — but it has not shipped (the 27.1 betas skipped it; the 27.2 betas mention nothing). Your iPhone and iPad sync through Exchange ActiveSync, a different path — they are unaffected.</p>
+    <div class="big-stat">
+      <div class="stat"><div class="n">Oct 1, 2026</div><div class="l">EWS default-disable starts, tenant by tenant</div></div>
+      <div class="stat"><div class="n">Apr 1, 2027</div><div class="l">final permanent EWS shutdown</div></div>
+      <div class="stat"><div class="n">macOS 27.x</div><div class="l">Apple's Graph move — not shipped, date TBD</div></div>
+    </div>
+    <h2>The three ways back</h2>
+    <ul>
+      <li><strong>Ask your IT admin whether EWS was disabled for your account.</strong> If yes, they can re-enable it — roughly an hour's recovery.</li>
+      <li><strong>Switch to Outlook for Mac meanwhile.</strong> It does not use EWS, so it keeps working while the admin sorts the Mail app.</li>
+      <li><strong>Don't wait on Apple's Graph update.</strong> It is promised, not shipped, with no date. The fixes above work today.</li>
+    </ul>
+    <div class="callout danger"><p><strong>Second EWS check — October 10 and after:</strong> starting October 10, <code>EwsEnabled=$true</code> alone no longer grants an app access. Every app needs its AppID on the <code>EWSAllowedAppIDs</code> allow list. If your mail tools break <em>again</em> after the 10th, the AppID list — not just EwsEnabled — is the new suspect. Your IT admin's fix: add the app's AppID to the list. Full admin write-up: <a href="ews-shutdown.html">Microsoft Started Turning Off EWS Today</a>.</p></div>
+    <div class="callout ok"><p><strong>Current as of October 4, 2026.</strong> If Apple ships the Graph update, these fix paths change — and this page will say so.</p></div>
+  </div>
+</section>
+
+<section style="background:var(--wash)">
+  <div class="wrap">
+    <h2>Why your shop should care — the honest version</h2>
+    <p>This is the funnel's first page written for the person staring at a broken inbox, not the admin — and it stays honest by not overselling. The rollout is tenant-by-tenant, so your Mail may break this week or next month; the page leads with the three fixes, not the timeline.</p>
+    <p>It also carries a "current as of" stamp, because the honest version of a fix page admits its fixes can expire. And it is frank about the SEO reality: this page earns nothing without ranking — but "mac mail not syncing microsoft 365" is a real search from a real person with a real broken inbox right now.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Four actions — if your Mac's mail broke</h2>
+    <div class="action">
+      <h3>1. Ask your IT admin one question</h3>
+      <p>Was EWS disabled for my account? If yes, they can re-enable it — roughly an hour's recovery.</p>
+    </div>
+    <div class="action">
+      <h3>2. Switch to Outlook for Mac meanwhile</h3>
+      <p>It doesn't use EWS, so it keeps working while the admin sorts the Mail app.</p>
+    </div>
+    <div class="action">
+      <h3>3. If it breaks again around October 10, tell your admin about the AppID list</h3>
+      <p>The second EWS check: <code>EWSAllowedAppIDs</code> — the app's ID has to be on the list, not just EWS turned on. Point them at the admin companion page linked above.</p>
+    </div>
+    <div class="action">
+      <h3>4. Don't wait on Apple's Graph update</h3>
+      <p>Promised, not shipped, no date. The fixes above work today.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Make your domain the hard target</h2>
+    <p>Session hijacking only turns into business damage when your domain is easy to impersonate. Run the free checker — see your red/yellow/green in seconds — or get the one-page mini-audit with your fix list.</p>
+    <div class="btn-row">
+      <a class="btn btn-light" href="checker/">Check your domain — free</a>
+      <a class="btn btn-primary" href="mailto:Anthony.e.didion@gmail.com?subject=Free%20mini-audit%20request%20—%20my%20domain&body=Hi%20Anthony%2C%0A%0AI%27d%20like%20a%20free%20one-page%20mini-audit%20of%20my%20domain%27s%20email%20authentication.%0A%0AMy%20domain%3A%20%0A%0AThanks!">Request my free mini-audit →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><strong>2026 Chicago SMB Email Security Report</strong> — threat-update briefing, published 2026-10-04. Reporting based on MacRumors' Oct 1–2, 2026 reporting on Microsoft's EWS-default disable and Apple's support documentation. Prepared by Anthony Didion. Questions: <a href="mailto:Anthony.e.didion@gmail.com">Anthony.e.didion@gmail.com</a></p>
+  </div>
+</footer>
+
+<!-- privacy-first pageview tracker: first-party, cookieless, no PII, respects Do Not Track -->
+<form name="pageview" netlify netlify-honeypot="bot-field" hidden>
+  <input type="text" name="bot-field" tabindex="-1" autocomplete="off">
+  <input type="hidden" name="page">
+  <input type="hidden" name="referrer">
+</form>
+<script>
+(function(){try{
+  if(navigator.doNotTrack==="1"||window.doNotTrack==="1")return;
+  var d=new URLSearchParams();
+  d.append("form-name","pageview");
+  d.append("page",location.pathname);
+  d.append("referrer",document.referrer||"direct");
+  fetch(location.pathname,{method:"POST",
+    headers:{"Content-Type":"application/x-www-form-urlencoded"},
+    body:d.toString(),keepalive:true}).catch(function(){});
+}catch(e){}})();
+</script>
+
+</body>
+</html>

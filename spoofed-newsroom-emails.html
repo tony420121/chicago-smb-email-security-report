@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>9,000 Spoofed Emails Wearing a Newsroom's Name — Chicago SMB Email Security Report</title>
+<meta name="description" content="Attackers lived in a news organization's Microsoft 365 since late July, then sent ~9,000 spoofed emails under its name on September 30. If it happens to a newsroom, your domain is easier. Three checks.">
+<style>
+  :root{
+    --ink:#14181f; --muted:#5a6472; --paper:#ffffff; --wash:#f4f6f9;
+    --red:#d64545; --yellow:#d9a021; --green:#2e9e5b;
+    --navy:#1b2a4a; --accent:#2f6fed; --accent-dark:#1f4fc4;
+    --line:#e3e8f0; --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;color:var(--ink);line-height:1.6;background:var(--paper)}
+  .wrap{max-width:860px;margin:0 auto;padding:0 24px}
+  .hero{background:linear-gradient(135deg,#101c38 0%,#1b2a4a 55%,#243c6e 100%);color:#fff;padding:56px 0 48px}
+  .hero h1{font-size:2rem;line-height:1.2;margin:0 0 14px;max-width:26ch}
+  .hero h1 .hl{color:#ffcf5c}
+  .hero .sub{font-size:1.08rem;color:#cfd8ea;max-width:62ch}
+  .eyebrow{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--accent);padding:6px 14px;border-radius:999px;margin-bottom:18px}
+  .eyebrow.win{background:var(--green)}
+  section{padding:44px 0}
+  h2{font-size:1.5rem;color:var(--navy);margin-bottom:14px}
+  p{margin:0 0 14px}
+  .callout{border-left:5px solid var(--accent);background:var(--wash);border-radius:0 var(--radius) var(--radius) 0;padding:20px 24px;margin:22px 0}
+  .callout.danger{border-color:var(--red);background:#fdf1f1}
+  .callout.ok{border-color:var(--green);background:#effaf3}
+  .callout p:last-child{margin-bottom:0}
+  ol,ul{margin:0 0 14px 22px}
+  li{margin-bottom:10px}
+  .btn{display:inline-block;font-weight:700;text-decoration:none;border-radius:10px;padding:14px 26px;font-size:1.02rem}
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-primary:hover{background:var(--accent-dark)}
+  .btn-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px}
+  .back{display:inline-block;margin-bottom:8px;color:var(--accent);text-decoration:none;font-weight:600}
+  .action{border:1px solid var(--line);border-left:6px solid var(--green);border-radius:var(--radius);padding:22px 24px;margin:16px 0;background:#fff}
+  .action h3{color:#1f7a44;margin-bottom:6px}
+  .big-stat{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}
+  @media(max-width:640px){.big-stat{grid-template-columns:1fr}.hero h1{font-size:1.7rem}}
+  .stat{border:1px solid var(--line);border-radius:var(--radius);padding:18px;text-align:center}
+  .stat .n{font-size:1.8rem;font-weight:800;color:var(--navy)}
+  .stat .l{font-size:.85rem;color:var(--muted)}
+  footer{padding:26px 0;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+  a{color:var(--accent)}
+  .cta-band{background:linear-gradient(135deg,#101c38,#243c6e);color:#fff}
+  .cta-band h2{color:#fff}
+  .cta-band p{color:#c4cfe4}
+  .btn-light{background:#fff;color:var(--navy)}
+  .btn-light:hover{background:#e9eefb}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <a class="back" href="index.html">← Back to the report</a>
+    <span class="eyebrow">Threat update · October 3, 2026</span>
+    <h1><span class="hl">9,000 spoofed emails</span> wearing a newsroom’s name.</h1>
+    <p class="sub">A Japanese news organization disclosed this week that attackers had unauthorized access to its Microsoft 365 and Google Workspace since late July — then sent roughly <strong>9,000 spoofed emails</strong> wearing its name on <strong>September 30, 2026</strong>. Personal information of 1,646 people may have been exposed. The lesson isn't about newsrooms.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>What happened — the numbers, stated exactly</h2>
+    <ul>
+      <li><strong>Late July 2026:</strong> attackers gained unauthorized access to the organization's Microsoft 365 and Google Workspace.</li>
+      <li><strong>Early August 2026:</strong> Google flagged the suspicious activity to the organization.</li>
+      <li><strong>September 30, 2026:</strong> roughly <strong>9,000 spoofed emails</strong> sent under the organization's name.</li>
+      <li><strong>1,646 people</strong> — employees and business partners — had personal information potentially exposed, and were warned to expect more impersonation emails.</li>
+    </ul>
+    <p>Attribution note: this is the organization's own announcement, as summarized by finance.biggo.com. We're citing their numbers exactly — not the aggregator's framing.</p>
+    <h2>Spoofed <em>from</em> you vs. spoofed <em>in</em> you</h2>
+    <p>Two different disasters. <strong>Spoofed-from-you:</strong> attackers send mail that <em>looks like</em> it comes from your domain, to your customers and partners. Your name does the conning. <strong>Spoofed-in-you:</strong> attackers get <em>inside</em> your mail system — like they did here for two months — and send from the real thing. This incident was the second kind, which is worse: no spam filter on earth flags mail from the actual account.</p>
+    <div class="big-stat">
+      <div class="stat"><div class="n">~9,000</div><div class="l">spoofed emails sent September 30, 2026</div></div>
+      <div class="stat"><div class="n">1,646</div><div class="l">people warned their information may be exposed</div></div>
+      <div class="stat"><div class="n">~2 months</div><div class="l">of unauthorized mailbox access before the send</div></div>
+    </div>
+    <div class="callout danger"><p><strong>The lesson, stated carefully:</strong> this was not a small business — and that's the point. <strong>If attackers can live inside a newsroom's mail for two months, your domain is easier, not harder.</strong> You have fewer people watching, fewer alerts configured, and the same trusted name your customers believe.</p></div>
+  </div>
+</section>
+
+<section style="background:var(--wash)">
+  <div class="wrap">
+    <h2>The honest version</h2>
+    <p>Brand damage is the math nobody does until it's their name: 1,646 people got a letter saying "emails in our name may be scams." Every one of them now hesitates before opening real mail from that organization. For a Chicago shop, your domain <em>is</em> your reputation with customers — and unlike the newsroom, you don't have a comms team to send the apology. The three checks below are the cheapest brand insurance you can buy.</p>
+    <p>And the compliance sibling: email authentication isn't just best practice anymore — <a href="email-auth-standard.html">an SMB standard now requires it</a>. The standard is catching up to the attacks.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Three checks — your domain's anti-spoofing kit</h2>
+    <div class="action">
+      <h3>1. DMARC, SPF, and DKIM — on your own domain, set correctly</h3>
+      <p>These three records tell the world's mail servers which senders are really you. Without them, anyone can wear your domain like a costume. With them (and DMARC set to actually reject), the costume stops working. Run the free checker below — it shows your red/yellow/green in seconds.</p>
+    </div>
+    <div class="action">
+      <h3>2. Watch for the inside job, not just the costume</h3>
+      <p>This attack lived <em>inside</em> the mail system for two months. Review who has mailbox access, turn on login alerts for impossible travel and new devices, and treat any "weird sent mail" report from staff as urgent until proven otherwise.</p>
+    </div>
+    <div class="action">
+      <h3>3. Make "verify on a second channel" a house rule</h3>
+      <p>Any email asking for money, credentials, or a changed wire destination gets confirmed by phone or in person — every time, no exceptions. The newsroom warned 1,646 people to expect more impersonation emails. Your rule should exist <em>before</em> you have to send that warning.</p>
+    </div>
+  </div>
+</section>
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Make your domain the hard target</h2>
+    <p>Session hijacking only turns into business damage when your domain is easy to impersonate. Run the free checker — see your red/yellow/green in seconds — or get the one-page mini-audit with your fix list.</p>
+    <div class="btn-row">
+      <a class="btn btn-light" href="checker/">Check your domain — free</a>
+      <a class="btn btn-primary" href="mailto:Anthony.e.didion@gmail.com?subject=Free%20mini-audit%20request%20—%20my%20domain&body=Hi%20Anthony%2C%0A%0AI%27d%20like%20a%20free%20one-page%20mini-audit%20of%20my%20domain%27s%20email%20authentication.%0A%0AMy%20domain%3A%20%0A%0AThanks!">Request my free mini-audit →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><strong>2026 Chicago SMB Email Security Report</strong> — threat-update briefing, published 2026-10-04. Reporting based on public coverage of the October 1, 2026 enforcement start and the October 3, 2026 Message Center update (MC1485116). Prepared by Anthony Didion. Questions: <a href="mailto:Anthony.e.didion@gmail.com">Anthony.e.didion@gmail.com</a></p>
+  </div>
+</footer>
+
+
+<!-- privacy-first pageview tracker: first-party, cookieless, no PII, respects Do Not Track -->
+<form name="pageview" netlify netlify-honeypot="bot-field" hidden>
+  <input type="text" name="bot-field" tabindex="-1" autocomplete="off">
+  <input type="hidden" name="page">
+  <input type="hidden" name="referrer">
+</form>
+<script>
+(function(){try{
+  if(navigator.doNotTrack==="1"||window.doNotTrack==="1")return;
+  var d=new URLSearchParams();
+  d.append("form-name","pageview");
+  d.append("page",location.pathname);
+  d.append("referrer",document.referrer||"direct");
+  fetch(location.pathname,{method:"POST",
+    headers:{"Content-Type":"application/x-www-form-urlencoded"},
+    body:d.toString(),keepalive:true}).catch(function(){});
+}catch(e){}})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mid-October: Your Sign-In Page Stops Running Outside Scripts — Chicago SMB Email Security Report</title>
+<meta name="description" content="Microsoft starts enforcing Content Security Policy on Entra ID sign-in pages mid-to-late October 2026. Browser extensions and tools that inject into the login page stop working silently. Audit them now.">
+<style>
+  :root{
+    --ink:#14181f; --muted:#5a6472; --paper:#ffffff; --wash:#f4f6f9;
+    --red:#d64545; --yellow:#d9a021; --green:#2e9e5b;
+    --navy:#1b2a4a; --accent:#2f6fed; --accent-dark:#1f4fc4;
+    --line:#e3e8f0; --radius:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;color:var(--ink);line-height:1.6;background:var(--paper)}
+  .wrap{max-width:860px;margin:0 auto;padding:0 24px}
+  .hero{background:linear-gradient(135deg,#101c38 0%,#1b2a4a 55%,#243c6e 100%);color:#fff;padding:56px 0 48px}
+  .hero h1{font-size:2rem;line-height:1.2;margin:0 0 14px;max-width:26ch}
+  .hero h1 .hl{color:#ffcf5c}
+  .hero .sub{font-size:1.08rem;color:#cfd8ea;max-width:62ch}
+  .eyebrow{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--accent);padding:6px 14px;border-radius:999px;margin-bottom:18px}
+  .eyebrow.win{background:var(--green)}
+  section{padding:44px 0}
+  h2{font-size:1.5rem;color:var(--navy);margin-bottom:14px}
+  p{margin:0 0 14px}
+  .callout{border-left:5px solid var(--accent);background:var(--wash);border-radius:0 var(--radius) var(--radius) 0;padding:20px 24px;margin:22px 0}
+  .callout.danger{border-color:var(--red);background:#fdf1f1}
+  .callout.ok{border-color:var(--green);background:#effaf3}
+  .callout p:last-child{margin-bottom:0}
+  ol,ul{margin:0 0 14px 22px}
+  li{margin-bottom:10px}
+  .btn{display:inline-block;font-weight:700;text-decoration:none;border-radius:10px;padding:14px 26px;font-size:1.02rem}
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-primary:hover{background:var(--accent-dark)}
+  .btn-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px}
+  .back{display:inline-block;margin-bottom:8px;color:var(--accent);text-decoration:none;font-weight:600}
+  .action{border:1px solid var(--line);border-left:6px solid var(--green);border-radius:var(--radius);padding:22px 24px;margin:16px 0;background:#fff}
+  .action h3{color:#1f7a44;margin-bottom:6px}
+  .big-stat{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}
+  @media(max-width:640px){.big-stat{grid-template-columns:1fr}.hero h1{font-size:1.7rem}}
+  .stat{border:1px solid var(--line);border-radius:var(--radius);padding:18px;text-align:center}
+  .stat .n{font-size:1.8rem;font-weight:800;color:var(--navy)}
+  .stat .l{font-size:.85rem;color:var(--muted)}
+  footer{padding:26px 0;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+  a{color:var(--accent)}
+  .cta-band{background:linear-gradient(135deg,#101c38,#243c6e);color:#fff}
+  .cta-band h2{color:#fff}
+  .cta-band p{color:#c4cfe4}
+  .btn-light{background:#fff;color:var(--navy)}
+  .btn-light:hover{background:#e9eefb}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <a class="back" href="index.html">← Back to the report</a>
+    <span class="eyebrow">Threat update · October 4, 2026</span>
+    <h1>Mid-October, your sign-in page <span class="hl">stops running outside scripts</span>.</h1>
+    <p class="sub">Microsoft is starting to enforce a strict Content Security Policy on Entra ID sign-in pages <strong>mid-to-late October 2026</strong>: only Microsoft-hosted scripts will run on <code>login.microsoftonline.com</code>. Any browser extension or admin tool that injects code into the login page stops working — silently.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>What changes — and what doesn't</h2>
+    <ul>
+      <li><strong>What changes:</strong> a strict Content Security Policy on the Entra ID sign-in page. Injected code from browser extensions and third-party tools gets blocked.</li>
+      <li><strong>What doesn't break:</strong> signing in. Users can still log in normally — it's the <em>injected tooling</em> that dies, quietly, in the background.</li>
+      <li><strong>Scope:</strong> browser-based sign-ins only. MSAL and API authentication flows are unaffected.</li>
+      <li><strong>Setup:</strong> none. It's on by default when it rolls out to you.</li>
+    </ul>
+    <p>Timing, stated carefully: Microsoft's Secure Future Initiative communications put this <strong>mid-to-late October 2026</strong>, corroborated by October 2026 coverage. We're not hard-dating it — rollouts move — which is exactly why the check below matters more than the date.</p>
+    <div class="big-stat">
+      <div class="stat"><div class="n">login.microsoftonline.com</div><div class="l">the page getting the strict policy</div></div>
+      <div class="stat"><div class="n">Browser only</div><div class="l">MSAL and API flows unaffected</div></div>
+      <div class="stat"><div class="n">Silent</div><div class="l">injected tooling dies without an error you'd notice</div></div>
+    </div>
+    <h2>What breaks, in plain English</h2>
+    <p>Password-manager autofill that injects into the login page. SSO helper extensions. Admin tools that overlay the sign-in flow. Anything your staff or your IT person installed that "helps with logins" by touching the page itself. After the rollout, those tools just stop doing their thing — no error, no warning. The help-desk ticket reads "the login helper stopped working" and nobody knows why.</p>
+    <div class="callout"><p><strong>How to check today:</strong> open your browser's developer console on the Microsoft sign-in page and look for red Content-Security-Policy violation messages. Violations now = broken tooling later. That's the whole audit.</p></div>
+  </div>
+</section>
+
+<section style="background:var(--wash)">
+  <div class="wrap">
+    <h2>The honest version</h2>
+    <p>This is the second mid-October deadline in the queue — the first is the <a href="ews-allow-list.html">October 10 EWS allow-list enforcement</a> — and it's the quieter one, which makes it more dangerous operationally. Nobody announces "your extension stopped working." The failure mode is a slow accumulation of confused users and dead tooling. The fix is an afternoon's audit, which is why this page leads with the dev-console check instead of the date.</p>
+    <div class="callout ok"><p><strong>The enterprise line, translated:</strong> Microsoft told enterprise customers to stop shipping sign-in-page-injecting tooling. For a small shop, the translation is simpler: list what touches your login page, and assume anything on that list needs a replacement or an update.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Three actions — before the rollout</h2>
+    <div class="action">
+      <h3>1. Inventory what touches your sign-in page</h3>
+      <p>Browser extensions, SSO helpers, password-manager integrations, admin overlay tools — on every machine your staff uses to sign in. If it interacts with the Microsoft login page, write it down.</p>
+    </div>
+    <div class="action">
+      <h3>2. Run the dev-console check</h3>
+      <p>Open developer tools on login.microsoftonline.com and watch for CSP violation messages in red. Each one is a tool that will silently break. Screenshot the list — that's your fix list.</p>
+    </div>
+    <div class="action">
+      <h3>3. Replace or update the injectors</h3>
+      <p>For each tool on the list: check with the vendor for a version that doesn't inject into the sign-in page, or replace it with one that uses supported authentication flows (MSAL, not page injection). Do it before mid-October, not after the tickets start.</p>
+    </div>
+  </div>
+</section>
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Make your domain the hard target</h2>
+    <p>Session hijacking only turns into business damage when your domain is easy to impersonate. Run the free checker — see your red/yellow/green in seconds — or get the one-page mini-audit with your fix list.</p>
+    <div class="btn-row">
+      <a class="btn btn-light" href="checker/">Check your domain — free</a>
+      <a class="btn btn-primary" href="mailto:Anthony.e.didion@gmail.com?subject=Free%20mini-audit%20request%20—%20my%20domain&body=Hi%20Anthony%2C%0A%0AI%27d%20like%20a%20free%20one-page%20mini-audit%20of%20my%20domain%27s%20email%20authentication.%0A%0AMy%20domain%3A%20%0A%0AThanks!">Request my free mini-audit →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><strong>2026 Chicago SMB Email Security Report</strong> — threat-update briefing, published 2026-10-04. Reporting based on public coverage of the October 1, 2026 enforcement start and the October 3, 2026 Message Center update (MC1485116). Prepared by Anthony Didion. Questions: <a href="mailto:Anthony.e.didion@gmail.com">Anthony.e.didion@gmail.com</a></p>
+  </div>
+</footer>
+
+
+<!-- privacy-first pageview tracker: first-party, cookieless, no PII, respects Do Not Track -->
+<form name="pageview" netlify netlify-honeypot="bot-field" hidden>
+  <input type="text" name="bot-field" tabindex="-1" autocomplete="off">
+  <input type="hidden" name="page">
+  <input type="hidden" name="referrer">
+</form>
+<script>
+(function(){try{
+  if(navigator.doNotTrack==="1"||window.doNotTrack==="1")return;
+  var d=new URLSearchParams();
+  d.append("form-name","pageview");
+  d.append("page",location.pathname);
+  d.append("referrer",document.referrer||"direct");
+  fetch(location.pathname,{method:"POST",
+    headers:{"Content-Type":"application/x-www-form-urlencoded"},
+    body:d.toString(),keepalive:true}).catch(function(){});
+}catch(e){}})();
+</script>
+
+</body>
+</html>
